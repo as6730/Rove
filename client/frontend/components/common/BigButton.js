@@ -1,10 +1,13 @@
 import React from "react";
-import { Text, TouchableHighlight } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
+
+//ActivityForm Large Button
 
 const BigButton = ({ onPress, children, isPressed, color}) => {
   let currentStyle;
   let currentText;
 
+//will change style based on state of being Pressed
   if (isPressed){
     currentStyle = styles.pressedButtonStyle;
     currentText = styles.pressedTextStyle;
@@ -13,7 +16,7 @@ const BigButton = ({ onPress, children, isPressed, color}) => {
     currentText = styles.textStyle;
   }
   return (
-    <TouchableHighlight onPress={onPress}
+    <TouchableOpacity onPress={onPress}
       isPressed={isPressed}
       style={currentStyle,
         { backgroundColor: (isPressed ? color : "white"),
@@ -22,7 +25,7 @@ const BigButton = ({ onPress, children, isPressed, color}) => {
           borderWidth: 1,
           width: "100%"}}>
       <Text style={currentText}>{children}</Text>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 
@@ -31,20 +34,17 @@ const styles = {
     flex: 1,
     alignSelf: "stretch",
     backgroundColor: "#fff",
-    height: 150,
-    minWidth: 150,
-    opacity: .01,
+    height: "25%",
   },
+
   pressedButtonStyle:{
     flex: 1,
     alignSelf: "stretch",
     height: 150,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: "#007aff",
-    opacity: 0.5,
+    height: "25%",
   },
-
   textStyle: {
     alignItems:'flex-end',
     color: "black",

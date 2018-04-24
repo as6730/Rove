@@ -8,14 +8,17 @@ class ActivityForm extends React.Component{
     super(props);
     this.state = {
       nature: null,
-      food: null,
-      culture: null,
-      nightlife: null
+      restaurants: null,
+      arts: null,
+      bars: null
     };
 
     this.onButtonPress = this.onButtonPress.bind(this);
   }
 
+  handleSubmit(){
+    // (date, lat, lon, nature, restaurants, arts, bars);
+  }
 
   renderError(){
   if ( this.props.error){
@@ -29,10 +32,11 @@ class ActivityForm extends React.Component{
     }
   }
 
+  //knows if this thing is selected -> set
   onButtonPress(value){
     if (this.state[value]){
       return this.setState({[value]: false });
-    }else {
+    } else {
       this.setState({[value]: true });
     }
   }
@@ -42,8 +46,8 @@ class ActivityForm extends React.Component{
       <Card>
         <CardSection>
           <BigButton
-            onPress={() => this.onButtonPress("food")}
-            isPressed={this.state.food}
+            onPress={() => this.onButtonPress("restaurants")}
+            isPressed={this.state.restaurants}
             color="blue">
             Food
           </BigButton>
@@ -60,8 +64,8 @@ class ActivityForm extends React.Component{
 
         <CardSection>
           <BigButton
-            onPress={() =>this.onButtonPress("culture")}
-            isPressed={this.state.culture}
+            onPress={() =>this.onButtonPress("arts")}
+            isPressed={this.state.arts}
             color="green">
             Culture
           </BigButton>
@@ -69,8 +73,8 @@ class ActivityForm extends React.Component{
 
         <CardSection>
           <BigButton
-            onPress={() =>this.onButtonPress("nightlife")}
-            isPressed={this.state.nightlife}
+            onPress={() =>this.onButtonPress("bars")}
+            isPressed={this.state.bars}
             color="purple">
               NightLife
           </BigButton>
