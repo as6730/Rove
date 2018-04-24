@@ -4,7 +4,6 @@ import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
-import ShowPage from './components/ShowPage';
 
 class App extends React.Component{
   render(){
@@ -12,7 +11,7 @@ class App extends React.Component{
 
       <Provider
         store={createStore(RootReducer,{},applyMiddleware(ReduxThunk))}>
-        <Text>HellNOOO!</Text>
+        <Text>Hello!</Text>
       </Provider>
     );
   }
