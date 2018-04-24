@@ -7,15 +7,17 @@
     "test": "jest"
   },
   "dependencies": {
+    "@babel/core": "^7.0.0-beta.38",
     "react": "16.3.1",
-    "react-native": "0.55.3",
+    "react-native": "^0.54",
+    "react-native-maps": "^0.21.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-jest": "22.4.3",
-    "babel-preset-react-native": "4.0.0",
+    "babel-preset-react-native": "^4.0.0",
     "jest": "22.4.3",
     "react-test-renderer": "16.3.1"
   },
