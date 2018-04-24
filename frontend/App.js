@@ -10,7 +10,7 @@ class App extends React.Component{
     return (
       <Provider
         store={createStore(RootReducer,{},applyMiddleware(ReduxThunk))}>
-        <Text>Hello!</Text>
+        <ActivityForm />
       </Provider>
     );
   }
