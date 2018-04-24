@@ -16,7 +16,9 @@ export default (state=INITIAL_STATE, action) => {
         {activity: action.payload.activity});
       return newState;
     case RECEIVE_ACTIVITY_ERRORS:
-      return state;
+    newState = Object.assign(state, {},
+      { error: action.error});
+      return newState;
     default:
       return state;
   }
