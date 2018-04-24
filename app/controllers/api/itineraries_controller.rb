@@ -35,7 +35,6 @@ class Api::ItinerariesController < ApplicationController
 
   def get_itinerary
     params = itinerary_params
-    p params[:restaurants]
     itinerary = {}
 
     # get restaurants
