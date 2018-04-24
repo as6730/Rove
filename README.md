@@ -113,7 +113,7 @@ Our group consist of four members: Alexandra Savramis, Brie McNally, Rose Koron,
 + Alexandra and Brie will assist Rose and Todd with styling of interface.
 
 ### Phase 4: Polishing the interface and building a Demo (2 days)
-+ Todd and ALexandra will create demo app.
++ Todd and Alexandra will create demo app.
 + Rose and Brie will polish the interface.
 
 ### Plan for Getting Users and Reviews

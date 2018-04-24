@@ -31,9 +31,8 @@ const styles = {
     flex: 1,
     alignSelf: "stretch",
     backgroundColor: "#fff",
-    height: 150,
+    height: "25%",
     minWidth: 150,
-    opacity: .01,
   },
   pressedButtonStyle:{
     flex: 1,
@@ -42,7 +41,6 @@ const styles = {
     borderRadius: 5,
     borderWidth: 1,
     borderColor: "#007aff",
-    opacity: 0.5,
   },
 
   textStyle: {
