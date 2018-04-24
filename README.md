@@ -96,8 +96,6 @@ Our group consist of four members: Alexandra Savramis, Brie McNally, Rose Koron,
 + Make API calls to ensure that we are receiving the information we expect to. Have to test through Postman (outline routes):
   + Events - Brie
   + Food - Alexandra
-  + API Key - AIzaSyA7ClHa3HZaq20j84ZF37vVjWFri62hAY4
-  + API Key - AIzaSyCBwQaF7qshQoMNHMr25ag1_uDSjREUTew (as)
   + Culture - Rose
   + Nature - Todd
 + Complete Proposal:
