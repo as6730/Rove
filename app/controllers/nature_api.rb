@@ -7,7 +7,7 @@ request = RestClient::Request.execute(
 
 PARKS = JSON.parse(request)["results"]
 
-def get_top_ten
+def top_ten_parks
   i = 0
   hash = {}
   while i < 10
@@ -20,8 +20,8 @@ def get_top_ten
 end
 
 def get_first_random
-  ten = getTopTen.keys
-  first_id = ten[rand(0...5)]
+  ten_parks = top_ten_parks.keys
+  first_id = ten_parks[rand(0...5)]
   request = RestClient::Request.execute(
      method: :get,
      url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{first_id}&key=AIzaSyA7ClHa3HZaq20j84ZF37vVjWFri62hAY4"
@@ -38,8 +38,8 @@ first_park = {
 
 
 def get_second_random
-  ten = getTopTen.keys
-  second_id = ten[rand(5...10)]
+  ten_parks = top_ten_parks.keys
+  second_id = ten_parks[rand(5...10)]
   request = RestClient::Request.execute(
      method: :get,
      url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{second_id}&key=AIzaSyA7ClHa3HZaq20j84ZF37vVjWFri62hAY4"
