@@ -1,24 +1,26 @@
 import React from 'react';
+import { connect } from "react-redux";
 import {
   View,
   Text,
   Image,
   Keyboard,
 } from 'react-native';
-import { Input, Header, Card, CardSection } from "./common";
+import { Input, Header, Card, CardSection, Button } from "./common";
 import {Calendar } from 'react-native-calendars';
-
+import ActivityForm from "./ActivityForm";
 
 class WelcomePage extends React.Component {
   constructor(props){
     super(props);
     this.state={
       city: '',
-      chosenDate: new Date()
+      selected: new Date()
     };
 
     this.setDate = this.setDate.bind(this);
     this.handleText = this.handleText.bind(this);
+    this.renderActivities = this.renderActivities.bind(this);
   }
 
   handleText(text){
@@ -26,18 +28,14 @@ class WelcomePage extends React.Component {
   }
 
   setDate(newDate) {
-    this.setState({chosenDate: newDate});
+    this.setState({selected: newDate.dateString});
+    console.log(this.state);
   }
 
-  converDate(date) {
-    const yyyy = date.getFullYear().toString();
-    const mm = (date.getMonth() + 1).toString();
-    const dd = date.getDate().toString();
-
-    let mmChars = mm.split("");
-    let ddChars = dd.split("");
-    return yyyy + '-' + (mmChars[1] ? mm : "0" + mmChars[0]) + "-" +
-    (ddChars[1] ? dd : "0" + ddChars[0]) ;
+  renderActivities(newDate) {
+    return (
+      <ActivityForm city={this.state.city} date={this.state.selected} />
+    );
   }
 
   render() {
@@ -52,29 +50,30 @@ class WelcomePage extends React.Component {
           <Text>Where Are You Going?</Text>
             <Input
               value={this.state.city}
-              onChangeText={() => this.handleText}
-              placeholder={"San Francisco"}></Input>
+              onChangeText={(text) => this.handleText(text)}
+              placeholder={"San Francisco"}
+              ></Input>
         </CardSection>
-        <Text>When?</Text>
+        <CardSection>
+          <Text>When?</Text>
+        </CardSection>
           <Calendar
            current={this.state.chosenDate}
            minDate={Date()}
-           onDayPress={this.setDate}
+           onDayPress={(day)=> this.setDate(day)}
           />
+        <Button onPress={()=> this.renderActivities()}>Submit</Button>
       </Card>
     );
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return console.log(state);
-// };
-//
-// const mapDispatchToProps = (dispatch) => {
-//
-// };
-//
-// export default connect(null,null)(ActivityForm);
+const mapStateToProps = (state) => {
 
+};
 
-export default WelcomePage;
+const mapDispatchToProps = (dispatch) => {
+
+};
+
+export default connect(null,null)(WelcomePage);
