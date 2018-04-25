@@ -1,6 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { Card, BigButton, CardSection } from './common';
+import { View,
+  Text,
+  PanResponder,
+  Animated  } from 'react-native';
+import { Card, BigButton, CardSection, SwipeableCard } from './common';
 import { connect } from "react-redux";
 
 class ActivityForm extends React.Component{
@@ -44,41 +47,41 @@ class ActivityForm extends React.Component{
   render(){
     return (
       <Card>
-        <CardSection>
-          <BigButton
-            onPress={() => this.onButtonPress("restaurants")}
-            isPressed={this.state.restaurants}
-            color="blue">
-            Food
-          </BigButton>
-        </CardSection>
+          <CardSection>
+            <BigButton
+              onPress={() => this.onButtonPress("restaurants")}
+              isPressed={this.state.restaurants}
+              color="blue">
+              Food
+            </BigButton>
+          </CardSection>
 
-        <CardSection>
-          <BigButton
-            onPress={() =>this.onButtonPress("nature")}
-            isPressed={this.state.nature}
-            color="red">
-            Nature
-          </BigButton>
-        </CardSection>
+          <CardSection>
+            <BigButton
+              onPress={() =>this.onButtonPress("nature")}
+              isPressed={this.state.nature}
+              color="red">
+              Nature
+            </BigButton>
+          </CardSection>
 
-        <CardSection>
-          <BigButton
-            onPress={() =>this.onButtonPress("arts")}
-            isPressed={this.state.arts}
-            color="green">
-            Culture
-          </BigButton>
-        </CardSection>
+          <CardSection>
+            <BigButton
+              onPress={() =>this.onButtonPress("arts")}
+              isPressed={this.state.arts}
+              color="green">
+              Culture
+            </BigButton>
+          </CardSection>
 
-        <CardSection>
-          <BigButton
-            onPress={() =>this.onButtonPress("bars")}
-            isPressed={this.state.bars}
-            color="purple">
-              NightLife
-          </BigButton>
-        </CardSection>
+          <CardSection>
+            <BigButton
+              onPress={() =>this.onButtonPress("bars")}
+              isPressed={this.state.bars}
+              color="purple">
+                NightLife
+            </BigButton>
+          </CardSection>
       </Card>
     );
   }

@@ -5,3 +5,4 @@ export * from "./Header";
 export * from "./Input";
 export * from "./Spinner";
 export * from "./BigButton";
+export * from "./SwipeableCard";

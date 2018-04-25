@@ -1,24 +1,32 @@
 import React from "react";
 import RootReducer from "./reducers/RootReducer";
 import { View, Text } from 'react-native';
+import { Navigator } from 'react-native-deprecated-custom-components';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
-// import { Navigation } from 'react-native-navigation';
-// import WelcomePage from "./components/WelcomePage";
-// import ActivityForm from "./components/ActivityForm";
-//
-// import { registerScreens } from './screens';
-//
-// registerScreens();
+import WelcomePage from "./components/WelcomePage";
+import ActivityForm from "./components/ActivityForm";
+
 
 class App extends React.Component{
+  renderScene(route, navigator) {
+     if(route.name === 'Welcome') {
+       return <WelcomePage navigator={navigator} />;
+     }
+     if(route.name === 'Activity') {
+       return <ActivityForm navigator={navigator} />;
+     }
+  }
 
   render(){
     return (
       <Provider
         store={createStore(RootReducer,{},applyMiddleware(ReduxThunk))}>
-        <Text>Hello</Text>
+        <Navigator
+          style={{ flex:1 }}
+          initialRoute={{ name: 'Welcome' }}
+          renderScene={ this.renderScene } />
       </Provider>
     );
   }

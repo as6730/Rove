@@ -11,6 +11,7 @@
     "react": "16.3.1",
     "react-native": "^0.54",
     "react-native-calendars": "^1.18.2",
+    "react-native-deprecated-custom-components": "^0.1.2",
     "react-native-maps": "^0.21.0",
     "react-native-navigation": "^1.1.446",
     "react-redux": "^5.0.7",
