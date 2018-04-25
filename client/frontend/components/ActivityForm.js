@@ -1,6 +1,10 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
-import { Card, BigButton, CardSection } from './common';
+import { View,
+  Text,
+  PanResponder,
+  Animated,
+  Image  } from 'react-native';
+import { Card, BigButton, CardSection, SwipeableCard } from './common';
 import { connect } from "react-redux";
 
 class ActivityForm extends React.Component{

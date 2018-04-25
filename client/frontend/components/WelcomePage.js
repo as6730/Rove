@@ -8,6 +8,7 @@ import {
   Button
 } from 'react-native';
 import { Input, CardSection } from "./common";
+import { Navigator } from 'react-native-deprecated-custom-components';
 import {Calendar } from 'react-native-calendars';
 import ActivityForm from "./ActivityForm";
 
@@ -21,7 +22,6 @@ class WelcomePage extends React.Component {
 
     this.setDate = this.setDate.bind(this);
     this.handleText = this.handleText.bind(this);
-    this.renderActivities = this.renderActivities.bind(this);
   }
 
   handleText(text){
@@ -33,11 +33,15 @@ class WelcomePage extends React.Component {
     console.log(this.state);
   }
 
-  renderActivities(newDate) {
-    return (
-      <ActivityForm city={this.state.city} date={this.state.selected} />
-    );
+
+  navigate(){
+    console.log(this);
+    this.props.navigator.push({
+    name: 'Activity', // Matches route.name
+    });
   }
+
+
 
   render() {
     //// TODO: import link from controller
@@ -67,7 +71,7 @@ class WelcomePage extends React.Component {
            onDayPress={(day)=> this.setDate(day)}
           />
         <Button title={'Submit'}
-          onPress={()=> this.renderActivities()}>'Submit'
+          onPress={()=> this.navigate()}>'Submit'
         </Button>
       </View>
     );
