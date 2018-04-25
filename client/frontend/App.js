@@ -11,7 +11,11 @@ class App extends React.Component{
 
       <Provider
         store={createStore(RootReducer,{},applyMiddleware(ReduxThunk))}>
+<<<<<<< HEAD
         <Text>Hello!</Text>
+=======
+        <Text>HelllllooooNOOO!</Text>
+>>>>>>> show-component
       </Provider>
     );
   }
