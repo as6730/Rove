@@ -50,7 +50,7 @@ class ActivityForm extends React.Component{
             onPress={() => this.onButtonPress("restaurants")}
             isPressed={this.state.restaurants}
             color="gray"
-            imgUrl="../../images/Food.jpg">
+            imgUrl={require("../images/Food.jpg")}>
             Food
           </BigButton>
         </CardSection>
@@ -59,7 +59,8 @@ class ActivityForm extends React.Component{
           <BigButton
             onPress={() =>this.onButtonPress("nature")}
             isPressed={this.state.nature}
-            color="gray">
+            color="gray"
+            imgUrl={require("../images/Nature.jpg")}>
             Nature
           </BigButton>
         </CardSection>
@@ -68,7 +69,8 @@ class ActivityForm extends React.Component{
           <BigButton
             onPress={() =>this.onButtonPress("arts")}
             isPressed={this.state.arts}
-            color="gray">
+            color="gray"
+            imgUrl={require("../images/Culture.jpg")}>
             Culture
           </BigButton>
         </CardSection>
@@ -77,7 +79,8 @@ class ActivityForm extends React.Component{
           <BigButton
             onPress={() =>this.onButtonPress("bars")}
             isPressed={this.state.bars}
-            color="gray">
+            color="gray"
+            imgUrl={require("../images/Nightlife.jpg")}>
               NightLife
           </BigButton>
         </CardSection>

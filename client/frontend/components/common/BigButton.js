@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, Image } from "react-native";
 
 //ActivityForm Large Button
 
-const BigButton = ({ onPress, children, isPressed, color}) => {
+const BigButton = ({ onPress, children, isPressed, color, imgUrl}) => {
   let currentStyle;
   let currentText;
 
@@ -24,9 +24,9 @@ const BigButton = ({ onPress, children, isPressed, color}) => {
           borderRadius: 5,
           borderWidth: 1,
           width: "100%",
-          height: 145,
+          height: 148,
           position: 'relative'}}>
-      <Image style={{height: '100%', width: "100%"}} source={require(`../../images/Food.jpg`)}/>
+      <Image style={{height: '100%', width: "100%"}} source={imgUrl}/>
       <Text style={currentText}>{children}</Text>
     </TouchableOpacity>
   );
