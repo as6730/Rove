@@ -5,8 +5,9 @@ import {
   Text,
   Image,
   Keyboard,
+  Button
 } from 'react-native';
-import { Input, Header, Card, CardSection, Button } from "./common";
+import { Input, CardSection } from "./common";
 import {Calendar } from 'react-native-calendars';
 import ActivityForm from "./ActivityForm";
 
@@ -41,32 +42,62 @@ class WelcomePage extends React.Component {
   render() {
     //// TODO: import link from controller
     let pic = {
-      uri: `server/app/assets/images/sf_city.jpg`,
+      uri:`http://res.cloudinary.com/dkaolr6pg/image/upload/v1524615811/pretty.jpg`,
     };
-
+    const { imageStyle, buttonStyle, questionStyle, containerStyle } = styles;
     return (
-      <Card>
-        <CardSection>
-          <Text>Where Are You Going?</Text>
+      <View>
+        <Image
+          source={{ uri:`https://duranvirginia.files.wordpress.com/2014/02/virginia-duran-blog-10-sites-to-take-the-best-skyline-pictures-in-san-francisco-mandarin-oriental-at-dusk.jpg`}}
+          style={imageStyle}/>
+        <View style={questionStyle}>
+          <Text style={questionStyle}>Where Are You Going?</Text>
             <Input
               value={this.state.city}
               onChangeText={(text) => this.handleText(text)}
               placeholder={"San Francisco"}
               ></Input>
-        </CardSection>
-        <CardSection>
+          </View>
+        <View style={questionStyle}>
           <Text>When?</Text>
-        </CardSection>
+        </View >
           <Calendar
            current={this.state.chosenDate}
            minDate={Date()}
            onDayPress={(day)=> this.setDate(day)}
           />
-        <Button onPress={()=> this.renderActivities()}>Submit</Button>
-      </Card>
+        <Button title={'Submit'}
+          onPress={()=> this.renderActivities()}>'Submit'
+        </Button>
+      </View>
     );
   }
 }
+
+const styles= {
+  imageStyle: {
+    // width: "25%",
+    height: "25%",
+    marginTop: "5%",
+    alignSelf: "stretch"
+  },buttonStyle:{
+    flex: 1,
+    alignSelf: "stretch",
+    backgroundColor: "#fff",
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "#007aff",
+    marginLeft: 5,
+    marginRight: 5,
+    marginBottom: 5,
+  },
+  questionStyle:{
+    padding: 5,
+    backgroundColor: "#fff",
+    flexDirection: "row",
+    position: "relative"
+  }
+};
 
 const mapStateToProps = (state) => {
 

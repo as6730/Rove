@@ -36,7 +36,6 @@ const styles = {
     backgroundColor: "#fff",
     height: "25%",
   },
-
   pressedButtonStyle:{
     flex: 1,
     alignSelf: "stretch",
