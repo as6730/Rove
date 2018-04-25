@@ -40,7 +40,6 @@ const styles = {
 =======
 >>>>>>> Create-Swipe-Montion-Activity-Form
   },
-
   pressedButtonStyle:{
     flex: 1,
     alignSelf: "stretch",

@@ -4,6 +4,8 @@ import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
+import WelcomePage from "./components/WelcomePage";
+
 
 class App extends React.Component{
   render(){
