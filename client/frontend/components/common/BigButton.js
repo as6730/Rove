@@ -35,10 +35,6 @@ const styles = {
     alignSelf: "stretch",
     backgroundColor: "#fff",
     height: "25%",
-<<<<<<< HEAD
-    minWidth: 150,
-=======
->>>>>>> Create-Swipe-Montion-Activity-Form
   },
   pressedButtonStyle:{
     flex: 1,
@@ -46,11 +42,7 @@ const styles = {
     height: 150,
     borderRadius: 5,
     borderWidth: 1,
-<<<<<<< HEAD
-    borderColor: "#007aff",
-=======
     height: "25%",
->>>>>>> Create-Swipe-Montion-Activity-Form
   },
   textStyle: {
     alignItems:'flex-end',
