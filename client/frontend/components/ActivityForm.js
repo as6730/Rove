@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { Card, BigButton, CardSection } from './common';
 import { connect } from "react-redux";
 
@@ -46,9 +46,11 @@ class ActivityForm extends React.Component{
       <Card>
         <CardSection>
           <BigButton
+            style = {styles.buttonStyle}
             onPress={() => this.onButtonPress("restaurants")}
             isPressed={this.state.restaurants}
-            color="blue">
+            color="gray"
+            imgUrl={require("../images/Food.jpg")}>
             Food
           </BigButton>
         </CardSection>
@@ -57,7 +59,8 @@ class ActivityForm extends React.Component{
           <BigButton
             onPress={() =>this.onButtonPress("nature")}
             isPressed={this.state.nature}
-            color="red">
+            color="gray"
+            imgUrl={require("../images/Nature.jpg")}>
             Nature
           </BigButton>
         </CardSection>
@@ -66,7 +69,8 @@ class ActivityForm extends React.Component{
           <BigButton
             onPress={() =>this.onButtonPress("arts")}
             isPressed={this.state.arts}
-            color="green">
+            color="gray"
+            imgUrl={require("../images/Culture.jpg")}>
             Culture
           </BigButton>
         </CardSection>
@@ -75,7 +79,8 @@ class ActivityForm extends React.Component{
           <BigButton
             onPress={() =>this.onButtonPress("bars")}
             isPressed={this.state.bars}
-            color="purple">
+            color="gray"
+            imgUrl={require("../images/Nightlife.jpg")}>
               NightLife
           </BigButton>
         </CardSection>
@@ -90,7 +95,7 @@ const styles = {
     fontSize: 20,
     alignSelf: 'center',
     color:'red'
-  },
+  }
 };
 
 const mapStateToProps = (state) => {

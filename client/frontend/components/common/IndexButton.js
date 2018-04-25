@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, TouchableOpacity, Image } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 
 //ActivityForm Large Button
 
-const BigButton = ({ onPress, children, isPressed, color, imgUrl}) => {
+const IndexButton = ({ onPress, children, isPressed, color}) => {
   let currentStyle;
   let currentText;
 
@@ -19,14 +19,12 @@ const BigButton = ({ onPress, children, isPressed, color, imgUrl}) => {
     <TouchableOpacity onPress={onPress}
       isPressed={isPressed}
       style={currentStyle,
-        { backgroundColor: 'transparent',
+        { backgroundColor: (isPressed ? color : "white"),
           borderColor: color,
           borderRadius: 5,
           borderWidth: 1,
-          width: "100%",
-          height: 148,
-          position: 'relative'}}>
-      <Image style={{height: '100%', width: "100%"}} source={imgUrl}/>
+          height: 105,
+          width: "100%"}}>
       <Text style={currentText}>{children}</Text>
     </TouchableOpacity>
   );
@@ -35,36 +33,36 @@ const BigButton = ({ onPress, children, isPressed, color, imgUrl}) => {
 const styles = {
   buttonStyle: {
     flex: 1,
-    backgroundColor: 'transparent',
-    minWidth: '100%',
-    height: '125',
-    position: 'absolute',
-    borderBottomWidth: 4,
+    alignSelf: "stretch",
+    backgroundColor: "#fff",
+    height: 100,
+    minWidth: 150,
   },
   pressedButtonStyle:{
     flex: 1,
+    alignSelf: "stretch",
+    height: 150,
     borderRadius: 5,
     borderWidth: 1,
     borderColor: "#007aff",
   },
   textStyle: {
+    alignItems:'flex-start',
     color: "black",
     fontWeight: "600",
     fontSize: 24,
-    paddingTop: 100,
-    marginBottom: 20,
+    marginTop: 20,
+    marginBottom: 10,
     paddingLeft: 20,
-    position: "absolute",
-    borderBottomWidth: 4,
   },
   pressedTextStyle: {
-    color: "black",
-    fontWeight: "700",
-    fontSize: 36,
-    paddingTop: 90,
-    marginBottom: 20,
+    alignItems:'flex-start',
+    color: "#fff",
+    fontWeight: "600",
+    fontSize: 24,
+    marginTop: 20,
+    marginBottom: 10,
     paddingLeft: 20,
-    position: "absolute",
   }
 };
-export { BigButton };
+export default IndexButton ;
