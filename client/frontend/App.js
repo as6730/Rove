@@ -7,6 +7,8 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import WelcomePage from "./components/WelcomePage";
 import ActivityForm from "./components/ActivityForm";
+import IndexPage from "./components/IndexPage";
+import ShowPage from "./components/ShowPage";
 
 
 class App extends React.Component{
@@ -16,6 +18,12 @@ class App extends React.Component{
      }
      if(route.name === 'Activity') {
        return <ActivityForm navigator={navigator} />;
+     }
+     if(route.name === 'Index') {
+       return <IndexPage navigator={navigator} />;
+     }
+     if(route.name === 'Show') {
+       return <ShowPage navigator={navigator} />;
      }
   }
 
