@@ -1,7 +1,8 @@
 
-export const fetchItinerary = () => (
+export const fetchItinerary = (itinerary) => (
   $.ajax({
     method: "GET",
-    url: "/api/intinerary",
+    url: "api/intineraries/getitinerary/",
+    data: ({itinerary})
   })
 );
