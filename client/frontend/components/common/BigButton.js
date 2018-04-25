@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, Image } from "react-native";
 
 //ActivityForm Large Button
 
@@ -19,11 +19,14 @@ const BigButton = ({ onPress, children, isPressed, color}) => {
     <TouchableOpacity onPress={onPress}
       isPressed={isPressed}
       style={currentStyle,
-        { backgroundColor: (isPressed ? color : "white"),
+        { backgroundColor: 'transparent',
           borderColor: color,
           borderRadius: 5,
           borderWidth: 1,
-          width: "100%"}}>
+          width: "100%",
+          height: 145,
+          position: 'relative'}}>
+      <Image style={{height: '100%', width: "100%"}} source={require(`../../images/Food.jpg`)}/>
       <Text style={currentText}>{children}</Text>
     </TouchableOpacity>
   );
@@ -32,44 +35,37 @@ const BigButton = ({ onPress, children, isPressed, color}) => {
 const styles = {
   buttonStyle: {
     flex: 1,
-    alignSelf: "stretch",
-    backgroundColor: "#fff",
-    height: "25%",
-<<<<<<< HEAD
-    minWidth: 150,
-=======
->>>>>>> Create-Swipe-Montion-Activity-Form
+    backgroundColor: 'transparent',
+    minWidth: '100%',
+    height: '125',
+    position: 'absolute',
+    borderBottomWidth: 4,
   },
 
   pressedButtonStyle:{
     flex: 1,
-    alignSelf: "stretch",
-    height: 150,
     borderRadius: 5,
     borderWidth: 1,
-<<<<<<< HEAD
     borderColor: "#007aff",
-=======
-    height: "25%",
->>>>>>> Create-Swipe-Montion-Activity-Form
   },
   textStyle: {
-    alignItems:'flex-end',
     color: "black",
     fontWeight: "600",
     fontSize: 24,
-    paddingTop: 110,
-    marginBottom: 10,
+    paddingTop: 100,
+    marginBottom: 20,
     paddingLeft: 20,
+    position: "absolute",
+    borderBottomWidth: 4,
   },
   pressedTextStyle: {
-    alignItems:'flex-end',
-    color: "#fff",
-    fontWeight: "600",
-    fontSize: 24,
-    paddingTop: 110,
-    marginBottom: 10,
+    color: "black",
+    fontWeight: "700",
+    fontSize: 36,
+    paddingTop: 90,
+    marginBottom: 20,
     paddingLeft: 20,
+    position: "absolute",
   }
 };
 export { BigButton };

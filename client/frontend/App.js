@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
+import ActivityForm from './components/ActivityForm';
 
 class App extends React.Component{
   render(){
@@ -11,11 +12,7 @@ class App extends React.Component{
 
       <Provider
         store={createStore(RootReducer,{},applyMiddleware(ReduxThunk))}>
-<<<<<<< HEAD
-        <Text>Hello!</Text>
-=======
-        <Text>HelllllooooNOOO!</Text>
->>>>>>> show-component
+        <ActivityForm/>
       </Provider>
     );
   }
