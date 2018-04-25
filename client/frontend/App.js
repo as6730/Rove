@@ -12,7 +12,7 @@ class App extends React.Component{
 
       <Provider
         store={createStore(RootReducer,{},applyMiddleware(ReduxThunk))}>
-        <Text>HellNOOO!</Text>
+        <Text>HelllllooooNOOO!</Text>
       </Provider>
     );
   }
