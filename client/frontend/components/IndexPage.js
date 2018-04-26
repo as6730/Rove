@@ -1311,9 +1311,10 @@ class IndexPage extends React.Component {
   render() {
     if (this.props.loading){
       return (
-          <OurSpinner
-            text={'Hold on Tight- we are Building Your Itinerary!'}
-            size="large"/>
+        <View>
+          <Text style={this.spinnerStyle}>'Hold on Tight- we are Building Your Itinerary!'</Text>
+          <OurSpinner size="large"/>
+        </View>
       );
     }
 

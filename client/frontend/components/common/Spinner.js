@@ -6,12 +6,10 @@ import Spinner from 'react-native-loading-spinner-overlay';
 const OurSpinner = ({ size,text }) => {
   return (
     <View style={styles.spinnerStyle}>
-      <Text style={styles.textStyle}>{text}</Text>
       <Spinner
         visible={true}
         color='#FE5D26'
-        overlayColor="#dddddd">
-      </Spinner>
+        overlayColor="#dddddd"/>
     </View>
   );
 };
@@ -23,7 +21,7 @@ const styles = {
     alignItems: 'center'
   },textStyle:{
     color: '#FE5D26',
-    fontFamily:'helvetica neue',
+
     fontSize: 20,
     marginBottom: 100,
   }
