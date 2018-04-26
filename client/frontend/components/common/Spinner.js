@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, ActivityIndicator } from 'react-native';
 
-const Spinner = ({ size, }) => {
+const OurSpinner = ({ size, }) => {
   return (
     <View style={styles.spinnerStyle}>
-      <ActivityIndicator size={size || 'large'} />
+      <ActivityIndicator color='#FE5D26' size={size || 'large'} />
     </View>
   );
 };
@@ -17,4 +17,4 @@ const styles = {
   }
 };
 
-export { Spinner };
+export { OurSpinner };

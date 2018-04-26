@@ -5,7 +5,7 @@ import { ScrollView,
   StyleSheet,
   Image,
   ListView } from 'react-native';
-import { Card, BigButton, CardSection, Spinner } from './common';
+import { Card, BigButton, CardSection, OurSpinner } from './common';
 import IndexButton from './common/IndexButton';
 import { connect } from "react-redux";
 import Swiper from 'react-native-swiper';
@@ -1312,7 +1312,7 @@ class IndexPage extends React.Component {
   render() {
     if (this.props.loading){
       return (
-        <Spinner size="large"/>
+        <OurSpinner size="large"/>
       );
     }
 
