@@ -44,12 +44,19 @@ class ActivityForm extends React.Component{
   }
 
   handleSubmit(){
-    let date = this.props.date;
-    let city = this.props.city;
-    let itineraryParams = Object.assign(this.state, {}, {date:date, city:city});
+    // let date = this.props.date;
+    // let city = this.props.city;
+    // let itineraryParams = Object.assign(this.state, {}, {date:date, city:city});
     // let itinerary = this.props.fetchItinerary(itineraryParams);
-    // console.log(itinerary);
-    this.props.navigator.replace({
+      this.props.fetchItinerary({
+        lat : "37.801773",
+        lon : "-122.401026",
+        bars : "true",
+        restaurants : "true",
+        nature : "true",
+        arts : "true"
+      });
+    this.props.navigator.push({
       name: 'Index',
     });
   }
@@ -114,11 +121,14 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-  return console.log(state);
+  // console.log('state:' + JSON.stringify(state))
+  return {
+    itinerary: state.itinerary
+  }
 };
 
 const mapDispatchToProps = (dispatch) => ({
   fetchItinerary: (itineraryParams) => dispatch(fetchItinerary(itineraryParams))
 });
 
-export default connect(null,mapDispatchToProps)(ActivityForm);
+export default connect(mapStateToProps,mapDispatchToProps)(ActivityForm);

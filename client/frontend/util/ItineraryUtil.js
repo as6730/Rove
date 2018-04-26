@@ -3,6 +3,6 @@ export const fetchItinerary = (itinerary) => {
   return fetch(url, {
             method: 'GET',
           }).then(response => {
-            return response.json()
-          });
+            return response.json();
+          }).catch((error) => console.log(error));
 };

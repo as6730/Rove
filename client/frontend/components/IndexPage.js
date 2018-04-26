@@ -1292,17 +1292,18 @@ const ITINERARY = [
 ];
 
 class IndexPage extends React.Component {
-  // constructor(){
-  //   const state = [];
-  // }
+  constructor(props){
+    super(props);
+  }
   //
 
   render() {
-    if (ITINERARY[0] === undefined){
-      return (
-      <Spinner size="large"/>
-      );
-    }
+    console.log(this.state);
+    // if (this.state.loading){
+    //   return (
+    //   <Spinner size="large"/>
+    //   );
+    // }
 
     return (
 //       <View>
@@ -1395,10 +1396,15 @@ class IndexPage extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => {
+  // console.log('state:' + JSON.stringify(state));
+  return {
+    itinerary: state.itinerary,
+    loading: state.loading,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   // fetchInfo: () => dispatch(fetchItinerary());
 };
 //
-export default connect(null, null)(IndexPage);
+export default connect(mapStateToProps, null)(IndexPage);

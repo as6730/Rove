@@ -75,20 +75,10 @@ class WelcomePage extends React.Component {
            minDate={Date()}
            onDayPress={(day)=> this.setDate(day)}
           />
-        <Button title={'Submit'}
-          onPress={()=> {
-            this.props.fetchItinerary({
-              lat : "37.801773",
-              lon : "-122.401026",
-              bars : "true",
-              restaurants : "true",
-              nature : "true",
-              arts : "true"
-            })
-          }} />
-          {this.props.itinerary.map((x, index) => (
-            <Text key={index}># {index}</Text>
-          ))}
+        <Button
+          onPress= {() => this.navigate(this.state)}
+          title={'Submit'}
+        />
       </View>
     );
   }
@@ -120,10 +110,10 @@ const styles= {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('state:' + JSON.stringify(state))
+  // console.log('state:' + JSON.stringify(state));
   return {
     itinerary: state.itinerary
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -131,9 +121,9 @@ const mapDispatchToProps = (dispatch) => {
       fetchItinerary(params){
         dispatch(
           fetchItinerary(params)
-        )
+        );
       }
-    }
+    };
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(WelcomePage);
