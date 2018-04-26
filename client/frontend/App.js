@@ -34,7 +34,14 @@ class App extends React.Component{
         <Navigator
           style={{ flex:1 }}
           initialRoute={{ name: 'Welcome' }}
-          renderScene={ this.renderScene } />
+          renderScene={ this.renderScene }
+          configureScene={(route) => {
+            if (route.sceneConfig) {
+              return route.sceneConfig;
+            }
+            return Navigator.SceneConfigs.FloatFromBottom;
+            }}
+          />
       </Provider>
     );
   }

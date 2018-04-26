@@ -1302,12 +1302,22 @@ const ITINERARY = [
 class IndexPage extends React.Component {
   constructor(props){
     super(props);
+    this.pickMe = this.pickMe.bind(this);
   }
 
   componentDidMount(){
-    // console.log(this.props);
     this.props.fetchItinerary(this.props.itineraryParams);
   }
+
+  pickMe(place){
+    this.props.navigator.push({
+      name: 'Show',
+      passProps: {
+          place
+        },
+    });
+  }
+
 
   render() {
     if (this.props.loading){
@@ -1323,12 +1333,14 @@ class IndexPage extends React.Component {
         <Swiper horizontal={true} height={110}>
           <CardSection id={1}>
             <IndexButton
+              onPress={() => this.pickMe(ITINERARY[0]["breakfast"][0])}
               imgUrl={require("../images/Food.jpg")}>
               {ITINERARY[0]["breakfast"][0]["name"]}
             </IndexButton>
           </CardSection>
           <CardSection id={2}>
             <IndexButton
+              onPress={() => this.pickMe(ITINERARY[0]["breakfast"][1])}
               imgUrl={require("../images/Food.jpg")}>
               {ITINERARY[0]["breakfast"][1]["name"]}
             </IndexButton>
@@ -1338,12 +1350,14 @@ class IndexPage extends React.Component {
         <Swiper horizontal={true} height={110}>
           <CardSection id={3}>
             <IndexButton
+              onPress={() => this.pickMe(ITINERARY[2]["nature"][0])}
               imgUrl={require("../images/Nature.jpg")}>
               {ITINERARY[2]["nature"][0]["name"]}
             </IndexButton>
           </CardSection>
           <CardSection id={4}>
             <IndexButton
+              onPress={() => this.pickMe(ITINERARY[2]["nature"][1])}
               imgUrl={require("../images/Nature.jpg")}>
               {ITINERARY[2]["nature"][1]["name"]}
             </IndexButton>
@@ -1418,6 +1432,7 @@ class IndexPage extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => {
+    console.log(state.itinerary);
   return {
     itinerary: state.itinerary,
     loading: state.loading.loading,

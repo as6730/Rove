@@ -12,8 +12,8 @@ import {Marker} from 'react-native-maps';
 
 
 class ShowPage extends React.Component {
-  render() {
 
+  render() {
     const marker = {
       latitude: 37.773972,
       longitude: -122.431297,
