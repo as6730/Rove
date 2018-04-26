@@ -33,7 +33,6 @@ class WelcomePage extends React.Component {
 
   setDate(newDate) {
     this.setState({date: newDate.dateString});
-    console.log(this.state);
   }
 
 

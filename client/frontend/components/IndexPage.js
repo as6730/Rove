@@ -1432,7 +1432,6 @@ class IndexPage extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state.itinerary);
   return {
     itinerary: state.itinerary,
     loading: state.loading.loading,
