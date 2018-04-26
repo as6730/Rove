@@ -52,6 +52,7 @@ class WelcomePage extends React.Component {
     };
     const {
       imageStyle,
+      logoStyle,
       buttonStyle,
       questionStyle,
       containerStyle,
@@ -63,8 +64,11 @@ class WelcomePage extends React.Component {
     return (
       <View>
         <Image
-          source={require('../images/rove_logo_orange.png')}
+          source={require('../images/sf_city.jpg')}
           style={imageStyle}/>
+        <Image
+          source={require('../images/rove_logo_orange.png')}
+          style={logoStyle}/>
         <View style={questionContainer1}>
           <Text style={questionStyle}>Destination</Text>
             <Input
@@ -101,47 +105,55 @@ class WelcomePage extends React.Component {
 const styles= {
   imageStyle: {
     width: "100%",
-    height: "20%",
-    padding: 10,
-    marginTop: 40,
-    marginBottom: 20,
+    height: "26%",
+    marginTop: 35,
+    marginBottom: 5,
+    position: 'absolute',
+  },
+  logoStyle: {
+    width: "100%",
+    height: "25%",
+    marginTop: 38,
+    marginBottom: 5,
+    backgroundColor: 'rgba(236, 236, 236, 0.3)',
   },
   buttonStyle:{
     flex: 1,
     alignSelf: "stretch",
-    backgroundColor: "#fff",
     borderRadius: 5,
     borderWidth: 1,
     borderColor: "#007aff",
     marginLeft: 5,
     marginRight: 5,
     marginBottom: 5,
+    backgroundColor: 'transparent',
   },
   questionContainer1: {
     width: '100%',
-    padding: 10,
+    padding: 5,
     flexDirection: "column",
-    height: '15%',
-
+    height: '12%',
+    backgroundColor: 'transparent',
   },
   questionContainer2: {
     width: '100%',
     padding: 10,
     flexDirection: "column",
     height: '40%',
-
+    backgroundColor: 'transparent',
   },
   questionStyle:{
     padding: 5,
     fontSize: 24,
     textAlign: 'center',
-    backgroundColor: "#fff",
+    backgroundColor: 'transparent',
     flexDirection: 'row',
     position: "relative"
   },
   calenderStyle: {
     alignSelf: 'center',
     width: 300,
+    backgroundColor: 'transparent',
   }
 };
 

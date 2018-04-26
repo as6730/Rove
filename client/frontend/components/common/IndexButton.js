@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, Image} from "react-native";
 
 //ActivityForm Large Button
 
-const IndexButton = ({ onPress, children, isPressed, color}) => {
+const IndexButton = ({ onPress, children, isPressed, color, imgUrl}) => {
   let currentStyle;
   let currentText;
 
@@ -19,12 +19,13 @@ const IndexButton = ({ onPress, children, isPressed, color}) => {
     <TouchableOpacity onPress={onPress}
       isPressed={isPressed}
       style={currentStyle,
-        { backgroundColor: (isPressed ? color : "white"),
-          borderColor: color,
+        { backgroundColor: 'transparent',
+          borderColor: '#FE5D26',
           borderRadius: 5,
           borderWidth: 1,
           height: 105,
           width: "100%"}}>
+      <Image style={{height: '100%', width: "100%"}} source={imgUrl}/>>
       <Text style={currentText}>{children}</Text>
     </TouchableOpacity>
   );
@@ -49,20 +50,24 @@ const styles = {
   textStyle: {
     alignItems:'flex-start',
     color: "black",
-    fontWeight: "600",
+    fontWeight: "400",
+    fontFamily: 'Helvetica Neue',
     fontSize: 24,
-    marginTop: 20,
+    marginTop: 10,
     marginBottom: 10,
-    paddingLeft: 20,
+    paddingLeft: 15,
+    position: 'absolute',
   },
   pressedTextStyle: {
+    fontFamily: 'Helvetica Neue',
     alignItems:'flex-start',
     color: "#fff",
-    fontWeight: "600",
+    fontWeight: "400",
     fontSize: 24,
-    marginTop: 20,
+    marginTop: 10,
     marginBottom: 10,
-    paddingLeft: 20,
+    paddingLeft: 15,
+    position: 'absolute',
   }
 };
 export default IndexButton ;

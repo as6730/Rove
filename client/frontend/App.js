@@ -33,7 +33,7 @@ class App extends React.Component{
         store={createStore(RootReducer,{},applyMiddleware(ReduxThunk))}>
         <Navigator
           style={{ flex:1 }}
-          initialRoute={{ name: 'Welcome' }}
+          initialRoute={{ name: 'Show' }}
           renderScene={ this.renderScene } />
       </Provider>
     );
