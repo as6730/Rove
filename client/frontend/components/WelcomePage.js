@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import { Input, CardSection } from "./common";
 import { Navigator } from 'react-native-deprecated-custom-components';
-import {Calendar } from 'react-native-calendars';
+import { Calendar } from 'react-native-calendars';
 import ActivityForm from "./ActivityForm";
+import { fetchItinerary } from "./../actions/ItineraryActions";
 
 class WelcomePage extends React.Component {
   constructor(props){
@@ -157,12 +158,21 @@ const styles= {
   }
 };
 
-const mapStateToProps = (state) => {
-
+const mapStateToProps = (state, ownProps) => {
+  console.log('state:' + JSON.stringify(state))
+  return {
+    itinerary: state.itinerary
+  }
 };
 
 const mapDispatchToProps = (dispatch) => {
-
+  return {
+      fetchItinerary(params){
+        dispatch(
+          fetchItinerary(params)
+        )
+      }
+    }
 };
 
-export default connect(null,null)(WelcomePage);
+export default connect(mapStateToProps,mapDispatchToProps)(WelcomePage);

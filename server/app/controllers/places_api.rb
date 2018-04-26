@@ -4,17 +4,18 @@ require 'json'
 class PlacesUtils
 
   ENDPOINT = "https://maps.googleapis.com/maps/api/place"
+  API_KEY = "AIzaSyCq9oqkTtxJj8tsb2_i9Q9sB-U2gT-fjFg"
 
-  def self.get_places(places_count, lat, lon, type, place_properties, keyword = "", date = "2018", radius = 1000, api_key = "AIzaSyC3uTdF5zs9rfbxm4NL6gk_TpSLrSlHhb8")
+  def self.get_places(places_count, lat, lon, type, place_properties, keyword = "", date = "2018", radius = 1000)
     if type === "restaurant"
       request = RestClient::Request.execute(
        method: :get,
-       url: "#{ENDPOINT}/nearbysearch/json?location=#{lat},#{lon}&radius=#{radius}&keyword=#{keyword}&type=#{type}&rankby=prominence&key=#{api_key}"
+       url: "#{ENDPOINT}/nearbysearch/json?location=#{lat},#{lon}&radius=#{radius}&keyword=#{keyword}&type=#{type}&rankby=prominence&key=#{API_KEY}"
       )
     else
       request = RestClient::Request.execute(
        method: :get,
-       url: "#{ENDPOINT}/nearbysearch/json?location=#{lat},#{lon}&radius=#{radius}&type=#{type}&rankby=prominence&key=#{api_key}"
+       url: "#{ENDPOINT}/nearbysearch/json?location=#{lat},#{lon}&radius=#{radius}&type=#{type}&rankby=prominence&key=#{API_KEY}"
       )
     end
 
@@ -28,7 +29,7 @@ class PlacesUtils
     random_ids = PlacesUtils.get_random_keys(places_ids, places_count)
     places = []
     random_ids.each do |id|
-      places << PlacesUtils.get_place_from_id(id, place_properties, type, date, keyword, api_key)
+      places << PlacesUtils.get_place_from_id(id, place_properties, type, date, keyword)
     end
 
     places
@@ -59,21 +60,44 @@ class PlacesUtils
     random_ids
   end
 
-  def self.get_place_from_id(place_id, properties, type, date, keyword, api_key)
+  def self.get_place_from_id(place_id, properties, type, date, keyword)
     request = RestClient::Request.execute(
        method: :get,
-       url: "#{ENDPOINT}/details/json?placeid=#{place_id}&key=#{api_key}"
+       url: "#{ENDPOINT}/details/json?placeid=#{place_id}&key=#{API_KEY}"
     )
     result = JSON.parse(request)["result"]
     place = {}
 
+    if result["photos"] != nil && !result["photos"][0].empty?
+      photos_obj = result["photos"][0]
+      photo_result = PlacesUtils.get_photo(photos_obj)
+      place["photo_url"] = photo_result
+    end
+
     properties.each do |property|
-      place[property] = result[property]
+      if property === "opening_hours"
+        if (result["opening_hours"] == nil)
+          place[property] = ["All Day"]
+        else
+          place[property] = result[property]["weekday_text"]
+        end
+      elsif property === "geometry"
+        place["location"] = result[property]["location"]
+      else
+        place[property] = result[property]
+      end
     end
 
     date_time = PlacesUtils.set_start_and_end_time(type, date, keyword)
     place["date_time"] = date_time
     place
+  end
+
+  def self.get_photo(result_photos)
+    photo_reference = result_photos["photo_reference"]
+    max_width = result_photos["width"]
+    max_height= result_photos["height"]
+    "https://maps.googleapis.com/maps/api/place/photo?maxwidth=#{max_width}&maxheight=#{max_height}&photoreference=#{photo_reference}&key=#{API_KEY}"
   end
 
   def self.set_start_and_end_time(type, date, keyword)

@@ -21,21 +21,16 @@ class ShowPage extends React.Component {
 
     return (
       <View style = {styles.container}>
+        <Image
+          style = {styles.image}
+          source={{ uri: `https://duranvirginia.files.wordpress.com/2014/02/virginia-duran-blog-10-sites-to-take-the-best-skyline-pictures-in-san-francisco-mandarin-oriental-at-dusk.jpg`}}
+          />
         <View style = {styles.info}>
           <View style = {styles.contactInfo}>
             <Text style = {styles.title} >Good Food</Text>
             <Text>2343 Battery St.</Text>
             <Text>San Francisco, CA 98437</Text>
             <Text>(555)-555-5555</Text>
-          </View>
-          <View>
-            <Image
-              style = {styles.image}
-              source={{ uri: `https://duranvirginia.files.wordpress.com/2014/02/virginia-duran-blog-10-sites-to-take-the-best-skyline-pictures-in-san-francisco-mandarin-oriental-at-dusk.jpg`}}
-              />
-          </View>
-          <View style = {styles.description}>
-            <Text>Description: kwjeaio akjeoi sadkvn ksdj oiean kadk eisndk kajivr mnsalir mnci keaji knse kncoijaes klja klajwe  aknk ai lkna sei</Text>
             <Text>Visit Website</Text>
           </View>
         </View>
@@ -59,7 +54,6 @@ class ShowPage extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 25,
     flex: 1,
     height: "100%",
   },
@@ -69,20 +63,16 @@ const styles = StyleSheet.create({
   },
   info: {
     flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
     justifyContent: 'space-between',
-    margin: 25,
+    padding: 25,
     height: '50%',
+    borderBottomWidth: 1,
+    borderTopWidth: 1,
+    borderColor: '#FE5D26',
   },
   image: {
-    height: 100,
-    width: 100,
-  },
-  description: {
-    marginTop: 25,
-    height: '50%',
-    justifyContent: 'space-between',
+    height: '25%',
+    width: '100%',
   },
   mapContainer: {
     height: '50%',
