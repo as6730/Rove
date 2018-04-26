@@ -126,4 +126,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(WelcomePage);
+export default connect(null,null)(WelcomePage);

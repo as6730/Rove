@@ -1,10 +1,15 @@
 import React from 'react';
-import { ScrollView, View, Text, StyleSheet, Image, ListView } from 'react-native';
+import { ScrollView,
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ListView } from 'react-native';
 import { Card, BigButton, CardSection, Spinner } from './common';
 import IndexButton from './common/IndexButton';
 import { connect } from "react-redux";
-import { fetchItinerary } from "../actions/ItineraryActions";
 import Swiper from 'react-native-swiper';
+import { fetchItinerary } from "../actions/ItineraryActions";
 
 const ITINERARY = [
     {
@@ -1295,15 +1300,18 @@ class IndexPage extends React.Component {
   constructor(props){
     super(props);
   }
-  //
+
+  componentDidMount(){
+    // console.log(this.props);
+    this.props.fetchItinerary(this.props.itineraryParams);
+  }
 
   render() {
-    console.log(this.state);
-    // if (this.state.loading){
-    //   return (
-    //   <Spinner size="large"/>
-    //   );
-    // }
+    if (this.props.loading){
+      return (
+        <Spinner size="large"/>
+      );
+    }
 
     return (
 //       <View>
@@ -1396,15 +1404,14 @@ class IndexPage extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => {
-  // console.log('state:' + JSON.stringify(state));
   return {
     itinerary: state.itinerary,
-    loading: state.loading,
+    loading: state.loading.loading,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  // fetchInfo: () => dispatch(fetchItinerary());
-};
+const mapDispatchToProps = (dispatch) => ({
+  fetchItinerary: (itineraryParams) => dispatch(fetchItinerary(itineraryParams))
+});
 //
-export default connect(mapStateToProps, null)(IndexPage);
+export default connect(mapStateToProps, mapDispatchToProps)(IndexPage);

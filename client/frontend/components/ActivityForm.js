@@ -48,16 +48,22 @@ class ActivityForm extends React.Component{
     // let city = this.props.city;
     // let itineraryParams = Object.assign(this.state, {}, {date:date, city:city});
     // let itinerary = this.props.fetchItinerary(itineraryParams);
-      this.props.fetchItinerary({
+      // this.props.fetchItinerary();
+
+      let itineraryParams = {
         lat : "37.801773",
         lon : "-122.401026",
         bars : "true",
         restaurants : "true",
         nature : "true",
         arts : "true"
-      });
-    this.props.navigator.push({
+      };
+
+    this.props.navigator.replace({
       name: 'Index',
+      passProps: {
+          itineraryParams
+          }
     });
   }
 
@@ -98,7 +104,7 @@ class ActivityForm extends React.Component{
 
           <CardSection>
             <BigButton
-              onPress={() =>this.handleSubmit()}
+              onPress={() =>this.onButtonPress("bars")}
               isPressed={this.state.bars}
               color="gray"
               imgUrl={require("../images/Nightlife.jpg")}>
@@ -124,7 +130,7 @@ const mapStateToProps = (state) => {
   // console.log('state:' + JSON.stringify(state))
   return {
     itinerary: state.itinerary
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({
