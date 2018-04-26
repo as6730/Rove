@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -39,6 +38,10 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B19BE80DB57AA9A5400DDA98 /* libPods-Weekender.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F6E77F1325EF84D2061F35 /* libPods-Weekender.a */; };
+		7C39B9DD396D4E84BBC6B27E /* OverpassMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0917FD93747427795919A4C /* OverpassMono-Bold.ttf */; };
+		B41DE207DD47415F886C1DD1 /* OverpassMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 550514A642664E4A9C10A7C4 /* OverpassMono-Light.ttf */; };
+		48DF1A2A803748EFB63A5905 /* OverpassMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FA3EC2F2FDA4EC995FC4A28 /* OverpassMono-Regular.ttf */; };
+		6EF24CC090DD446AAD070586 /* OverpassMono-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09DAD6B6439947CC8103D1DA /* OverpassMono-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -347,6 +350,10 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		DBFCF0DAFB0AB0982D82E912 /* Pods-Weekender.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weekender.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weekender/Pods-Weekender.release.xcconfig"; sourceTree = "<group>"; };
+		F0917FD93747427795919A4C /* OverpassMono-Bold.ttf */ = {isa = PBXFileReference; name = "OverpassMono-Bold.ttf"; path = "../../server/app/assets/fonts/OverpassMono/OverpassMono-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		550514A642664E4A9C10A7C4 /* OverpassMono-Light.ttf */ = {isa = PBXFileReference; name = "OverpassMono-Light.ttf"; path = "../../server/app/assets/fonts/OverpassMono/OverpassMono-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3FA3EC2F2FDA4EC995FC4A28 /* OverpassMono-Regular.ttf */ = {isa = PBXFileReference; name = "OverpassMono-Regular.ttf"; path = "../../server/app/assets/fonts/OverpassMono/OverpassMono-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		09DAD6B6439947CC8103D1DA /* OverpassMono-SemiBold.ttf */ = {isa = PBXFileReference; name = "OverpassMono-SemiBold.ttf"; path = "../../server/app/assets/fonts/OverpassMono/OverpassMono-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -585,6 +592,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				8C78C3B1A8E143BF5F6499B3 /* Pods */,
+				E605D1C1D2A748CEAAAFDA0C /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -619,6 +627,18 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		E605D1C1D2A748CEAAAFDA0C /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				F0917FD93747427795919A4C /* OverpassMono-Bold.ttf */,
+				550514A642664E4A9C10A7C4 /* OverpassMono-Light.ttf */,
+				3FA3EC2F2FDA4EC995FC4A28 /* OverpassMono-Regular.ttf */,
+				09DAD6B6439947CC8103D1DA /* OverpassMono-SemiBold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -703,7 +723,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 610;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -1068,6 +1088,10 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				7C39B9DD396D4E84BBC6B27E /* OverpassMono-Bold.ttf in Resources */,
+				B41DE207DD47415F886C1DD1 /* OverpassMono-Light.ttf in Resources */,
+				48DF1A2A803748EFB63A5905 /* OverpassMono-Regular.ttf in Resources */,
+				6EF24CC090DD446AAD070586 /* OverpassMono-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

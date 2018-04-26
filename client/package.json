@@ -26,5 +26,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+   "assets": ["../server/app/assets/fonts/OverpassMono"]
   }
 }

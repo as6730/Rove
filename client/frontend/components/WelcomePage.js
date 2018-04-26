@@ -15,9 +15,11 @@ import ActivityForm from "./ActivityForm";
 class WelcomePage extends React.Component {
   constructor(props){
     super(props);
+    let date = new Date;
+    date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
     this.state={
       city: '',
-      selected: new Date()
+      date
     };
 
     this.setDate = this.setDate.bind(this);
@@ -29,7 +31,7 @@ class WelcomePage extends React.Component {
   }
 
   setDate(newDate) {
-    this.setState({selected: newDate.dateString});
+    this.setState({date: newDate.dateString});
     console.log(this.state);
   }
 
@@ -48,31 +50,49 @@ class WelcomePage extends React.Component {
     let pic = {
       uri:`http://res.cloudinary.com/dkaolr6pg/image/upload/v1524615811/pretty.jpg`,
     };
-    const { imageStyle, buttonStyle, questionStyle, containerStyle } = styles;
+    const {
+      imageStyle,
+      buttonStyle,
+      questionStyle,
+      containerStyle,
+      questionContainer1,
+      questionContainer2,
+      calenderStyle
+    } = styles;
+
     return (
       <View>
         <Image
-          source={{ uri:`https://duranvirginia.files.wordpress.com/2014/02/virginia-duran-blog-10-sites-to-take-the-best-skyline-pictures-in-san-francisco-mandarin-oriental-at-dusk.jpg`}}
+          source={require('../images/rove_logo_orange.png')}
           style={imageStyle}/>
-        <View style={questionStyle}>
-          <Text style={questionStyle}>Where Are You Going?</Text>
+        <View style={questionContainer1}>
+          <Text style={questionStyle}>Destination</Text>
             <Input
               value={this.state.city}
               onChangeText={(text) => this.handleText(text)}
-              placeholder={"San Francisco"}
-              ></Input>
+              placeholder={"Where to?"}/>
           </View>
-        <View style={questionStyle}>
-          <Text>When?</Text>
-        </View >
+        <View style={questionContainer2}>
+          <Text style={questionStyle}>When?</Text>
           <Calendar
-           current={this.state.chosenDate}
-           minDate={Date()}
-           onDayPress={(day)=> this.setDate(day)}
-          />
-        <Button title={'Submit'}
-          onPress={()=> this.navigate()}>'Submit'
-        </Button>
+            style={calenderStyle}
+            minDate={Date()}
+            onDayPress={(day)=> this.setDate(day)}
+            theme={{
+              textSectionTitleColor: '#b6c1cd',
+              selectedDayBackgroundColor: '#FE5D26',
+              selectedDayTextColor: '#FE5D26',
+              selectedColor: '#FE5D26',
+              arrowColor: '#FE5D26',
+            }}
+            />
+            <Button
+              color= '#FE5D26'
+              style={buttonStyle}
+              title={'Submit'}
+              onPress={()=> this.navigate()}>'Submit'
+            </Button>
+        </View >
       </View>
     );
   }
@@ -80,11 +100,13 @@ class WelcomePage extends React.Component {
 
 const styles= {
   imageStyle: {
-    // width: "25%",
-    height: "25%",
-    marginTop: "5%",
-    alignSelf: "stretch"
-  },buttonStyle:{
+    width: "100%",
+    height: "20%",
+    padding: 10,
+    marginTop: 40,
+    marginBottom: 20,
+  },
+  buttonStyle:{
     flex: 1,
     alignSelf: "stretch",
     backgroundColor: "#fff",
@@ -95,11 +117,31 @@ const styles= {
     marginRight: 5,
     marginBottom: 5,
   },
+  questionContainer1: {
+    width: '100%',
+    padding: 10,
+    flexDirection: "column",
+    height: '15%',
+
+  },
+  questionContainer2: {
+    width: '100%',
+    padding: 10,
+    flexDirection: "column",
+    height: '40%',
+
+  },
   questionStyle:{
     padding: 5,
+    fontSize: 24,
+    textAlign: 'center',
     backgroundColor: "#fff",
-    flexDirection: "row",
+    flexDirection: 'row',
     position: "relative"
+  },
+  calenderStyle: {
+    alignSelf: 'center',
+    width: 300,
   }
 };
 
