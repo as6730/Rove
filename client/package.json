@@ -10,6 +10,7 @@
     "@babel/core": "^7.0.0-beta.38",
     "react": "16.3.1",
     "react-native": "^0.54",
+    "react-native-animatable": "^1.2.4",
     "react-native-calendars": "^1.18.2",
     "react-native-deprecated-custom-components": "^0.1.2",
     "react-native-maps": "^0.21.0",
@@ -28,6 +29,8 @@
     "preset": "react-native"
   },
   "rnpm": {
-   "assets": ["../server/app/assets/fonts/OverpassMono"]
+    "assets": [
+      "../server/app/assets/fonts/OverpassMono"
+    ]
   }
 }
