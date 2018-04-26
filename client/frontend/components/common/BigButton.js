@@ -20,8 +20,8 @@ const BigButton = ({ onPress, children, isPressed, color, imgUrl}) => {
       isPressed={isPressed}
       style={currentStyle,
         { backgroundColor: 'transparent',
-          borderColor: color,
-          borderRadius: 5,
+          borderColor: '#FE5D26',
+          borderRadius: 3,
           borderWidth: 1,
           width: "100%",
           height: 148,

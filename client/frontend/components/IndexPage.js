@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { fetchItinerary } from "../actions/ItineraryActions";
 import Swiper from 'react-native-swiper';
 
+
 const ITINERARY = [
     {
         "breakfast": [
@@ -1291,11 +1292,20 @@ const ITINERARY = [
     }
 ];
 
+
+
 class IndexPage extends React.Component {
   constructor(props){
     super(props);
   }
   //
+  // onButtonPress(id) {
+  //   if (this.state[value]){
+  //     return this.setState({[value]: false });
+  //   } else {
+  //     this.setState({[value]: true });
+  //   }
+  // }
 
   render() {
     console.log(this.state);
@@ -1335,56 +1345,80 @@ class IndexPage extends React.Component {
       <ScrollView>
       <Card>
         <Swiper horizontal={true} height={110}>
-          <CardSection>
-          <IndexButton color="blue">{ITINERARY[0]["breakfast"][0]["name"]}</IndexButton>
+          <CardSection id={1}>
+          <IndexButton
+            imgUrl={require("../images/Food.jpg")}>{
+              ITINERARY[0]["breakfast"][0]["name"]}</IndexButton>
           </CardSection>
-          <CardSection>
-          <IndexButton color="blue">{ITINERARY[0]["breakfast"][1]["name"]}</IndexButton>
-          </CardSection>
-        </Swiper>
-
-        <Swiper horizontal={true} height={110}>
-          <CardSection>
-            <IndexButton color="red">{ITINERARY[2]["nature"][0]["name"]}</IndexButton>
-          </CardSection>
-          <CardSection>
-            <IndexButton color="red">{ITINERARY[2]["nature"][1]["name"]}</IndexButton>
+          <CardSection id={2}>
+          <IndexButton
+            imgUrl={require("../images/Food.jpg")} >{
+              ITINERARY[0]["breakfast"][1]["name"]}</IndexButton>
           </CardSection>
         </Swiper>
 
         <Swiper horizontal={true} height={110}>
-          <CardSection>
-            <IndexButton color="blue">{ITINERARY[0]["lunch"][0]["name"]}</IndexButton>
+          <CardSection id={3}>
+            <IndexButton
+              imgUrl={require("../images/Nature.jpg")} >{
+                ITINERARY[2]["nature"][0]["name"]}</IndexButton>
           </CardSection>
-          <CardSection>
-            <IndexButton color="blue">{ITINERARY[0]["lunch"][1]["name"]}</IndexButton>
-          </CardSection>
-        </Swiper>
-
-        <Swiper horizontal={true} height={110}>
-          <CardSection>
-            <IndexButton color="green">{ITINERARY[3]["arts"][0]["name"]}</IndexButton>
-          </CardSection>
-          <CardSection>
-            <IndexButton color="green">{ITINERARY[3]["arts"][1]["name"]}</IndexButton>
+          <CardSection id={4}>
+            <IndexButton
+              imgUrl={require("../images/Nature.jpg")} >{
+                ITINERARY[2]["nature"][1]["name"]}</IndexButton>
           </CardSection>
         </Swiper>
 
         <Swiper horizontal={true} height={110}>
-          <CardSection>
-            <IndexButton color="blue">{ITINERARY[0]["dinner"][0]["name"]}</IndexButton>
+          <CardSection id={5}>
+            <IndexButton
+              imgUrl={require("../images/Food.jpg")} >{
+                ITINERARY[0]["lunch"][0]["name"]}</IndexButton>
           </CardSection>
-          <CardSection>
-            <IndexButton color="blue">{ITINERARY[0]["dinner"][1]["name"]}</IndexButton>
+          <CardSection id={6}>
+            <IndexButton
+              imgUrl={require("../images/Food.jpg")} >{
+                ITINERARY[0]["lunch"][1]["name"]}</IndexButton>
           </CardSection>
         </Swiper>
 
         <Swiper horizontal={true} height={110}>
-        <CardSection>
-          <IndexButton color="purple">{ITINERARY[1]["bars"][0]["name"]}</IndexButton>
+          <CardSection id={7}>
+            <IndexButton
+              imgUrl={require("../images/Culture.jpg")} >{
+                ITINERARY[3]["arts"][0]["name"]}</IndexButton>
+          </CardSection>
+          <CardSection id={8}>
+            <IndexButton
+              imgUrl={require("../images/Culture.jpg")} >{
+                ITINERARY[3]["arts"][1]["name"]}</IndexButton>
+          </CardSection>
+        </Swiper>
+
+        <Swiper horizontal={true} height={110}>
+          <CardSection id={9}>
+            <IndexButton
+              imgUrl={require("../images/Food.jpg")}>
+              {ITINERARY[0]["dinner"][0]["name"]}</IndexButton>
+          </CardSection>
+          <CardSection id={10}>
+            <IndexButton
+              imgUrl={require("../images/Food.jpg")}>
+              {ITINERARY[0]["dinner"][1]["name"]}</IndexButton>
+          </CardSection>
+        </Swiper>
+
+        <Swiper horizontal={true} height={110}>
+        <CardSection id={11}>
+          <IndexButton
+            imgUrl={require("../images/Nightlife.jpg")}>{
+              ITINERARY[1]["bars"][0]["name"]}</IndexButton>
         </CardSection>
-        <CardSection>
-          <IndexButton color="purple">{ITINERARY[1]["bars"][1]["name"]}</IndexButton>
+        <CardSection id={12}>
+          <IndexButton
+            imgUrl={require("../images/Nightlife.jpg")} >{
+              ITINERARY[1]["bars"][1]["name"]}</IndexButton>
         </CardSection>
         </Swiper>
       </Card>
