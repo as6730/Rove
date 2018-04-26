@@ -68,7 +68,7 @@ class PlacesUtils
     result = JSON.parse(request)["result"]
     place = {}
 
-    unless result["photos"] == nil && result["photos"][0].empty?
+    if result["photos"] != nil && !result["photos"][0].empty?
       photos_obj = result["photos"][0]
       photo_result = PlacesUtils.get_photo(photos_obj)
       place["photo_url"] = photo_result
@@ -77,9 +77,10 @@ class PlacesUtils
     properties.each do |property|
       if property === "opening_hours"
         if (result["opening_hours"] == nil)
-          ["All Day"]
+          place[property] = ["All Day"]
+        else
+          place[property] = result[property]["weekday_text"]
         end
-        place[property] = result[property]["weekday_text"]
       elsif property === "geometry"
         place["location"] = result[property]["location"]
       else

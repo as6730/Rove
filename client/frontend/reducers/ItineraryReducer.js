@@ -3,7 +3,7 @@ import {
 } from "../actions/ItineraryActions";
 
 
-const INITIAL_STATE = {};
+const INITIAL_STATE = [];
 
 
 export default (state=INITIAL_STATE, action) => {
@@ -11,9 +11,7 @@ export default (state=INITIAL_STATE, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_ITINERARY:
-      newState = Object.assign(state, {},
-        {itinerary: action.payload.itinerary});
-      return newState;
+      return action.payload;
     default:
       return state;
   }
