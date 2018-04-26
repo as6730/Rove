@@ -1,18 +1,17 @@
 import React from 'react';
-import { View, ActivityIndicator } from 'react-native';
-import Spinner from 'react-native-spinkit';
+import { View, ActivityIndicator, Text } from 'react-native';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 
-const OurSpinner = ({ size, }) => {
+const OurSpinner = ({ size,text }) => {
   return (
     <View style={styles.spinnerStyle}>
+      <Text style={styles.textStyle}>{text}</Text>
       <Spinner
-      isVisible={true}
-      size={50}
-      type={'Bounce'}
-      color={'#FE5D26'}
-      />
-      // <ActivityIndicator color='#FE5D26'size={size || 'large'} />
+        visible={true}
+        color='#FE5D26'
+        overlayColor="#dddddd">
+      </Spinner>
     </View>
   );
 };
@@ -22,7 +21,13 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },textStyle:{
+    color: '#FE5D26',
+    fontFamily:'helvetica neue',
+    fontSize: 20,
+    marginBottom: 100,
   }
 };
 
+      // <ActivityIndicator color='#FE5D26'size={size || 'large'} />
 export { OurSpinner };

@@ -1305,17 +1305,15 @@ class IndexPage extends React.Component {
   }
 
   componentDidMount(){
-    // console.log(this.props);
     this.props.fetchItinerary(this.props.itineraryParams);
   }
 
   render() {
     if (this.props.loading){
       return (
-        <View style={ styles.spinnerStyle}>
-          <Text style={styles.titleStyle}>Hold on Tight- we're Building Your Itinerary!</Text>
-          <OurSpinner size="large"/>
-        </View>
+          <OurSpinner
+            text={'Hold on Tight- we are Building Your Itinerary!'}
+            size="large"/>
       );
     }
 
