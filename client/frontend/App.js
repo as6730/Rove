@@ -17,7 +17,7 @@ class App extends React.Component{
        return <WelcomePage navigator={navigator} />;
      }
      if(route.name === 'Activity') {
-       return <ActivityForm navigator={navigator} />;
+       return <ActivityForm navigator={navigator} {...route.passProps}/>;
      }
      if(route.name === 'Index') {
        return <IndexPage navigator={navigator} />;

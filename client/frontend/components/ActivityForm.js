@@ -6,6 +6,8 @@ import { View,
   Image  } from 'react-native';
 import { Card, BigButton, CardSection, SwipeableCard } from './common';
 import { connect } from "react-redux";
+import { fetchItinerary } from "../actions/ItineraryActions";
+import Swiper from 'react-native-swiper';
 
 class ActivityForm extends React.Component{
   constructor(props){
@@ -16,12 +18,8 @@ class ActivityForm extends React.Component{
       arts: null,
       bars: null
     };
-
     this.onButtonPress = this.onButtonPress.bind(this);
-  }
-
-  handleSubmit(){
-    // (date, lat, lon, nature, restaurants, arts, bars);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   renderError(){
@@ -45,50 +43,63 @@ class ActivityForm extends React.Component{
     }
   }
 
+  handleSubmit(){
+    let date = this.props.date;
+    let city = this.props.city;
+    let itineraryParams = Object.assign(this.state, {}, {date:date, city:city});
+    // let itinerary = this.props.fetchItinerary(itineraryParams);
+    // console.log(itinerary);
+    this.props.navigator.replace({
+      name: 'Index',
+    });
+  }
+
   render(){
     return (
-      <Card>
-        <CardSection>
-          <BigButton
-            style = {styles.buttonStyle}
-            onPress={() => this.onButtonPress("restaurants")}
-            isPressed={this.state.restaurants}
-            color="gray"
-            imgUrl={require("../images/Food.jpg")}>
-            Food
-          </BigButton>
-        </CardSection>
+      <SwipeableCard onSwipe={() => this.handleSubmit()}>
+        <Card>
+          <CardSection>
+            <BigButton
+              style = {styles.buttonStyle}
+              onPress={() => this.onButtonPress("restaurants")}
+              isPressed={this.state.restaurants}
+              color="gray"
+              imgUrl={require("../images/Food.jpg")}>
+              Food
+            </BigButton>
+          </CardSection>
 
-        <CardSection>
-          <BigButton
-            onPress={() =>this.onButtonPress("nature")}
-            isPressed={this.state.nature}
-            color="gray"
-            imgUrl={require("../images/Nature.jpg")}>
-            Nature
-          </BigButton>
-        </CardSection>
+          <CardSection>
+            <BigButton
+              onPress={() =>this.onButtonPress("nature")}
+              isPressed={this.state.nature}
+              color="gray"
+              imgUrl={require("../images/Nature.jpg")}>
+              Nature
+            </BigButton>
+          </CardSection>
 
-        <CardSection>
-          <BigButton
-            onPress={() =>this.onButtonPress("arts")}
-            isPressed={this.state.arts}
-            color="gray"
-            imgUrl={require("../images/Culture.jpg")}>
-            Culture
-          </BigButton>
-        </CardSection>
+          <CardSection>
+            <BigButton
+              onPress={() =>this.onButtonPress("arts")}
+              isPressed={this.state.arts}
+              color="gray"
+              imgUrl={require("../images/Culture.jpg")}>
+              Culture
+            </BigButton>
+          </CardSection>
 
-        <CardSection>
-          <BigButton
-            onPress={() =>this.onButtonPress("bars")}
-            isPressed={this.state.bars}
-            color="gray"
-            imgUrl={require("../images/Nightlife.jpg")}>
-              NightLife
-          </BigButton>
-        </CardSection>
-      </Card>
+          <CardSection>
+            <BigButton
+              onPress={() =>this.handleSubmit()}
+              isPressed={this.state.bars}
+              color="gray"
+              imgUrl={require("../images/Nightlife.jpg")}>
+                NightLife
+            </BigButton>
+          </CardSection>
+        </Card>
+      </SwipeableCard>
     );
   }
 
@@ -106,8 +117,8 @@ const mapStateToProps = (state) => {
   return console.log(state);
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => ({
+  fetchItinerary: (itineraryParams) => dispatch(fetchItinerary(itineraryParams))
+});
 
-};
-
-export default connect(null,null)(ActivityForm);
+export default connect(null,mapDispatchToProps)(ActivityForm);

@@ -17,7 +17,7 @@ class WelcomePage extends React.Component {
     super(props);
     this.state={
       city: '',
-      selected: new Date()
+      date: new Date()
     };
 
     this.setDate = this.setDate.bind(this);
@@ -30,14 +30,18 @@ class WelcomePage extends React.Component {
 
   setDate(newDate) {
     this.setState({selected: newDate.dateString});
-    console.log(this.state);
   }
 
 
-  navigate(){
-    console.log(this);
-    this.props.navigator.push({
-    name: 'Activity', // Matches route.name
+  navigate(props){
+    if (props.city === ''){
+      props.city = 'San Francisco';
+    }
+    this.props.navigator.replace({
+    name: 'Activity',
+    passProps: {
+          props
+        }
     });
   }
 
@@ -71,7 +75,7 @@ class WelcomePage extends React.Component {
            onDayPress={(day)=> this.setDate(day)}
           />
         <Button title={'Submit'}
-          onPress={()=> this.navigate()}>'Submit'
+          onPress={() => this.navigate(this.state)}>'Submit'
         </Button>
       </View>
     );

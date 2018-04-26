@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, View, Text, StyleSheet, Image, ListView } from 'react-native';
-import { Card, BigButton, CardSection } from './common';
+import { Card, BigButton, CardSection, Spinner } from './common';
 import IndexButton from './common/IndexButton';
 import { connect } from "react-redux";
 import { fetchItinerary } from "../actions/ItineraryActions";
@@ -1298,7 +1298,12 @@ class IndexPage extends React.Component {
   //
 
   render() {
-    if (ITINERARY[0] === undefined) return null;
+    if (ITINERARY[0] === undefined){
+      return (
+      <Spinner size="large"/>
+      );
+    }
+
     return (
 //       <View>
 //         <Text>{ITINERARY[0]["breakfast"][0]["name"]}</Text>

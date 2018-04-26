@@ -8,14 +8,11 @@ export class SwipeableCard extends React.Component {
     onMoveShouldSetPanResponderCapture: () => true,
     onPanResponderMove: Animated.event([null, {dx: this.translateX}]),
     onPanResponderRelease: (e, {vx, dx}) => {
-      console.log("help!");
       const screenWidth = Dimensions.get("window").width;
       if (Math.abs(vx) >= 0.5 || Math.abs(dx) >= 0.5 * screenWidth) {
-        Animated.timing(this.translateX, {
-          toValue: dx > 0 ? screenWidth : -screenWidth,
-          duration: 200
-        }).start(this.props.onDismiss);
+        this.props.onSwipe();
       } else {
+        console.log("nah!");
         Animated.spring(this.translateX, {
           toValue: 0,
           bounciness: 10
@@ -29,9 +26,7 @@ export class SwipeableCard extends React.Component {
       <View>
         <Animated.View
           style={{transform: [{translateX: this.translateX}], height: 75}} {...this._panResponder.panHandlers}>
-          <Text>
-            {this.props.title}
-          </Text>
+          {this.props.children}
         </Animated.View>
       </View>
     );
