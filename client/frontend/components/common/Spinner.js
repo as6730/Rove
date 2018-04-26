@@ -1,10 +1,16 @@
 import React from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, Text } from 'react-native';
+import Spinner from 'react-native-loading-spinner-overlay';
 
-const OurSpinner = ({ size, }) => {
+const OurSpinner = ({ size,text }) => {
   return (
     <View style={styles.spinnerStyle}>
-      <ActivityIndicator color='#FE5D26' size={size || 'large'} />
+      <Spinner
+        visible={true}
+        color='#FE5D26'
+        textContent={"Building Your Itinerary..."}
+        textStyle={{color: '#FE5D26', fontFamily: 'Helvetica Neue'}}
+        overlayColor="#dddddd"/>
     </View>
   );
 };
@@ -14,6 +20,10 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },textStyle:{
+    color: '#FE5D26',
+    fontSize: 20,
+    marginBottom: 100,
   }
 };
 

@@ -1429,7 +1429,15 @@ class IndexPage extends React.Component {
   }
 }
 
-
+const styles = {
+  titleStyle: {
+    color: '#FE5D26'
+  }, spinnerStyle: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {

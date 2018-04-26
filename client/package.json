@@ -13,6 +13,7 @@
     "react-native-animatable": "^1.2.4",
     "react-native-calendars": "^1.18.2",
     "react-native-deprecated-custom-components": "^0.1.2",
+    "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-maps": "^0.21.0",
     "react-native-spinkit": "^1.1.1",
     "react-native-swiper": "^1.5.13",
