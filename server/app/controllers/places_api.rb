@@ -67,6 +67,13 @@ class PlacesUtils
     )
     result = JSON.parse(request)["result"]
     place = {}
+
+    unless result["photos"] == nil && result["photos"][0].empty?
+      photos_obj = result["photos"][0]
+      photo_result = PlacesUtils.get_photo(photos_obj)
+      place["photo_url"] = photo_result
+    end
+
     properties.each do |property|
       if property === "opening_hours"
         if (result["opening_hours"] == nil)
@@ -83,6 +90,13 @@ class PlacesUtils
     date_time = PlacesUtils.set_start_and_end_time(type, date, keyword)
     place["date_time"] = date_time
     place
+  end
+
+  def self.get_photo(result_photos)
+    photo_reference = result_photos["photo_reference"]
+    max_width = result_photos["width"]
+    max_height= result_photos["height"]
+    "https://maps.googleapis.com/maps/api/place/photo?maxwidth=#{max_width}&maxheight=#{max_height}&photoreference=#{photo_reference}&key=#{API_KEY}"
   end
 
   def self.set_start_and_end_time(type, date, keyword)
