@@ -16,16 +16,16 @@ const styles = {
     backgroundColor: "#fff",
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: "#007aff",
-    marginLeft: 5,
-    marginRight: 5,
+    borderColor: '#FE5D26',
+    // marginLeft: 5,
+    // marginRight: 5,
   },
   textStyle: {
     alignSelf: "center",
-    color: "#007aff",
+    color: '#FE5D26',
     fontWeight: "600",
     fontSize: 16,
-    paddingTop: 10,
+    paddingTop: 15,
     paddingBottom: 10,
   }
 };

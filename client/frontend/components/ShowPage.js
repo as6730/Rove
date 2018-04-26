@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
+import { Button } from './common';
 import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
 
@@ -46,6 +47,7 @@ class ShowPage extends React.Component {
               longitudeDelta: 0.0421,
             }}/>
         </View>
+        <Button onPress={() =>this.onButtonPress()} children={"Add to Calendar"}></Button>
 
       </View>
     );
