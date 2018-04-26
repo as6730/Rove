@@ -4,7 +4,7 @@ require 'json'
 class PlacesUtils
 
   ENDPOINT = "https://maps.googleapis.com/maps/api/place"
-  API_KEY = "AIzaSyCq9oqkTtxJj8tsb2_i9Q9sB-U2gT-fjFg"
+  API_KEY = "AIzaSyBY_oLHUmf8-C9b7hkRtYC34ThjuNyliDw"
 
   def self.get_places(places_count, lat, lon, type, place_properties, keyword = "", date = "2018", radius = 1000)
     if type === "restaurant"
