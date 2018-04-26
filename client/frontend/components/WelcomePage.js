@@ -33,7 +33,6 @@ class WelcomePage extends React.Component {
 
   setDate(newDate) {
     this.setState({date: newDate.dateString});
-    console.log(this.state);
   }
 
 
@@ -100,7 +99,7 @@ class WelcomePage extends React.Component {
               color= '#FE5D26'
               style={buttonStyle}
               title={'Submit'}
-              onPress={()=> this.navigate()}>'Submit'
+              onPress={()=> this.navigate(this.state)}>'Submit'
             </Button>
         </View >
       </View>

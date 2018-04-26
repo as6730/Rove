@@ -5,7 +5,7 @@ import { ScrollView,
   StyleSheet,
   Image,
   ListView } from 'react-native';
-import { Card, BigButton, CardSection, Spinner } from './common';
+import { Card, BigButton, CardSection, OurSpinner } from './common';
 import IndexButton from './common/IndexButton';
 import { connect } from "react-redux";
 import Swiper from 'react-native-swiper';
@@ -1312,7 +1312,10 @@ class IndexPage extends React.Component {
   render() {
     if (this.props.loading){
       return (
-        <Spinner size="large"/>
+        <View style={ styles.spinnerStyle}>
+          <Text style={styles.titleStyle}>Hold on Tight- we're Building Your Itinerary!</Text>
+          <OurSpinner size="large"/>
+        </View>
       );
     }
 
@@ -1428,7 +1431,15 @@ class IndexPage extends React.Component {
   }
 }
 
-
+const styles = {
+  titleStyle: {
+    color: '#FE5D26'
+  }, spinnerStyle: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {

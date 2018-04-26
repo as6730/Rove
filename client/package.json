@@ -13,6 +13,7 @@
     "react-native-calendars": "^1.18.2",
     "react-native-deprecated-custom-components": "^0.1.2",
     "react-native-maps": "^0.21.0",
+    "react-native-spinkit": "^1.1.1",
     "react-native-swiper": "^1.5.13",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
@@ -28,6 +29,8 @@
     "preset": "react-native"
   },
   "rnpm": {
-   "assets": ["../server/app/assets/fonts/OverpassMono"]
+    "assets": [
+      "../server/app/assets/fonts/OverpassMono"
+    ]
   }
 }
