@@ -14,7 +14,7 @@ import ShowPage from "./components/ShowPage";
 class App extends React.Component{
   renderScene(route, navigator) {
      if(route.name === 'Welcome') {
-       return <WelcomePage navigator={navigator} />;
+       return <WelcomePage navigator={navigator} {...route.passProps}/>;
      }
      if(route.name === 'Activity') {
        return <ActivityForm navigator={navigator} {...route.passProps}/>;
@@ -23,7 +23,7 @@ class App extends React.Component{
        return <IndexPage navigator={navigator} {...route.passProps}/>;
      }
      if(route.name === 'Show') {
-       return <ShowPage navigator={navigator} />;
+       return <ShowPage navigator={navigator} {...route.passProps}/>;
      }
   }
 
@@ -33,7 +33,7 @@ class App extends React.Component{
         store={createStore(RootReducer,{},applyMiddleware(ReduxThunk))}>
         <Navigator
           style={{ flex:1 }}
-          initialRoute={{ name: 'Index' }}
+          initialRoute={{ name: 'Welcome' }}
           renderScene={ this.renderScene } />
       </Provider>
     );

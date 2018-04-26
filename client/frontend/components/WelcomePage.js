@@ -163,21 +163,5 @@ const styles= {
   }
 };
 
-const mapStateToProps = (state, ownProps) => {
-  // console.log('state:' + JSON.stringify(state));
-  return {
-    itinerary: state.itinerary
-  };
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-      fetchItinerary(params){
-        dispatch(
-          fetchItinerary(params)
-        );
-      }
-    };
-};
-
-export default connect(null,null)(WelcomePage);
+export default WelcomePage;

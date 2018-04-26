@@ -7,7 +7,6 @@ import { View,
 import { Card, BigButton, CardSection, SwipeableCard } from './common';
 import { connect } from "react-redux";
 import { fetchItinerary } from "../actions/ItineraryActions";
-import Swiper from 'react-native-swiper';
 
 class ActivityForm extends React.Component{
   constructor(props){
@@ -23,7 +22,7 @@ class ActivityForm extends React.Component{
   }
 
   renderError(){
-  if ( this.props.error){
+  if (this.props.error){
       return (
         <View style={{backgroundColor:'white'}}>
           <Text style={styles.errorTextStyle}>
@@ -126,15 +125,5 @@ const styles = {
   }
 };
 
-const mapStateToProps = (state) => {
-  // console.log('state:' + JSON.stringify(state))
-  return {
-    itinerary: state.itinerary
-  };
-};
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchItinerary: (itineraryParams) => dispatch(fetchItinerary(itineraryParams))
-});
-
-export default connect(mapStateToProps,mapDispatchToProps)(ActivityForm);
+export default ActivityForm;
