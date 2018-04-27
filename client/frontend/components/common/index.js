@@ -6,3 +6,4 @@ export * from "./Input";
 export * from "./Spinner";
 export * from "./BigButton";
 export * from "./SwipeableCard";
+export * from "./IndexButton";

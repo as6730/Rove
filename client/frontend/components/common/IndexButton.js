@@ -67,4 +67,4 @@ const styles = {
     position: 'absolute',
   }
 };
-export default IndexButton ;
+export { IndexButton } ;
