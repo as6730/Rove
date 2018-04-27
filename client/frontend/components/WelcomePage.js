@@ -29,7 +29,6 @@ class WelcomePage extends React.Component {
     this.setDate = this.setDate.bind(this);
     this.handleText = this.handleText.bind(this);
     this.navigate = this.navigate.bind(this);
-    this.getLocationFromGoogle("San Francisco");
   }
 
   handleText(text){
@@ -41,32 +40,37 @@ class WelcomePage extends React.Component {
   }
 
 
-  navigate(){
-    this.getLocationFromGoogle(this.state.city);
-    let locationProps= { lat: this.state.lat,
-      lng: this.state.lng,
-      date: this.state.date};
+  async navigate(){
+    let location = await this.getLocationFromGoogle(this.state.city);
 
-    this.props.navigator.replace({
-    name: 'Activity',
-    passProps: {
-          place: locationProps
-        }
-    });
+      this.setState({lat:
+        location["results"][0]["geometry"]["location"]["lat"]})
+        this.setState({lng:
+          location["results"][0]["geometry"]["location"]["lng"]})
+
+      let locationProps= { lat: this.state.lat,
+        lng: this.state.lng,
+        date: this.state.date};
+
+      this.props.navigator.replace({
+      name: 'Activity',
+      passProps: {
+            place: locationProps
+          }
+      });
+    
   }
 
-  getLocationFromGoogle(city) {
-    let URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&sensor=false`;
-    console.log(URL);
-    fetch(URL).then((response) => { return response.json();}
-  ).then((responseJSON) => {
-    return (
-      this.setState({lat:
-        responseJSON["results"][0]["geometry"]["location"]["lat"]}),
-      this.setState({lng:
-        responseJSON["results"][0]["geometry"]["location"]["lng"]})
-      );
-     });
+  async getLocationFromGoogle(city) {
+    if ( city === ''){
+      city = "San Francisco"
+    }
+
+    URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&sensor=false`;
+    let response = await fetch(URL)
+    let JSONresponse = await response.json()
+    return JSONresponse;
+
   }
 
 
@@ -84,7 +88,7 @@ class WelcomePage extends React.Component {
     } = styles;
 
     const mark = {
-       [this.state.date] : {selected: true, selectedColor:'#fff'}
+       [this.state.date] : {selected: true, selectedColor:'#FE5D26'}
     };
 
 
@@ -113,10 +117,10 @@ class WelcomePage extends React.Component {
             markedDates={mark}
             theme={{
               textSectionTitleColor: '#b6c1cd',
-
-              selectedDayTextColor: '#FE5D26',
+              selectedDayTextColor: '#fff',
               selectedColor: '#FE5D26',
               arrowColor: '#FE5D26',
+              todayTextColor: '#FE5D26',
             }}
             />
             <Button

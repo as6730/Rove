@@ -21,6 +21,7 @@ class ActivityForm extends React.Component{
       bars: null,
       modalVisible: true,
     };
+    console.log(this.props);
     this.onButtonPress = this.onButtonPress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
