@@ -9,8 +9,8 @@ import { Button } from './common';
 import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
 import RNCalendarEvents from 'react-native-calendar-events';
-import { authorizationStatus } from 'react-native-calendar-events';
-import NativeModules  from 'react-native';
+// import { authorizationStatus } from 'react-native-calendar-events';
+// import NativeModules  from 'react-native';
 
 // TODO: Import marker for lat and long that are being passed in
 
@@ -25,30 +25,30 @@ class ShowPage extends React.Component {
     this.submit = this.submit.bind(this);
   }
 
-  componentWillMount () {
-  // Let's get access before doing anything
-  // const events = RNCalendarEvents;
-  RNCalendarEvents.authorizationStatus()
-  .then(status => {
-    // if the status was previous accepted, set the authorized status to state
-
-    this.setState({ cal_auth: status });
-    if(status === 'undetermined') {
-      // if we made it this far, we need to ask the user for access
-      RNCalendarEvents.authorizeEventStore()
-      .then((out) => {
-        if(out == 'authorized') {
-          // set the new status to the auth state
-          this.setState({ cal_auth: out });
-        }
-      });
-    }
-  })
-  .catch(error => console.warn('Auth Error: ', error));
-}
+//   componentWillMount () {
+//   // Let's get access before doing anything
+//   // const events = RNCalendarEvents;
+//   RNCalendarEvents.authorizationStatus()
+//   .then(status => {
+//     // if the status was previous accepted, set the authorized status to state
+//
+//     this.setState({ cal_auth: status });
+//     if(status === 'undetermined') {
+//       // if we made it this far, we need to ask the user for access
+//       RNCalendarEvents.authorizeEventStore()
+//       .then((out) => {
+//         if(out == 'authorized') {
+//           // set the new status to the auth state
+//           this.setState({ cal_auth: out });
+//         }
+//       });
+//     }
+//   })
+//   .catch(error => console.warn('Auth Error: ', error));
+// }
 
   submit(){
-    RNCalendarEvents.authorizeEventStore().then(response => alert(response));
+    this.RNCalendarEvents.authorizationStatus().then(response => alert(response));
     // RNCalendarEvents.authorizationStatus()
     // .then(status => {
     //   // handle status
