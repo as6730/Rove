@@ -4,5 +4,5 @@ export const fetchItinerary = (itinerary) => {
             method: 'GET',
           }).then(response => {
             return response.json();
-          }).catch((error) => console.log(error));
+          });
 };
