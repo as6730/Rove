@@ -18,6 +18,7 @@ class WelcomePage extends React.Component {
     super(props);
     let date = new Date;
     date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+
     this.state={
       city: '',
       date,
@@ -27,6 +28,8 @@ class WelcomePage extends React.Component {
 
     this.setDate = this.setDate.bind(this);
     this.handleText = this.handleText.bind(this);
+    this.navigate = this.navigate.bind(this);
+    this.getLocationFromGoogle("San Francisco");
   }
 
   handleText(text){
@@ -39,44 +42,36 @@ class WelcomePage extends React.Component {
 
 
   navigate(){
-    if (this.state.city === ''){
-      this.setState({city: 'San Francisco'});
-    }
-
-    let location = this.getLocationFromGoogle();
-
-    this.setState({ lat: location["lat"] });
-    this.setState({ lng: location["lng"] });
+    this.getLocationFromGoogle(this.state.city);
     let locationProps= { lat: this.state.lat,
       lng: this.state.lng,
       date: this.state.date};
+
     this.props.navigator.replace({
     name: 'Activity',
     passProps: {
-          props: locationProps
+          place: locationProps
         }
     });
   }
 
-  getLocationFromGoogle() {
-
-    fetch(`http://maps.googleapis.com/maps/api/geocode/json?address=${this.state.city}&sensor=false`)
-      .then((response) => {
-        console.log(response);
-        return response.json();})
-      .then((responseJson) => {
-        return responseJson["results"]["geometry"]["location"];
-    });
+  getLocationFromGoogle(city) {
+    let URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&sensor=false`;
+    console.log(URL);
+    fetch(URL).then((response) => { return response.json();}
+  ).then((responseJSON) => {
+    return (
+      this.setState({lat:
+        responseJSON["results"][0]["geometry"]["location"]["lat"]}),
+      this.setState({lng:
+        responseJSON["results"][0]["geometry"]["location"]["lng"]})
+      );
+     });
   }
-
-
 
 
   render() {
     //// TODO: import link from controller
-    let pic = {
-      uri:`http://res.cloudinary.com/dkaolr6pg/image/upload/v1524615811/pretty.jpg`,
-    };
     const {
       imageStyle,
       logoStyle,
@@ -87,6 +82,11 @@ class WelcomePage extends React.Component {
       questionContainer2,
       calenderStyle
     } = styles;
+
+    const mark = {
+       [this.state.date] : {selected: true, selectedColor:'#fff'}
+    };
+
 
     return (
       <View>
@@ -107,11 +107,13 @@ class WelcomePage extends React.Component {
           <Text style={questionStyle}>When?</Text>
           <Calendar
             style={calenderStyle}
-            minDate={Date()}
+
+            minDate={'2018-4-01'}
             onDayPress={(day)=> this.setDate(day)}
+            markedDates={mark}
             theme={{
               textSectionTitleColor: '#b6c1cd',
-              selectedDayBackgroundColor: '#FE5D26',
+
               selectedDayTextColor: '#FE5D26',
               selectedColor: '#FE5D26',
               arrowColor: '#FE5D26',

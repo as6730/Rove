@@ -12,7 +12,6 @@ const Input = ({
 
   return (
     <View style={containerStyle}>
-      <Text style={labelStyle}>{label}</Text>
       <TextInput
         style={inputStyle}
         value={value}
@@ -32,12 +31,13 @@ const styles = {
     paddingLeft: 5,
     fontSize: 18,
     lineHeight: 23,
+    textAlign: "center",
     flex: 2
   },
   labelStyle: {
     fontSize: 18,
     paddingLeft: 20,
-    flex: 1
+    flex: 1,
   },
   containerStyle: {
     height: 40,
