@@ -3,6 +3,8 @@ package com.weekender;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.vonovak.AddCalendarEventPackage;
+import com.calendarevents.CalendarEventsPackage;
 import com.react.rnspinkit.RNSpinkitPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,6 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new AddCalendarEventPackage(),
+            new CalendarEventsPackage(),
             new RNSpinkitPackage(),
             new MapsPackage()
       );

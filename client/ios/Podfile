@@ -39,6 +39,10 @@ target 'Weekender' do
   pod 'Google-Maps-iOS-Utils' # Remove this line if you don't want to support GoogleMaps on iOS
   pod 'react-native-spinkit', :path => '../node_modules/react-native-spinkit'
 
+  pod 'react-native-calendar-events', :path => '../node_modules/react-native-calendar-events'
+
+  pod 'react-native-add-calendar-event', :path => '../node_modules/react-native-add-calendar-event'
+
 end
 
 post_install do |installer|

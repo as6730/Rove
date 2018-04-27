@@ -43,10 +43,13 @@ class WelcomePage extends React.Component {
 
   navigate(){
     this.getLocationFromGoogle(this.state.city);
+    console.log(this.state.lat);
+    console.log(this.state.lng);
+
     let locationProps= { lat: this.state.lat,
       lng: this.state.lng,
       date: this.state.date};
-
+      console.log(locationProps);
     this.props.navigator.replace({
     name: 'Activity',
     passProps: {
@@ -66,7 +69,9 @@ class WelcomePage extends React.Component {
       this.setState({lng:
         responseJSON["results"][0]["geometry"]["location"]["lng"]})
       );
-     });
+    }).catch(function(error) {
+        console.log(error);
+    });
   }
 
 

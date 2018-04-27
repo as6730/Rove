@@ -132,7 +132,7 @@ class ActivityForm extends React.Component{
 
             <CardSection>
               <BigButton
-                onPress={() =>this.onButtonPress("bars")}
+                onPress={() => this.onButtonPress("bars")}
                 isPressed={this.state.bars}
                 color="gray"
                 imgUrl={require("../images/Nightlife.jpg")}>
