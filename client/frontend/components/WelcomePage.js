@@ -76,11 +76,11 @@ class WelcomePage extends React.Component {
     let URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.city}&sensor=false`;
 
     fetch(URL).then((response) => { return response.json();}
-    ).then((response) => {
+  ).then((responseJSON) => {
       // return response["results"][0]["geometry"]["location"];
        // responseJSON["results"][0]["geometry"]["location"];
-       console.log(response);
-       // console.log(responseJSON["results"][0]["geometry"]["location"]);
+       // console.log(response[0]["geometry"]["location"]);
+       console.log(responseJSON["results"][0]["geometry"]["location"]);
      });
      // return request;
      // const results = JSON.parse(request);
