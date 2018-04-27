@@ -12,10 +12,8 @@ export default (state=INITIAL_STATE, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_ITINERARY:
-      console.log(action.type);
       return { loading: false };
     case LOAD_ITINERARY:
-    console.log(action.type);
       return { loading: true };
     default:
       return state;
