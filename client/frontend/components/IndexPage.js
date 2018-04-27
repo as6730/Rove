@@ -12,6 +12,7 @@ import IndexButton from './common/IndexButton';
 import { connect } from "react-redux";
 import Swiper from 'react-native-swiper';
 import { fetchItinerary } from "../actions/ItineraryActions";
+import IndexItem from './IndexItem';
 
 
 const ITINERARY = [
@@ -1307,9 +1308,9 @@ class IndexPage extends React.Component {
     this.pickMe = this.pickMe.bind(this);
   }
 
-  componentDidMount(){
-    this.props.fetchItinerary(this.props.itineraryParams);
-  }
+  // componentDidMount(){
+  //   this.props.fetchItinerary(this.props.itineraryParams);
+  // }
 
   pickMe(place){
     this.props.navigator.push({
@@ -1328,141 +1329,42 @@ class IndexPage extends React.Component {
       );
     }
 
+    let photoLinks = [
+      require("../images/Food.jpg"),
+      require("../images/Nightlife.jpg"),
+      require("../images/Nature.jpg"),
+      require("../images/Culture.jpg")
+      ];
+    let keys = [
+      ["breakfast", "lunch", "dinner"],
+      ["bars"],
+      ["nature"],
+      ["arts"]
+    ];
+
+    const places = [];
+
+    const mapPlaces = (itinerary) => {
+      ITINERARY.forEach( (place, idx) => {
+        keys[idx].forEach( key => {
+          places.push(
+            <IndexItem
+              itinerary={itinerary[idx][String(key)]}
+              imgUrl={photoLinks[idx]}
+              navigator = {this.props.navigator}/>
+          );
+        });
+      });
+    };
+
+    mapPlaces(ITINERARY);
+
     return (
-
       <ScrollView>
-      <Card>
-        <Swiper
-          style= {styles.swiper}
-          horizontal={true}
-          height={110}
-          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-          activeDot={<View style={{backgroundColor: '#FE5D26', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-          paginationStyle={{ bottom: 5, right: '85%'}}>
-          <CardSection id={1}>
-            <IndexButton
-              onPress={() => this.pickMe(ITINERARY[0]["breakfast"][0])}
-              imgUrl={require("../images/Food.jpg")}>
-              {ITINERARY[0]["breakfast"][0]["name"]}
-            </IndexButton>
-          </CardSection>
-          <CardSection id={2}>
-            <IndexButton
-              onPress={() => this.pickMe(ITINERARY[0]["breakfast"][1])}
-              imgUrl={require("../images/Food.jpg")}>
-              {ITINERARY[0]["breakfast"][1]["name"]}
-            </IndexButton>
-          </CardSection>
-        </Swiper>
-
-        <Swiper
-          style= {styles.swiper}
-          horizontal={true}
-          height={110}
-          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-          activeDot={<View style={{backgroundColor: '#FE5D26', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-          paginationStyle={{ bottom: 5, right: '85%'}}>
-          <CardSection id={3}>
-            <IndexButton
-              onPress={() => this.pickMe(ITINERARY[2]["nature"][0])}
-              imgUrl={require("../images/Nature.jpg")}>
-              {ITINERARY[2]["nature"][0]["name"]}
-            </IndexButton>
-          </CardSection>
-          <CardSection id={4}>
-            <IndexButton
-              onPress={() => this.pickMe(ITINERARY[2]["nature"][1])}
-              imgUrl={require("../images/Nature.jpg")}>
-              {ITINERARY[2]["nature"][1]["name"]}
-            </IndexButton>
-          </CardSection>
-        </Swiper>
-
-        <Swiper
-          style= {styles.swiper}
-          horizontal={true}
-          height={110}
-          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-          activeDot={<View style={{backgroundColor: '#FE5D26', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-          paginationStyle={{ bottom: 5, right: '85%'}}>
-          <CardSection id={5}>
-            <IndexButton
-              imgUrl={require("../images/Food.jpg")}>
-              {ITINERARY[0]["lunch"][0]["name"]}
-              </IndexButton>
-          </CardSection>
-          <CardSection id={6}>
-            <IndexButton
-              imgUrl={require("../images/Food.jpg")}>
-              {ITINERARY[0]["lunch"][1]["name"]}
-            </IndexButton>
-          </CardSection>
-        </Swiper>
-
-        <Swiper
-          style= {styles.swiper}
-          horizontal={true}
-          height={110}
-          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-          activeDot={<View style={{backgroundColor: '#FE5D26', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-          paginationStyle={{ bottom: 5, right: '85%'}}>
-          <CardSection id={7}>
-            <IndexButton
-              imgUrl={require("../images/Culture.jpg")}>
-              {ITINERARY[3]["arts"][0]["name"]}
-            </IndexButton>
-          </CardSection>
-          <CardSection id={8}>
-            <IndexButton
-              imgUrl={require("../images/Culture.jpg")}>
-              {ITINERARY[3]["arts"][1]["name"]}
-              </IndexButton>
-          </CardSection>
-        </Swiper>
-
-        <Swiper
-          style= {styles.swiper}
-          horizontal={true}
-          height={110}
-          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-          activeDot={<View style={{backgroundColor: '#FE5D26', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-          paginationStyle={{ bottom: 5, right: '85%'}}>
-          <CardSection id={9}>
-            <IndexButton
-              imgUrl={require("../images/Food.jpg")}>
-              {ITINERARY[0]["dinner"][0]["name"]}
-            </IndexButton>
-          </CardSection>
-          <CardSection id={10}>
-            <IndexButton
-              imgUrl={require("../images/Food.jpg")}>
-              {ITINERARY[0]["dinner"][1]["name"]}
-            </IndexButton>
-          </CardSection>
-        </Swiper>
-
-        <Swiper
-          style= {styles.swiper}
-          horizontal={true}
-          height={110}
-          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-          activeDot={<View style={{backgroundColor: '#FE5D26', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-          paginationStyle={{ bottom: 5, right: '85%'}}>
-        <CardSection id={11}>
-          <IndexButton
-            imgUrl={require("../images/Nightlife.jpg")}>
-            {ITINERARY[1]["bars"][0]["name"]}
-            </IndexButton>
-        </CardSection>
-        <CardSection id={12}>
-          <IndexButton
-            imgUrl={require("../images/Nightlife.jpg")}>
-            {ITINERARY[1]["bars"][1]["name"]}
-            </IndexButton>
-        </CardSection>
-        </Swiper>
-      </Card>
-    </ScrollView>
+        <Card>
+          {places}
+        </Card>
+      </ScrollView>
     );
   }
 }

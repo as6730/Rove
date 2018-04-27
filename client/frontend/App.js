@@ -14,16 +14,16 @@ import ShowPage from "./components/ShowPage";
 class App extends React.Component{
   renderScene(route, navigator) {
      if(route.name === 'Welcome') {
-       return <WelcomePage navigator={navigator} {...route.passProps}/>;
+       return <WelcomePage navigator={navigator} />;
      }
      if(route.name === 'Activity') {
-       return <ActivityForm navigator={navigator} {...route.passProps}/>;
+       return <ActivityForm navigator={navigator} />;
      }
      if(route.name === 'Index') {
-       return <IndexPage navigator={navigator} {...route.passProps}/>;
+       return <IndexPage navigator={navigator} />;
      }
      if(route.name === 'Show') {
-       return <ShowPage navigator={navigator} {...route.passProps}/>;
+       return <ShowPage navigator={navigator} />;
      }
   }
 
@@ -34,14 +34,7 @@ class App extends React.Component{
         <Navigator
           style={{ flex:1 }}
           initialRoute={{ name: 'Welcome' }}
-          renderScene={ this.renderScene }
-          configureScene={(route) => {
-            if (route.sceneConfig) {
-              return route.sceneConfig;
-            }
-            return Navigator.SceneConfigs.FloatFromBottom;
-            }}
-          />
+          renderScene={ this.renderScene } />
       </Provider>
     );
   }

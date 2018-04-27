@@ -133,14 +133,14 @@ const styles= {
   imageStyle: {
     width: "100%",
     height: "26%",
-    marginTop: 35,
+    marginTop: 38,
     marginBottom: 5,
     position: 'absolute',
   },
   logoStyle: {
     width: "100%",
     height: "25%",
-    marginTop: 38,
+    marginTop: 41,
     marginBottom: 5,
     backgroundColor: 'rgba(236, 236, 236, 0.3)',
   },
