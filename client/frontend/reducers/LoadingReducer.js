@@ -4,7 +4,7 @@ import {
 } from "../actions/ItineraryActions";
 
 
-const INITIAL_STATE = {loading: false};
+const INITIAL_STATE = {loading: true};
 
 
 export default (state=INITIAL_STATE, action) => {

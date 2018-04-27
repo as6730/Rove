@@ -1359,7 +1359,6 @@ class IndexPage extends React.Component {
       });
     };
 
-    console.log(this.props.itinerary);
     mapPlaces(this.props.itinerary);
 
     return (
@@ -1383,7 +1382,7 @@ const styles = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-
+  console.log(state.itinerary)
   return {
     itinerary: state.itinerary,
     loading: state.loading.loading,
