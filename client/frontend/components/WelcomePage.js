@@ -40,11 +40,14 @@ class WelcomePage extends React.Component {
   }
 
   converDate(date) {
-      const yyyy = date.getFullYear().toString();
-      const mm = (date.getMonth() + 1).toString();
-      const dd = date.getDate().toString();
-      
-  }
+     const yyyy = date.getFullYear().toString();
+     const mm = (date.getMonth() + 1).toString();
+     const dd = date.getDate().toString();
+
+     let mmChars = mm.split("");
+     let ddChars = dd.split("");
+     return yyyy + '-' + (mmChars[1] ? mm : "0" + mmChars[0]) + "-" + (ddChars[1] ? dd : "0" + ddChars[0]) ;
+ }
 
   async navigate(){
     let location = await this.getLocationFromGoogle(this.state.city);
@@ -57,12 +60,12 @@ class WelcomePage extends React.Component {
       let locationProps= { lat: this.state.lat,
         lng: this.state.lng,
         date: this.state.date};
-      // this.props.navigator.replace({
-      // name: 'Activity',
-      // passProps: {
-      //       place: locationProps
-      //     }
-      // });
+      this.props.navigator.replace({
+      name: 'Activity',
+      passProps: {
+            place: locationProps
+          }
+      });
 
   }
 
