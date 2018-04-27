@@ -20,7 +20,8 @@ class IndexItem extends React.Component {
   }
 
   render(){
-    console.log('Im Here');
+    console.log(this.props.itinerary[0]);
+    console.log(this.props.itinerary[0].photo_url);
 
     return (
       <Swiper
@@ -32,14 +33,14 @@ class IndexItem extends React.Component {
         <CardSection>
           <IndexButton
           onPress={() => this.pickMe(this.props.itinerary[0])}
-          imgUrl={this.props.imgUrl}>
+          imgUrl={{uri: this.props.itinerary[0].photo_url}}>
             {this.props.itinerary[0].name}
           </IndexButton>
         </CardSection>
         <CardSection>
           <IndexButton
             onPress={() => this.pickMe(this.props.itinerary[1])}
-            imgUrl={this.props.imgUrl}>
+            imgUrl={{uri: this.props.itinerary[1].photo_url}}>
               {this.props.itinerary[1].name}
           </IndexButton>
         </CardSection>
