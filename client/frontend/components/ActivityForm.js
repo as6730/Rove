@@ -27,18 +27,6 @@ class ActivityForm extends React.Component{
   }
 
 
-  // renderError(){
-  // if (this.props.error){
-  //     return (
-  //       <View style={{backgroundColor:'white'}}>
-  //         <Text style={styles.errorTextStyle}>
-  //           {this.props.error}
-  //         </Text>
-  //       </View>
-  //     );
-  //   }
-  // }
-
   //knows if this thing is selected -> set
   onButtonPress(value){
     if (this.state[value]){
@@ -66,15 +54,6 @@ class ActivityForm extends React.Component{
     }
 
     let itineraryParams = {arts, bars,restaurants, nature, date, lat, lon};
-    console.log(itineraryParams);
-      // let itineraryParams = {
-      //   lat : "37.801773",
-      //   lon : "-122.401026",
-      //   bars : "true",
-      //   restaurants : "true",
-      //   nature : "true",
-      //   arts : "true"
-      // };
 
     this.props.navigator.replace({
       name: 'Index',
@@ -98,11 +77,8 @@ class ActivityForm extends React.Component{
           onBackdropPress={() => this.setState({ modalVisible: false })}>
             <TouchableHighlight onPress={() => this.toggleModal()}>
               <View style={styles.modalBoxStyle}>
-                <Text style={styles.textStyle}>
-                  On this next Page you'll be choosing the Activities
-                  you want for your itinerary.
-                  Swipe left or right to Submit!
-                </Text>
+                <Text style={styles.textTitleStyle}>Choose Activities:</Text>
+                <Text style={styles.textStyle}>Swipe Left or Right to Submit</Text>
               </View>
             </TouchableHighlight>
           </Modal>
@@ -162,11 +138,18 @@ const styles = {
     alignSelf: 'center',
     color:'red'
   },
-  textStyle:{
+  textTitleStyle:{
     color: '#FE5D26',
     fontSize: 20,
-    marginBottom: 100,
-  }, modalBoxStyle:{
+    marginBottom: 20,
+    textAlign:"center"
+  }, textStyle:{
+      color: '#FE5D26',
+      fontSize: 16,
+      marginBottom: 30,
+      textAlign:"center"
+    },
+    modalBoxStyle:{
     backgroundColor: "white",
     padding: 22,
     justifyContent: "center",

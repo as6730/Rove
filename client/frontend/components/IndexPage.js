@@ -1308,9 +1308,9 @@ class IndexPage extends React.Component {
 
   }
 
-  componentDidMount(){
-    this.props.fetchItinerary(this.props.itineraryParams);
-  }
+  // componentDidMount(){
+  //   this.props.fetchItinerary(this.props.itineraryParams);
+  // }
 
 
   render() {
@@ -1349,7 +1349,7 @@ class IndexPage extends React.Component {
       });
     };
 
-    mapPlaces(this.props.itinerary);
+    mapPlaces(ITINERARY);
 
     return (
       <ScrollView>
@@ -1372,7 +1372,7 @@ const styles = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.itinerary)
+
   return {
     itinerary: state.itinerary,
     loading: state.loading.loading,
