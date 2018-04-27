@@ -29,7 +29,7 @@ class WelcomePage extends React.Component {
     this.setDate = this.setDate.bind(this);
     this.handleText = this.handleText.bind(this);
     this.navigate = this.navigate.bind(this);
-    this.getLocationFromGoogle("San Francisco");
+    // this.getLocationFromGoogle("San Francisco");
   }
 
   handleText(text){
@@ -84,7 +84,7 @@ class WelcomePage extends React.Component {
     } = styles;
 
     const mark = {
-       [this.state.date] : {selected: true, selectedColor:'#fff'}
+       [this.state.date] : {selected: true, selectedColor:'#FE5D26'}
     };
 
 
@@ -113,10 +113,10 @@ class WelcomePage extends React.Component {
             markedDates={mark}
             theme={{
               textSectionTitleColor: '#b6c1cd',
-
-              selectedDayTextColor: '#FE5D26',
+              selectedDayTextColor: '#fff',
               selectedColor: '#FE5D26',
               arrowColor: '#FE5D26',
+              todayTextColor: '#FE5D26',
             }}
             />
             <Button
