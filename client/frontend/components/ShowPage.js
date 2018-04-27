@@ -95,6 +95,10 @@ class ShowPage extends React.Component {
     return (
       <View style = {styles.container}>
         <Image
+          style = {styles.arrowStyle}
+          source={require("../images/arrow.png")}
+          />
+        <Image
           style = {styles.image}
           source={{ uri: this.props.place.photo_url}}
           />
@@ -153,7 +157,11 @@ const styles = StyleSheet.create({
   },
   map: {
     height: '100%',
-  },
+  },arrowStyle:{
+    height: 20,
+    width: 40,
+    position:'absolute',
+  }
 });
 
 export default ShowPage;
