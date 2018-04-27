@@ -1305,21 +1305,11 @@ const ITINERARY = [
 class IndexPage extends React.Component {
   constructor(props){
     super(props);
-    this.pickMe = this.pickMe.bind(this);
 
   }
 
   componentDidMount(){
     this.props.fetchItinerary(this.props.itineraryParams);
-  }
-
-  pickMe(place){
-    this.props.navigator.push({
-      name: 'Show',
-      passProps: {
-          place
-        },
-    });
   }
 
 
