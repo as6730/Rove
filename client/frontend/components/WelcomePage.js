@@ -17,7 +17,7 @@ class WelcomePage extends React.Component {
   constructor(props){
     super(props);
     let date = new Date;
-    date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    date = this.converDate(date)
 
     this.state={
       city: '',
@@ -39,6 +39,15 @@ class WelcomePage extends React.Component {
     this.setState({date: newDate.dateString});
   }
 
+  converDate(date) {
+      const yyyy = date.getFullYear().toString();
+      const mm = (date.getMonth() + 1).toString();
+      const dd = date.getDate().toString();
+
+      let mmChars = mm.split("");
+      let ddChars = dd.split("");
+      return yyyy + '-' + (mmChars[1] ? mm : "0" + mmChars[0]) + "-" + (ddChars[1] ? dd : "0" + ddChars[0]) ;
+  }
 
   async navigate(){
     let location = await this.getLocationFromGoogle(this.state.city);
@@ -51,13 +60,12 @@ class WelcomePage extends React.Component {
       let locationProps= { lat: this.state.lat,
         lng: this.state.lng,
         date: this.state.date};
-
-      this.props.navigator.replace({
-      name: 'Activity',
-      passProps: {
-            place: locationProps
-          }
-      });
+      // this.props.navigator.replace({
+      // name: 'Activity',
+      // passProps: {
+      //       place: locationProps
+      //     }
+      // });
 
   }
 
@@ -111,9 +119,9 @@ class WelcomePage extends React.Component {
           <Text style={questionStyle}>When?</Text>
           <Calendar
             style={calenderStyle}
-
-            minDate={'2018-4-01'}
-            onDayPress={(day)=> this.setDate(day)}
+            minDate={this.state.date}
+            onDayPress={(day) => this.setDate(day)}
+            hideExtraDays={true}
             markedDates={mark}
             theme={{
               textSectionTitleColor: '#b6c1cd',

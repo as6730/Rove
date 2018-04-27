@@ -1381,7 +1381,7 @@ const styles = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.itinerary);
+
   return {
     itinerary: state.itinerary,
     loading: state.loading.loading,

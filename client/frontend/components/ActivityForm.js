@@ -53,9 +53,19 @@ class ActivityForm extends React.Component{
     let lat = this.props.place.lat;
     let lon = this.props.place.lng;
 
-    let itineraryParams = {arts:this.state.arts, bars:this.state.bars,
-      restaurants: this.state.restaurants,nature:this.state.nature,
-      date, lat, lon};
+    let arts = this.state.arts;
+    let bars = this.state.bars;
+    let restaurants = this.state.restaurants;
+    let nature = this.state.nature;
+
+    if (!nature && !arts && !restaurants && !nature && !bars){
+      arts = true;
+      bars = true;
+      restaurants = true;
+      nature = true;
+    }
+    
+    let itineraryParams = {arts, bars,restaurants, nature, date, lat, lon};
 
       // let itineraryParams = {
       //   lat : "37.801773",
