@@ -90,12 +90,13 @@ class ShowPage extends React.Component {
       latitude: 37.773972,
       longitude: -122.431297,
     };
+    console.log(this.props.place.photo_url);
 
     return (
       <View style = {styles.container}>
         <Image
           style = {styles.image}
-          source={{ uri: `https://duranvirginia.files.wordpress.com/2014/02/virginia-duran-blog-10-sites-to-take-the-best-skyline-pictures-in-san-francisco-mandarin-oriental-at-dusk.jpg`}}
+          source={{ uri: this.props.place.photo_url}}
           />
         <View style = {styles.info}>
           <View style = {styles.contactInfo}>

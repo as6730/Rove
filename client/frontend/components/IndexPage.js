@@ -1305,21 +1305,11 @@ const ITINERARY = [
 class IndexPage extends React.Component {
   constructor(props){
     super(props);
-    this.pickMe = this.pickMe.bind(this);
 
   }
 
   componentDidMount(){
     // this.props.fetchItinerary(this.props.itineraryParams);
-  }
-
-  pickMe(place){
-    this.props.navigator.push({
-      name: 'Show',
-      passProps: {
-          place
-        },
-    });
   }
 
 
@@ -1359,7 +1349,7 @@ class IndexPage extends React.Component {
       });
     };
 
-    mapPlaces(ITINERARY);
+    mapPlaces(this.props.itinerary);
 
     return (
       <ScrollView>
@@ -1382,7 +1372,7 @@ const styles = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-
+  console.log(state.itinerary)
   return {
     itinerary: state.itinerary,
     loading: state.loading.loading,
