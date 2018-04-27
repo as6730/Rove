@@ -1348,6 +1348,7 @@ class IndexPage extends React.Component {
     const mapPlaces = (itinerary) => {
       ITINERARY.forEach( (place, idx) => {
         keys[idx].forEach( key => {
+          if (Object.keys(itinerary[idx][String(key)]) === 0) { return; }
           places.push(
             <IndexItem
               itinerary={itinerary[idx][String(key)]}
