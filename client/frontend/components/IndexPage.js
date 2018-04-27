@@ -1309,7 +1309,7 @@ class IndexPage extends React.Component {
   }
 
   componentDidMount(){
-    // this.props.fetchItinerary(this.props.itineraryParams);
+    this.props.fetchItinerary(this.props.itineraryParams);
   }
 
 
@@ -1349,7 +1349,7 @@ class IndexPage extends React.Component {
       });
     };
 
-    mapPlaces(ITINERARY);
+    mapPlaces(this.props.itinerary);
 
     return (
       <ScrollView>
