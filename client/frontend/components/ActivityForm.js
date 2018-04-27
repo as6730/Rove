@@ -21,7 +21,6 @@ class ActivityForm extends React.Component{
       bars: null,
       modalVisible: true,
     };
-    console.log(this.props);
     this.onButtonPress = this.onButtonPress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -49,18 +48,24 @@ class ActivityForm extends React.Component{
   }
 
   handleSubmit(){
-    // let date = this.props.date;
-    // let lat = this.props.lat;
-    // let lng = this.props.lng;
-    // let itineraryParams = Object.assign(this.state, {}, {date:date, lat:lat, lng:lng});
-      let itineraryParams = {
-        lat : "37.801773",
-        lon : "-122.401026",
-        bars : "true",
-        restaurants : "true",
-        nature : "true",
-        arts : "true"
-      };
+    let date = this.props.place.date;
+
+    let lat = this.props.place.lat;
+    let lon = this.props.place.lng;
+
+    let itineraryParams = {arts:this.state.arts, bars:this.state.bars,
+      restaurants: this.state.restaurants,nature:this.state.nature,
+      date, lat, lon};
+
+      console.log(itineraryParams);
+      // let itineraryParams = {
+      //   lat : "37.801773",
+      //   lon : "-122.401026",
+      //   bars : "true",
+      //   restaurants : "true",
+      //   nature : "true",
+      //   arts : "true"
+      // };
 
     this.props.navigator.replace({
       name: 'Index',

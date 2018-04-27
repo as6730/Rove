@@ -50,7 +50,7 @@ class WelcomePage extends React.Component {
     this.props.navigator.replace({
     name: 'Activity',
     passProps: {
-          props: locationProps
+          place: locationProps
         }
     });
   }
