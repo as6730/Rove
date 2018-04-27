@@ -1336,7 +1336,7 @@ class IndexPage extends React.Component {
     const places = [];
 
     const mapPlaces = (itinerary) => {
-      ITINERARY.forEach( (place, idx) => {
+      itinerary.forEach( (place, idx) => {
         keys[idx].forEach( key => {
           if (Object.keys(itinerary[idx]).length === 0) { return; }
           places.push(
