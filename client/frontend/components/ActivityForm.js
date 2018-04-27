@@ -17,7 +17,7 @@ class ActivityForm extends React.Component{
       arts: null,
       bars: null
     };
-    console.log(this.props);
+
     this.onButtonPress = this.onButtonPress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -45,11 +45,9 @@ class ActivityForm extends React.Component{
 
   handleSubmit(){
     // let date = this.props.date;
-    // let city = this.props.city;
-    // let itineraryParams = Object.assign(this.state, {}, {date:date, city:city});
-    // let itinerary = this.props.fetchItinerary(itineraryParams);
-      // this.props.fetchItinerary();
-
+    // let lat = this.props.lat;
+    // let lng = this.props.lng;
+    // let itineraryParams = Object.assign(this.state, {}, {date:date, lat:lat, lng:lng});
       let itineraryParams = {
         lat : "37.801773",
         lon : "-122.401026",

@@ -18,6 +18,7 @@ class WelcomePage extends React.Component {
     super(props);
     let date = new Date;
     date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+
     this.state={
       city: '',
       date,
@@ -43,17 +44,17 @@ class WelcomePage extends React.Component {
       this.setState({city: 'San Francisco'});
     }
 
-    let location = this.getLocationFromGoogle();
-
-    this.setState({ lat: location["lat"] });
-    this.setState({ lng: location["lng"] });
-    let locationProps= { lat: this.state.lat,
-      lng: this.state.lng,
-      date: this.state.date};
+    // let location = this.getLocationFromGoogle();
+    //     console.log(location);
+    // this.setState({ lat: location["lat"] });
+    // this.setState({ lng: location["lng"] });
+    // let locationProps= { lat: this.state.lat,
+    //   lng: this.state.lng,
+    //   date: this.state.date};
     this.props.navigator.replace({
     name: 'Activity',
     passProps: {
-          props: locationProps
+          // props: locationProps
         }
     });
   }
@@ -68,8 +69,6 @@ class WelcomePage extends React.Component {
         return responseJson["results"]["geometry"]["location"];
     });
   }
-
-
 
 
   render() {
@@ -87,6 +86,12 @@ class WelcomePage extends React.Component {
       questionContainer2,
       calenderStyle
     } = styles;
+
+    const mark = {
+       [this.state.date] : {selected: true, selectedColor:'#fff'}
+    };
+
+    console.log(mark);
 
     return (
       <View>
@@ -107,11 +112,13 @@ class WelcomePage extends React.Component {
           <Text style={questionStyle}>When?</Text>
           <Calendar
             style={calenderStyle}
-            minDate={Date()}
+
+            minDate={'2018-4-01'}
             onDayPress={(day)=> this.setDate(day)}
+            markedDates={mark}
             theme={{
               textSectionTitleColor: '#b6c1cd',
-              selectedDayBackgroundColor: '#FE5D26',
+
               selectedDayTextColor: '#FE5D26',
               selectedColor: '#FE5D26',
               arrowColor: '#FE5D26',
