@@ -27,6 +27,8 @@ class WelcomePage extends React.Component {
 
     this.setDate = this.setDate.bind(this);
     this.handleText = this.handleText.bind(this);
+    this.navigate = this.navigate.bind(this);
+    this.location = this.location.bind(this)
   }
 
   handleText(text){
@@ -37,6 +39,9 @@ class WelcomePage extends React.Component {
     this.setState({date: newDate.dateString});
   }
 
+  location(){
+    this.getLocationFromGoogle();
+  }
 
   navigate(){
     // if (this.state.city === ''){
@@ -45,10 +50,11 @@ class WelcomePage extends React.Component {
 
 
     let location = this.getLocationFromGoogle();
+    console.log(location);
       // console.log(location);
       // JSON.parse(location);
       // console.log(location["lat"])
-      console.log(location);
+    // console.log(this.getL["results"][0]["geometry"]["location"]ocationFromGoogle()["results"]);
     // this.setState({ lat: location["lat"] });
     // this.setState({ lng: location["lng"] });
     // let locationProps= { lat: this.state.lat,
@@ -69,13 +75,14 @@ class WelcomePage extends React.Component {
     let city = this.setState({city: 'San Francisco'});
     let URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.city}&sensor=false`;
 
-    let request = fetch(URL).then((response) => { return response.json(); } )
-     .then((responseJSON) => { responseJSON.json();
+    fetch(URL).then((response) => { return response.json();}
+    ).then((response) => {
+      // return response["results"][0]["geometry"]["location"];
        // responseJSON["results"][0]["geometry"]["location"];
-       console.log(responseJSON["results"][0]["geometry"]["location"]);
+       console.log(response);
        // console.log(responseJSON["results"][0]["geometry"]["location"]);
      });
-
+     // return request;
      // const results = JSON.parse(request);
      // console.log(results);
   }
