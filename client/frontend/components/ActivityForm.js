@@ -64,9 +64,9 @@ class ActivityForm extends React.Component{
       restaurants = true;
       nature = true;
     }
-    
-    let itineraryParams = {arts, bars,restaurants, nature, date, lat, lon};
 
+    let itineraryParams = {arts, bars,restaurants, nature, date, lat, lon};
+    console.log(itineraryParams);
       // let itineraryParams = {
       //   lat : "37.801773",
       //   lon : "-122.401026",
@@ -141,7 +141,7 @@ class ActivityForm extends React.Component{
 
             <CardSection>
               <BigButton
-                onPress={() =>this.onButtonPress("bars")}
+                onPress={() => this.onButtonPress("bars")}
                 isPressed={this.state.bars}
                 color="gray"
                 imgUrl={require("../images/Nightlife.jpg")}>
