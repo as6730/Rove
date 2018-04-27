@@ -10,6 +10,7 @@
     "react": "16.3.1",
     "react-native": "^0.54",
     "react-native-animatable": "^1.2.4",
+    "react-native-calendar-events": "^1.5.0",
     "react-native-calendars": "^1.18.2",
     "react-native-deprecated-custom-components": "^0.1.2",
     "react-native-loading-spinner-overlay": "^0.5.2",

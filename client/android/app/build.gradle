@@ -137,6 +137,8 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-add-calendar-event')
+    compile project(':react-native-calendar-events')
     compile project(':react-native-spinkit')
     compile project(':react-native-maps')
     compile fileTree(dir: "libs", include: ["*.jar"])
