@@ -1306,12 +1306,12 @@ class IndexPage extends React.Component {
   constructor(props){
     super(props);
     this.pickMe = this.pickMe.bind(this);
-    console.log(props);
+
   }
 
-  // componentDidMount(){
-  //   this.props.fetchItinerary(this.props.itineraryParams);
-  // }
+  componentDidMount(){
+    this.props.fetchItinerary(this.props.itineraryParams);
+  }
 
   pickMe(place){
     this.props.navigator.push({
@@ -1381,7 +1381,7 @@ const styles = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
+  console.log(state.itinerary);
   return {
     itinerary: state.itinerary,
     loading: state.loading.loading,

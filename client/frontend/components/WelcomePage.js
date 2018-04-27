@@ -58,7 +58,7 @@ class WelcomePage extends React.Component {
             place: locationProps
           }
       });
-    
+
   }
 
   async getLocationFromGoogle(city) {

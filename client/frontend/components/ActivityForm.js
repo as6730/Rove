@@ -21,7 +21,7 @@ class ActivityForm extends React.Component{
       bars: null,
       modalVisible: true,
     };
-    console.log(this.props);
+
     this.onButtonPress = this.onButtonPress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -50,7 +50,6 @@ class ActivityForm extends React.Component{
 
   handleSubmit(){
     let date = this.props.place.date;
-
     let lat = this.props.place.lat;
     let lon = this.props.place.lng;
 
@@ -58,7 +57,6 @@ class ActivityForm extends React.Component{
       restaurants: this.state.restaurants,nature:this.state.nature,
       date, lat, lon};
 
-      console.log(itineraryParams);
       // let itineraryParams = {
       //   lat : "37.801773",
       //   lon : "-122.401026",

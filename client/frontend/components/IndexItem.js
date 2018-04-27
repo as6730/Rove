@@ -44,7 +44,7 @@ class IndexItem extends React.Component {
           </IndexButton>
         </CardSection>
       </Swiper>
-    )
+    );
   }
 }
 
