@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, Image} from "react-native";
+import { Text, TouchableOpacity, Image, View} from "react-native";
 
 //ActivityForm Large Button
 
@@ -24,7 +24,12 @@ const IndexButton = ({ onPress, children, isPressed, color, imgUrl}) => {
           borderBottomWidth: 1,
           height: 110,
           width: "100%"}}>
-      <Image style={{height: '100%', width: "100%"}} source={imgUrl}/>>
+      <Image style={{height: '100%', width: "100%"}} source={imgUrl}/>
+      <View style={{
+          position: 'absolute',
+          backgroundColor: 'rgba(236, 236, 236, 0.75)',
+          height: '100%',
+          width: "100%"}}/>
       <Text style={currentText}>{children}</Text>
     </TouchableOpacity>
   );
