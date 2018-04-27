@@ -20,7 +20,9 @@ class WelcomePage extends React.Component {
     date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
     this.state={
       city: '',
-      date
+      date,
+      lat: '',
+      lng: '',
     };
 
     this.setDate = this.setDate.bind(this);
@@ -36,17 +38,37 @@ class WelcomePage extends React.Component {
   }
 
 
-  navigate(props){
-    if (props.city === ''){
-      props.city = 'San Francisco';
+  navigate(){
+    if (this.state.city === ''){
+      this.setState({city: 'San Francisco'});
     }
+
+    let location = this.getLocationFromGoogle();
+
+    this.setState({ lat: location["lat"] });
+    this.setState({ lng: location["lng"] });
+    let locationProps= { lat: this.state.lat,
+      lng: this.state.lng,
+      date: this.state.date};
     this.props.navigator.replace({
     name: 'Activity',
     passProps: {
-          props
+          props: locationProps
         }
     });
   }
+
+  getLocationFromGoogle() {
+
+    fetch(`http://maps.googleapis.com/maps/api/geocode/json?address=${this.state.city}&sensor=false`)
+      .then((response) => {
+        console.log(response);
+        return response.json();})
+      .then((responseJson) => {
+        return responseJson["results"]["geometry"]["location"];
+    });
+  }
+
 
 
 
@@ -99,7 +121,7 @@ class WelcomePage extends React.Component {
               color= '#FE5D26'
               style={buttonStyle}
               title={'Submit'}
-              onPress={()=> this.navigate(this.state)}>'Submit'
+              onPress={()=> this.navigate()}>'Submit'
             </Button>
         </View >
       </View>

@@ -17,6 +17,7 @@ class ActivityForm extends React.Component{
       arts: null,
       bars: null
     };
+    console.log(this.props);
     this.onButtonPress = this.onButtonPress.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
