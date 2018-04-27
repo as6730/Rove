@@ -20,7 +20,7 @@ class WelcomePage extends React.Component {
     date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
 
     this.state={
-      city: 'San Francisco',
+      city: '',
       date,
       lat: '',
       lng: '',
@@ -29,7 +29,7 @@ class WelcomePage extends React.Component {
     this.setDate = this.setDate.bind(this);
     this.handleText = this.handleText.bind(this);
     this.navigate = this.navigate.bind(this);
-    this.location = this.location.bind(this)
+    this.getLocationFromGoogle("San Francisco");
   }
 
   handleText(text){
@@ -40,60 +40,38 @@ class WelcomePage extends React.Component {
     this.setState({date: newDate.dateString});
   }
 
-  location(){
-    this.getLocationFromGoogle();
-  }
 
   navigate(){
-    // if (this.state.city === ''){
-    //   this.setState({city: 'San Francisco'});
-    // }
+    this.getLocationFromGoogle(this.state.city);
+    let locationProps= { lat: this.state.lat,
+      lng: this.state.lng,
+      date: this.state.date};
 
-
-    let location = this.getLocationFromGoogle();
-    console.log(location);
-      // console.log(location);
-      // JSON.parse(location);
-      // console.log(location["lat"])
-    // console.log(this.getL["results"][0]["geometry"]["location"]ocationFromGoogle()["results"]);
-    // this.setState({ lat: location["lat"] });
-    // this.setState({ lng: location["lng"] });
-    // let locationProps= { lat: this.state.lat,
-    //   lng: this.state.lng,
-    //   date: this.state.date};
     this.props.navigator.replace({
     name: 'Activity',
     passProps: {
-          // props: locationProps
+          props: locationProps
         }
     });
   }
 
-  getLocationFromGoogle() {
-    if (this.state.city === ''){
-      this.setState({city: 'San Francisco'});
-    }
-    let city = this.setState({city: 'San Francisco'});
-    let URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.city}&sensor=false`;
-
+  getLocationFromGoogle(city) {
+    let URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&sensor=false`;
+    console.log(URL);
     fetch(URL).then((response) => { return response.json();}
   ).then((responseJSON) => {
-      // return response["results"][0]["geometry"]["location"];
-       // responseJSON["results"][0]["geometry"]["location"];
-       // console.log(response[0]["geometry"]["location"]);
-       console.log(responseJSON["results"][0]["geometry"]["location"]);
+    return (
+      this.setState({lat:
+        responseJSON["results"][0]["geometry"]["location"]["lat"]}),
+      this.setState({lng:
+        responseJSON["results"][0]["geometry"]["location"]["lng"]})
+      );
      });
-     // return request;
-     // const results = JSON.parse(request);
-     // console.log(results);
   }
 
 
   render() {
     //// TODO: import link from controller
-    let pic = {
-      uri:`http://res.cloudinary.com/dkaolr6pg/image/upload/v1524615811/pretty.jpg`,
-    };
     const {
       imageStyle,
       logoStyle,
@@ -109,7 +87,6 @@ class WelcomePage extends React.Component {
        [this.state.date] : {selected: true, selectedColor:'#fff'}
     };
 
-    console.log(mark);
 
     return (
       <View>
