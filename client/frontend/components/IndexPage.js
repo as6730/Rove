@@ -1310,7 +1310,7 @@ class IndexPage extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchItinerary(this.props.itineraryParams);
+    // this.props.fetchItinerary(this.props.itineraryParams);
   }
 
   pickMe(place){

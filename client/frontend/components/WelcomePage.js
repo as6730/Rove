@@ -19,16 +19,18 @@ class WelcomePage extends React.Component {
     let date = new Date;
     date = this.converDate(date)
 
-    this.state={
+    this.state = {
       city: '',
       date,
       lat: '',
       lng: '',
+      hasError: false,
     };
 
     this.setDate = this.setDate.bind(this);
     this.handleText = this.handleText.bind(this);
     this.navigate = this.navigate.bind(this);
+    this.errors = this.errors.bind(this);
   }
 
   handleText(text){
@@ -49,13 +51,26 @@ class WelcomePage extends React.Component {
      return yyyy + '-' + (mmChars[1] ? mm : "0" + mmChars[0]) + "-" + (ddChars[1] ? dd : "0" + ddChars[0]) ;
  }
 
+  errors(){
+    if (this.state.hasError === undefined || this.state.hasError === false){
+      return null
+    } else {
+      return(
+        <Text>Invalid City</Text>
+      )
+    }
+  }
+
   async navigate(){
     let location = await this.getLocationFromGoogle(this.state.city);
-
+    if (location["results"].length == 0){
+      this.setState({ hasError: true })
+      this.errors()
+    } else {
       this.setState({lat:
         location["results"][0]["geometry"]["location"]["lat"]})
-        this.setState({lng:
-          location["results"][0]["geometry"]["location"]["lng"]})
+      this.setState({lng:
+        location["results"][0]["geometry"]["location"]["lng"]})
 
       let locationProps= { lat: this.state.lat,
         lng: this.state.lng,
@@ -66,7 +81,7 @@ class WelcomePage extends React.Component {
             place: locationProps
           }
       });
-
+    }
   }
 
   async getLocationFromGoogle(city) {
@@ -99,7 +114,6 @@ class WelcomePage extends React.Component {
        [this.state.date] : {selected: true, selectedColor:'#FE5D26'}
     };
 
-
     return (
       <View>
         <Image
@@ -115,6 +129,7 @@ class WelcomePage extends React.Component {
               onChangeText={(text) => this.handleText(text)}
               placeholder={"Where to?"}/>
           </View>
+          <View>{this.errors()}</View>
         <View style={questionContainer2}>
           <Text style={questionStyle}>When?</Text>
           <Calendar
