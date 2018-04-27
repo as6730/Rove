@@ -20,7 +20,7 @@ class WelcomePage extends React.Component {
     date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
 
     this.state={
-      city: '',
+      city: 'San Francisco',
       date,
       lat: '',
       lng: '',
@@ -28,6 +28,8 @@ class WelcomePage extends React.Component {
 
     this.setDate = this.setDate.bind(this);
     this.handleText = this.handleText.bind(this);
+    this.navigate = this.navigate.bind(this);
+    this.location = this.location.bind(this)
   }
 
   handleText(text){
@@ -38,14 +40,22 @@ class WelcomePage extends React.Component {
     this.setState({date: newDate.dateString});
   }
 
+  location(){
+    this.getLocationFromGoogle();
+  }
 
   navigate(){
-    if (this.state.city === ''){
-      this.setState({city: 'San Francisco'});
-    }
+    // if (this.state.city === ''){
+    //   this.setState({city: 'San Francisco'});
+    // }
 
-    // let location = this.getLocationFromGoogle();
-    //     console.log(location);
+
+    let location = this.getLocationFromGoogle();
+    console.log(location);
+      // console.log(location);
+      // JSON.parse(location);
+      // console.log(location["lat"])
+    // console.log(this.getL["results"][0]["geometry"]["location"]ocationFromGoogle()["results"]);
     // this.setState({ lat: location["lat"] });
     // this.setState({ lng: location["lng"] });
     // let locationProps= { lat: this.state.lat,
@@ -60,14 +70,22 @@ class WelcomePage extends React.Component {
   }
 
   getLocationFromGoogle() {
+    if (this.state.city === ''){
+      this.setState({city: 'San Francisco'});
+    }
+    let city = this.setState({city: 'San Francisco'});
+    let URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.city}&sensor=false`;
 
-    fetch(`http://maps.googleapis.com/maps/api/geocode/json?address=${this.state.city}&sensor=false`)
-      .then((response) => {
-        console.log(response);
-        return response.json();})
-      .then((responseJson) => {
-        return responseJson["results"]["geometry"]["location"];
-    });
+    fetch(URL).then((response) => { return response.json();}
+  ).then((responseJSON) => {
+      // return response["results"][0]["geometry"]["location"];
+       // responseJSON["results"][0]["geometry"]["location"];
+       // console.log(response[0]["geometry"]["location"]);
+       console.log(responseJSON["results"][0]["geometry"]["location"]);
+     });
+     // return request;
+     // const results = JSON.parse(request);
+     // console.log(results);
   }
 
 

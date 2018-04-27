@@ -21,10 +21,9 @@ const BigButton = ({ onPress, children, isPressed, color, imgUrl}) => {
       style={currentStyle,
         { backgroundColor: 'transparent',
           borderColor: '#FE5D26',
-          borderRadius: 3,
-          borderWidth: 1,
+          borderBottomWidth: 1,
           width: "100%",
-          height: 148,
+          height: 160.5,
           position: 'relative'}}>
       <Image style={{height: '100%', width: "100%"}} source={imgUrl}/>
       <Text style={currentText}>{children}</Text>
@@ -48,22 +47,23 @@ const styles = {
     borderColor: "#007aff",
   },
   textStyle: {
-    color: "black",
+    fontFamily: 'Helvetica Neue',
+    color: "#424242",
     fontWeight: "600",
-    fontSize: 24,
-    paddingTop: 100,
+    fontSize: 36,
+    paddingTop: 115,
     marginBottom: 20,
-    paddingLeft: 20,
+    paddingLeft: 10,
     position: "absolute",
     borderBottomWidth: 4,
   },
   pressedTextStyle: {
-    color: "black",
+    color: "#424242",
     fontWeight: "700",
-    fontSize: 36,
-    paddingTop: 90,
+    fontSize: 56,
+    paddingTop: 95,
     marginBottom: 20,
-    paddingLeft: 20,
+    paddingLeft: 10,
     position: "absolute",
   }
 };

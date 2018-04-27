@@ -21,9 +21,8 @@ const IndexButton = ({ onPress, children, isPressed, color, imgUrl}) => {
       style={currentStyle,
         { backgroundColor: 'transparent',
           borderColor: '#FE5D26',
-          borderRadius: 5,
-          borderWidth: 1,
-          height: 105,
+          borderBottomWidth: 1,
+          height: 110,
           width: "100%"}}>
       <Image style={{height: '100%', width: "100%"}} source={imgUrl}/>>
       <Text style={currentText}>{children}</Text>
@@ -44,13 +43,11 @@ const styles = {
     alignSelf: "stretch",
     height: 150,
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: "#007aff",
   },
   textStyle: {
     alignItems:'flex-start',
-    color: "black",
-    fontWeight: "400",
+    color: "#424242",
+    fontWeight: "600",
     fontFamily: 'Helvetica Neue',
     fontSize: 24,
     marginTop: 10,
@@ -61,8 +58,8 @@ const styles = {
   pressedTextStyle: {
     fontFamily: 'Helvetica Neue',
     alignItems:'flex-start',
-    color: "#fff",
-    fontWeight: "400",
+    color: "#424242",
+    fontWeight: "600",
     fontSize: 24,
     marginTop: 10,
     marginBottom: 10,

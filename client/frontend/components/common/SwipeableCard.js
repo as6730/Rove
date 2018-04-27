@@ -12,7 +12,6 @@ export class SwipeableCard extends React.Component {
       if (Math.abs(vx) >= 0.5 || Math.abs(dx) >= 0.5 * screenWidth) {
         this.props.onSwipe();
       } else {
-        console.log("nah!");
         Animated.spring(this.translateX, {
           toValue: 0,
           bounciness: 10

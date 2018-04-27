@@ -1,10 +1,12 @@
 import React from 'react';
-import { ScrollView,
+import {
+  ScrollView,
   View,
   Text,
   StyleSheet,
   Image,
-  ListView } from 'react-native';
+  ListView
+  } from 'react-native';
 import { Card, BigButton, CardSection, OurSpinner } from './common';
 import IndexButton from './common/IndexButton';
 import { connect } from "react-redux";
@@ -1330,7 +1332,13 @@ class IndexPage extends React.Component {
 
       <ScrollView>
       <Card>
-        <Swiper horizontal={true} height={110}>
+        <Swiper
+          style= {styles.swiper}
+          horizontal={true}
+          height={110}
+          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          activeDot={<View style={{backgroundColor: '#FE5D26', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          paginationStyle={{ bottom: 5, right: '85%'}}>
           <CardSection id={1}>
             <IndexButton
               onPress={() => this.pickMe(ITINERARY[0]["breakfast"][0])}
@@ -1347,7 +1355,13 @@ class IndexPage extends React.Component {
           </CardSection>
         </Swiper>
 
-        <Swiper horizontal={true} height={110}>
+        <Swiper
+          style= {styles.swiper}
+          horizontal={true}
+          height={110}
+          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          activeDot={<View style={{backgroundColor: '#FE5D26', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          paginationStyle={{ bottom: 5, right: '85%'}}>
           <CardSection id={3}>
             <IndexButton
               onPress={() => this.pickMe(ITINERARY[2]["nature"][0])}
@@ -1364,7 +1378,13 @@ class IndexPage extends React.Component {
           </CardSection>
         </Swiper>
 
-        <Swiper horizontal={true} height={110}>
+        <Swiper
+          style= {styles.swiper}
+          horizontal={true}
+          height={110}
+          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          activeDot={<View style={{backgroundColor: '#FE5D26', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          paginationStyle={{ bottom: 5, right: '85%'}}>
           <CardSection id={5}>
             <IndexButton
               imgUrl={require("../images/Food.jpg")}>
@@ -1379,7 +1399,13 @@ class IndexPage extends React.Component {
           </CardSection>
         </Swiper>
 
-        <Swiper horizontal={true} height={110}>
+        <Swiper
+          style= {styles.swiper}
+          horizontal={true}
+          height={110}
+          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          activeDot={<View style={{backgroundColor: '#FE5D26', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          paginationStyle={{ bottom: 5, right: '85%'}}>
           <CardSection id={7}>
             <IndexButton
               imgUrl={require("../images/Culture.jpg")}>
@@ -1394,7 +1420,13 @@ class IndexPage extends React.Component {
           </CardSection>
         </Swiper>
 
-        <Swiper horizontal={true} height={110}>
+        <Swiper
+          style= {styles.swiper}
+          horizontal={true}
+          height={110}
+          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          activeDot={<View style={{backgroundColor: '#FE5D26', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          paginationStyle={{ bottom: 5, right: '85%'}}>
           <CardSection id={9}>
             <IndexButton
               imgUrl={require("../images/Food.jpg")}>
@@ -1409,7 +1441,13 @@ class IndexPage extends React.Component {
           </CardSection>
         </Swiper>
 
-        <Swiper horizontal={true} height={110}>
+        <Swiper
+          style= {styles.swiper}
+          horizontal={true}
+          height={110}
+          dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          activeDot={<View style={{backgroundColor: '#FE5D26', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+          paginationStyle={{ bottom: 5, right: '85%'}}>
         <CardSection id={11}>
           <IndexButton
             imgUrl={require("../images/Nightlife.jpg")}>
