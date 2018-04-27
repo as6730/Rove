@@ -56,7 +56,7 @@ class WelcomePage extends React.Component {
       return null
     } else {
       return(
-        <Text>Invalid City</Text>
+        <Text style={styles.errorStyle}>Invalid City</Text>
       )
     }
   }
@@ -107,7 +107,8 @@ class WelcomePage extends React.Component {
       containerStyle,
       questionContainer1,
       questionContainer2,
-      calenderStyle
+      calenderStyle,
+      errorStyle,
     } = styles;
 
     const mark = {
@@ -128,8 +129,8 @@ class WelcomePage extends React.Component {
               value={this.state.city}
               onChangeText={(text) => this.handleText(text)}
               placeholder={"Where to?"}/>
+            <View>{this.errors()}</View>
           </View>
-          <View>{this.errors()}</View>
         <View style={questionContainer2}>
           <Text style={questionStyle}>When?</Text>
           <Calendar
@@ -146,30 +147,39 @@ class WelcomePage extends React.Component {
               todayTextColor: '#FE5D26',
             }}
             />
-            <Button
-              color= '#FE5D26'
-              style={buttonStyle}
-              title={'Submit'}
-              onPress={()=> this.navigate()}>'Submit'
-            </Button>
         </View >
+        <View transform={[{translateY: 115}]}>
+        <Button
+          color= '#FE5D26'
+          style={buttonStyle}
+          title={'Submit'}
+          onPress={()=> this.navigate()}>
+          'Submit'
+        </Button>
+        </View>
       </View>
     );
   }
 }
 
-const styles= {
+const styles = {
   imageStyle: {
     width: "100%",
     height: "26%",
-    marginTop: 38,
+    marginTop: 20,
     marginBottom: 5,
     position: 'absolute',
+  },
+  errorStyle: {
+    height: 16,
+    color: "#FE5D26",
+    textAlign: 'center',
+    width: '100%',
   },
   logoStyle: {
     width: "100%",
     height: "25%",
-    marginTop: 41,
+    marginTop: 23,
     marginBottom: 5,
     backgroundColor: 'rgba(236, 236, 236, 0.3)',
   },
@@ -183,12 +193,13 @@ const styles= {
     marginRight: 5,
     marginBottom: 5,
     backgroundColor: 'transparent',
+    position: 'fixed',
+    // transform: [{translateY: -20}]
   },
   questionContainer1: {
     width: '100%',
-    padding: 5,
     flexDirection: "column",
-    height: '12%',
+    height: '15%',
     backgroundColor: 'transparent',
   },
   questionContainer2: {
