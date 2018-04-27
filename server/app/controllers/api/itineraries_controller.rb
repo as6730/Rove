@@ -8,7 +8,7 @@ class Api::ItinerariesController < ApplicationController
     # get restaurants
     restaurants_hash = {}
     if params[:restaurants].downcase == "true"
-      restaurants_hash["breakfast"] = PlacesUtils.get_places(params[:amt].to_i, params[:lat], params[:lon], "restaurant", ["id", "name", "formatted_phone_number", "formatted_address", "rating", "website", "opening_hours", "price_level", "geometry"], "breakfast", params[:date])
+      restaurants_hash["breakfast"] = PlacesUtils.get_places(params[:amt].to_i, params[:lat], params[:lon], "restaurant", ["id", "name", "formatted_phone_number", "formatted_address", "rating", "website", "opening_hours", "price_level", "geometry"], "brunch", params[:date])
       restaurants_hash["lunch"] = PlacesUtils.get_places(params[:amt].to_i, params[:lat], params[:lon], "restaurant", ["id", "name", "formatted_phone_number", "formatted_address", "rating", "website", "opening_hours", "price_level", "geometry"], "lunch", params[:date])
       restaurants_hash["dinner"] = PlacesUtils.get_places(params[:amt].to_i, params[:lat], params[:lon], "restaurant", ["id", "name", "formatted_phone_number", "formatted_address", "rating", "website", "opening_hours", "price_level", "geometry"], "dinner", params[:date])
     end
@@ -38,7 +38,7 @@ class Api::ItinerariesController < ApplicationController
 
     render json: itinerary
   end
-  
+
   private
 
   def itinerary_params

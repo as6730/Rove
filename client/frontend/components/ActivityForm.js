@@ -139,23 +139,26 @@ const styles = {
     color:'red'
   },
   textTitleStyle:{
-    color: '#FE5D26',
-    fontSize: 20,
+    color: '#424242',
+    paddingTop: 25,
+    fontSize: 24,
     marginBottom: 20,
+    fontWeight: '700',
     textAlign:"center"
   }, textStyle:{
-      color: '#FE5D26',
-      fontSize: 16,
+      color: '#424242',
+      fontSize: 20,
       marginBottom: 30,
       textAlign:"center"
     },
-    modalBoxStyle:{
+  modalBoxStyle:{
     backgroundColor: "white",
     padding: 22,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 4,
-    borderColor: "rgba(0, 0, 0, 0.1)"
+    borderRadius: 6,
+    borderColor: "#FE5D26",
+    borderWidth: 1,
   }
 };
 
