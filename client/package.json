@@ -7,7 +7,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.38",
     "react": "16.3.1",
     "react-native": "^0.54",
     "react-native-animatable": "^1.2.4",
@@ -16,7 +15,6 @@
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-maps": "^0.21.0",
     "react-native-modal": "^5.4.0",
-    "react-native-spinkit": "^1.1.1",
     "react-native-swiper": "^1.5.13",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
