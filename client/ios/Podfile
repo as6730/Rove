@@ -37,11 +37,9 @@ target 'Weekender' do
   pod 'react-native-google-maps', path: rn_maps_path  # Remove this line if you don't want to support GoogleMaps on iOS
   pod 'GoogleMaps'  # Remove this line if you don't want to support GoogleMaps on iOS
   pod 'Google-Maps-iOS-Utils' # Remove this line if you don't want to support GoogleMaps on iOS
-  pod 'react-native-spinkit', :path => '../node_modules/react-native-spinkit'
 
   pod 'react-native-calendar-events', :path => '../node_modules/react-native-calendar-events'
-
-  pod 'react-native-add-calendar-event', :path => '../node_modules/react-native-add-calendar-event'
+  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
 
 end
 

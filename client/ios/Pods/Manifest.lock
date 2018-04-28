@@ -29,6 +29,8 @@ PODS:
     - GoogleMaps/Base
   - React (0.54.4):
     - React/Core (= 0.54.4)
+  - react-native-calendar-events (1.5.0):
+    - React
   - react-native-google-maps (0.21.0):
     - Google-Maps-iOS-Utils (= 2.1.0)
     - GoogleMaps (= 2.5.0)
@@ -80,6 +82,8 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - ReactNativePermissions (1.1.1):
+    - React
   - yoga (0.54.4.React)
 
 DEPENDENCIES:
@@ -88,6 +92,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - Google-Maps-iOS-Utils
   - GoogleMaps
+  - react-native-calendar-events (from `../node_modules/react-native-calendar-events`)
   - react-native-google-maps (from `../node_modules/react-native-maps`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - React/Core (from `../node_modules/react-native`)
@@ -103,6 +108,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - ReactNativePermissions (from `../node_modules/react-native-permissions`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
 SPEC REPOS:
@@ -120,10 +126,14 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
+  react-native-calendar-events:
+    :path: "../node_modules/react-native-calendar-events"
   react-native-google-maps:
     :path: "../node_modules/react-native-maps"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
+  ReactNativePermissions:
+    :path: "../node_modules/react-native-permissions"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
 
@@ -135,10 +145,12 @@ SPEC CHECKSUMS:
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   React: c237e42de9c70e5cac6eeb52b4cfd3a0910c1f00
+  react-native-calendar-events: fe6fbc8ed337a7423c98f2c9012b25f20444de09
   react-native-google-maps: 2cfe3b01f8422c7dae51d8764139fd70f888cfce
   react-native-maps: 066c2afcc89e18726377bcc685315f989ca22449
+  ReactNativePermissions: 9f2d9c45c98800795e6c2ed330e25d11a66a8169
   yoga: 55da126afc384965b96bff46652464373b330add
 
-PODFILE CHECKSUM: 39447e5c91cad4aaab86d996bab7ce295062489d
+PODFILE CHECKSUM: 341502a736d0ee634db8d6603ed82d47a1131301
 
 COCOAPODS: 1.5.0

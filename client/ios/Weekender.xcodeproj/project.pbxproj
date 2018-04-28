@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -35,13 +36,9 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* WeekenderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WeekenderTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		48DF1A2A803748EFB63A5905 /* OverpassMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FA3EC2F2FDA4EC995FC4A28 /* OverpassMono-Regular.ttf */; };
-		6EF24CC090DD446AAD070586 /* OverpassMono-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09DAD6B6439947CC8103D1DA /* OverpassMono-SemiBold.ttf */; };
-		7C39B9DD396D4E84BBC6B27E /* OverpassMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F0917FD93747427795919A4C /* OverpassMono-Bold.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B19BE80DB57AA9A5400DDA98 /* libPods-Weekender.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F6E77F1325EF84D2061F35 /* libPods-Weekender.a */; };
-		B41DE207DD47415F886C1DD1 /* OverpassMono-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 550514A642664E4A9C10A7C4 /* OverpassMono-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +104,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
+		};
+		20E748F02094FA00007F957C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C035236209384C2006A0883 /* RNCalendarEvents.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEC43C6A1C723089001221C6;
+			remoteInfo = RNCalendarEvents;
+		};
+		20E748F32094FA00007F957C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C03522820938359006A0883 /* RNCalendarEvents.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEC43C6A1C723089001221C6;
+			remoteInfo = RNCalendarEvents;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -480,6 +491,7 @@
 		0C03522920938359006A0883 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				20E748F42094FA00007F957C /* libRNCalendarEvents.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -487,6 +499,7 @@
 		0C035237209384C2006A0883 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				20E748F12094FA00007F957C /* libRNCalendarEvents.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -903,6 +916,20 @@
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		20E748F12094FA00007F957C /* libRNCalendarEvents.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCalendarEvents.a;
+			remoteRef = 20E748F02094FA00007F957C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		20E748F42094FA00007F957C /* libRNCalendarEvents.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCalendarEvents.a;
+			remoteRef = 20E748F32094FA00007F957C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1122,10 +1149,6 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				7C39B9DD396D4E84BBC6B27E /* OverpassMono-Bold.ttf in Resources */,
-				B41DE207DD47415F886C1DD1 /* OverpassMono-Light.ttf in Resources */,
-				48DF1A2A803748EFB63A5905 /* OverpassMono-Regular.ttf in Resources */,
-				6EF24CC090DD446AAD070586 /* OverpassMono-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

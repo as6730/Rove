@@ -9,8 +9,7 @@ import { Button } from './common';
 import MapView from 'react-native-maps';
 import {Marker} from 'react-native-maps';
 import RNCalendarEvents from 'react-native-calendar-events';
-// import { authorizationStatus } from 'react-native-calendar-events';
-// import NativeModules  from 'react-native';
+import Permissions from 'react-native-permissions'
 
 // TODO: Import marker for lat and long that are being passed in
 
@@ -47,8 +46,45 @@ class ShowPage extends React.Component {
 //   .catch(error => console.warn('Auth Error: ', error));
 // }
 
+  addEventToCalendar() {
+    RNCalendarEvents.findCalendars().then(response => {
+      console.log("calendars:" +  JSON.stringify(response));
+      let calendarId = response[0].id;
+      console.log("calendarId: " + calendarId);
+      RNCalendarEvents.saveEvent('Sample Event', {
+          calendarId: calendarId,
+          startDate: '2018-04-29T19:26:00.000Z',
+          endDate: '2018-04-29T20:26:00.000Z'
+        });
+    });
+
+  }
+
   submit(){
-    this.RNCalendarEvents.authorizationStatus().then(response => alert(response));
+    Permissions.check('event').then(response => {
+      this.setState({ eventPermission: response })
+      // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
+      if (response === 'undetermined') {
+        Permissions.request('event').then(response => {
+          // Returns once the user has chosen to 'allow' or to 'not allow' access
+          // Response is one of: 'authorized', 'denied', 'restricted', or 'undetermined'
+          this.setState({ eventPermission: response })
+          if (response === 'authorized') {
+            // Save the event to the calednar
+            this.addEventToCalendar();
+          } else {
+            alert('Can\'t access calendar');
+            // TODO: add a message to send the user to the settings page to approve the permissions
+          }
+        })
+      } else if (response === 'authorized') {
+        // Save the event to the calednar
+        this.addEventToCalendar();
+      } else {
+        alert('Can\'t access calendar');
+        // TODO: add a message to send the user to the settings page to approve the permissions
+      }
+    })
     // RNCalendarEvents.authorizationStatus()
     // .then(status => {
     //   // handle status
@@ -57,17 +93,9 @@ class ShowPage extends React.Component {
     // .catch(error => {
     //   console.log(error);
     // });
-    // const find = RNCalendarEvents.findCalendars;
-    // console.log(find);
-    // RNCalendarEvents.authorizationStatus().then((response) => { return response.json();})
-    // .then((responseJSON) => { return(this.setState({ auth: responseJSON }));
-    // });
+
   }
-    // RNCalendarEvents.saveEvent('Title of event', {
-    //     calendarId: '141',
-    //     startDate: '2016-08-19T19:26:00.000Z',
-    //     endDate: '2017-08-19T19:26:00.000Z'
-    //   });
+
 
   // navigate(){
   //   this.getLocationFromGoogle(this.state.city);
