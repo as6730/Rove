@@ -85,18 +85,19 @@ class ShowPage extends React.Component {
   //       }
   //   });
   // }
+
+
   render() {
     const marker = {
       latitude: 37.773972,
       longitude: -122.431297,
     };
-    console.log(this.props.place.photo_url);
-
+    
     return (
       <View style = {styles.container}>
         <Image
           style = {styles.image}
-          source={{ uri: this.props.place.photo_url}}
+          source={this.props.place.photo}
           />
         <View style = {styles.info}>
           <View style = {styles.contactInfo}>
