@@ -1,7 +1,10 @@
 import React from 'react';
 import {View} from 'react-native';
 import Swiper from 'react-native-swiper';
-import { Card, BigButton, CardSection, OurSpinner, IndexButton } from './common';
+import { Card,
+  BigButton,
+  CardSection,
+  IndexButton } from './common';
 
 
 class IndexItem extends React.Component {
@@ -11,7 +14,8 @@ class IndexItem extends React.Component {
     this.checkPhoto = this.checkPhoto.bind(this);
   }
 
-  pickMe(place){
+  pickMe(placeprops, photo){
+    let place = Object.assign(placeprops, {}, {photo});
     this.props.navigator.push({
       name: 'Show',
       passProps: {
@@ -22,7 +26,7 @@ class IndexItem extends React.Component {
 
   checkPhoto(photo, defaultPicture){
     if (photo === undefined){
-      console.log("no photo");
+      console.log(defaultPicture);
       return defaultPicture;
     } else {
       return {uri: photo};
@@ -30,7 +34,7 @@ class IndexItem extends React.Component {
   }
 
   render(){
-
+    console.log(this.props.imgUrl);
     return (
       <Swiper
         horizontal={true}
@@ -40,7 +44,9 @@ class IndexItem extends React.Component {
         paginationStyle={{ bottom: 5, right: '85%'}}>
         <CardSection>
           <IndexButton
-          onPress={() => this.pickMe(this.props.itinerary[0])}
+          onPress={() => this.pickMe(this.props.itinerary[0],
+            this.checkPhoto(this.props.itinerary[0].photo_url,
+            this.props.imgUrl))}
           imgUrl={this.checkPhoto(this.props.itinerary[0].photo_url,
             this.props.imgUrl)}>
             {this.props.itinerary[0].name}
@@ -48,7 +54,9 @@ class IndexItem extends React.Component {
         </CardSection>
         <CardSection>
           <IndexButton
-            onPress={() => this.pickMe(this.props.itinerary[1])}
+            onPress={() => this.pickMe(this.props.itinerary[1],
+              this.checkPhoto(this.props.itinerary[1].photo_url,
+              this.props.imgUrl))}
             imgUrl={this.checkPhoto(this.props.itinerary[1].photo_url,
               this.props.imgUrl)}>
               {this.props.itinerary[1].name}

@@ -1317,7 +1317,7 @@ class IndexPage extends React.Component {
       );
     }
 
-    let photoLinks = [
+    let PHOTO_LINKS = [
       require("../images/Food.jpg"),
       require("../images/Nightlife.jpg"),
       require("../images/Nature.jpg"),
@@ -1339,7 +1339,7 @@ class IndexPage extends React.Component {
           places.push(
             <IndexItem
               itinerary={itinerary[idx][String(key)]}
-              imgUrl={photoLinks[idx]}
+              imgUrl={PHOTO_LINKS[idx]}
               index={idx}
               navigator = {this.props.navigator}/>
           );
@@ -1378,7 +1378,7 @@ const styles = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-
+console.log(state.itinerary);
   return {
     itinerary: state.itinerary,
     loading: state.loading.loading,
