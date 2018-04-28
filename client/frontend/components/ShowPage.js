@@ -4,10 +4,12 @@ import {
   Text,
   StyleSheet,
   Image,
+  Linking,
+  Alert,
+  Button
 } from 'react-native';
-import { Button } from './common';
 import MapView from 'react-native-maps';
-import {Marker} from 'react-native-maps';
+import { Marker } from 'react-native-maps';
 import RNCalendarEvents from 'react-native-calendar-events';
 import Permissions from 'react-native-permissions'
 
@@ -18,7 +20,8 @@ class ShowPage extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      cal_auth: ''
+      cal_auth: '',
+      eventAdded: false,
     };
 
     this.submit = this.submit.bind(this);
@@ -57,7 +60,6 @@ class ShowPage extends React.Component {
           endDate: '2018-04-29T20:26:00.000Z'
         });
     });
-
   }
 
   submit(){
@@ -78,11 +80,26 @@ class ShowPage extends React.Component {
           }
         })
       } else if (response === 'authorized') {
-        // Save the event to the calednar
+        // Save the event to the calendar
         this.addEventToCalendar();
+        this.setState({ eventAdded: true });
       } else {
-        alert('Can\'t access calendar');
-        // TODO: add a message to send the user to the settings page to approve the permissions
+        Alert.alert(
+          'Access Calendar',
+          'Can\'t access calendar. Please change settings. Settings > Privacy > Calendar',
+          [
+            {text: 'Go to Settings', onPress: () => {
+              Linking.canOpenURL('app-settings:').then(supported => {
+                  if (!supported) {
+                    console.log('Can\'t handle settings url');
+                  } else {
+                    return Linking.openURL('app-settings:');
+                  }
+                }).catch(err => console.error('An error occurred', err));
+            }}
+          ],
+          { cancelable: true }
+        )
       }
     })
     // RNCalendarEvents.authorizationStatus()
@@ -93,9 +110,7 @@ class ShowPage extends React.Component {
     // .catch(error => {
     //   console.log(error);
     // });
-
   }
-
 
   // navigate(){
   //   this.getLocationFromGoogle(this.state.city);
@@ -120,7 +135,7 @@ class ShowPage extends React.Component {
       latitude: 37.773972,
       longitude: -122.431297,
     };
-    
+
     return (
       <View style = {styles.container}>
         <Image
@@ -148,7 +163,13 @@ class ShowPage extends React.Component {
               longitudeDelta: 0.0421,
             }}/>
         </View>
-        <Button onPress={()=> this.submit()} children={"Add to Calendar"}></Button>
+        <View style={ {flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        { this.state.eventAdded ?
+            <Text style={{color: '#FE5D26', fontWeight: "600", fontSize: 16 }}>Added to Calendar</Text>
+        :
+          <Button onPress={() => this.submit()} title={"Add to Calendar"} color={'#FE5D26'}></Button>
+        }
+        </View>
       </View>
     );
   }
