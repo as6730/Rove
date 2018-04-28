@@ -90,7 +90,7 @@ class ShowPage extends React.Component {
       latitude: 37.773972,
       longitude: -122.431297,
     };
-    console.log(this.props.place);
+    console.log(this.props.place.photo_url);
 
     return (
       <View style = {styles.container}>
@@ -100,10 +100,11 @@ class ShowPage extends React.Component {
           />
         <View style = {styles.info}>
           <View style = {styles.contactInfo}>
-            <Text style = {styles.title} >{this.props.place.name}</Text>
-            <Text>{this.props.place.formatted_address}</Text>
-            <Text>{this.props.place.formatted_phone_number}</Text>
-            <Text>{this.props.place.website}</Text>
+            <Text style = {styles.title} >Good Food</Text>
+            <Text>2343 Battery St.</Text>
+            <Text>San Francisco, CA 98437</Text>
+            <Text>(555)-555-5555</Text>
+            <Text>Visit Website</Text>
           </View>
         </View>
         <View style = {styles.mapContainer}>
@@ -112,10 +113,10 @@ class ShowPage extends React.Component {
             provider={'google'}
             style = {styles.map}
             initialRegion={{
-              latitude: this.props.place.location.lat,
-              longitude: this.props.place.location.lng,
-              latitudeDelta: 0.0020,
-              longitudeDelta: 0.0100,
+              latitude: 37.773972,
+              longitude: -122.431297,
+              latitudeDelta: 0.0092,
+              longitudeDelta: 0.0421,
             }}/>
         </View>
         <Button onPress={()=> this.submit()} children={"Add to Calendar"}></Button>
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     padding: 25,
-    height: '60%',
+    height: '50%',
     borderBottomWidth: 1,
     borderTopWidth: 1,
     borderColor: '#FE5D26',
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   mapContainer: {
-    height: '40%',
+    height: '50%',
   },
   map: {
     height: '100%',
