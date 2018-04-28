@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   Image,
+  Linking,
 } from 'react-native';
 import { Button } from './common';
 import MapView from 'react-native-maps';
@@ -103,12 +104,14 @@ class ShowPage extends React.Component {
           source={{ uri: this.props.place.photo_url}}
           />
         <View style = {styles.info}>
-          <View style = {styles.contactInfo}>
-            <Text style = {styles.title} >{this.props.place.name}</Text>
-            <Text>{this.props.place.formatted_address}</Text>
-            <Text>{this.props.place.formatted_phone_number}</Text>
-            <Text>{this.props.place.website}</Text>
-          </View>
+          <Text style = {styles.title} >{this.props.place.name}</Text>
+          <Text>{this.props.place.formatted_address}</Text>
+          <Text>{this.props.place.formatted_phone_number}</Text>
+          <Text
+            style = {styles.website}
+            onPress={() => Linking.openURL(this.props.place.website)}>
+            Website
+          </Text>
         </View>
         <View style = {styles.mapContainer}>
           <MapView
@@ -120,9 +123,22 @@ class ShowPage extends React.Component {
               longitude: this.props.place.location.lng,
               latitudeDelta: 0.0020,
               longitudeDelta: 0.0100,
-            }}/>
+            }}>
+            <Marker
+              coordinate={{
+                latitude: this.props.place.location.lat,
+                longitude: this.props.place.location.lng
+              }}
+              pinColor={'black'}
+              />
+            <Button
+              transform={[{translateY: 600}]}
+              style={styles.button}
+              onPress={()=> this.submit()}
+              children={"Add to Calendar"}>
+            </Button>
+          </MapView>
         </View>
-        <Button onPress={()=> this.submit()} children={"Add to Calendar"}></Button>
 
       </View>
     );
@@ -139,10 +155,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   info: {
-    flex: 1,
     justifyContent: 'space-between',
     padding: 25,
-    height: '60%',
+    height: '26%',
     borderBottomWidth: 1,
     borderTopWidth: 1,
     borderColor: '#FE5D26',
@@ -156,10 +171,18 @@ const styles = StyleSheet.create({
   },
   map: {
     height: '100%',
-  },arrowStyle:{
+  },
+  arrowStyle:{
     height: 20,
     width: 40,
     position:'absolute',
+  },
+  website: {
+    color: '#FE5D26',
+    marginBottom: 20,
+  },
+  button: {
+    position: 'absolute',
   }
 });
 
