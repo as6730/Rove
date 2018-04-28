@@ -1300,12 +1300,9 @@ const ITINERARY = [
     }
 ];
 
-
-
 class IndexPage extends React.Component {
   constructor(props){
     super(props);
-
   }
 
   componentDidMount(){
@@ -1343,6 +1340,7 @@ class IndexPage extends React.Component {
             <IndexItem
               itinerary={itinerary[idx][String(key)]}
               imgUrl={photoLinks[idx]}
+              index={idx}
               navigator = {this.props.navigator}/>
           );
         });
@@ -1354,6 +1352,9 @@ class IndexPage extends React.Component {
     return (
       <ScrollView>
         <Card>
+          <Image style={styles.image}
+            transform={[{translateY: 400}, {translateX: "89%"}]}
+            source={require('../images/map.png')}></Image>
           {places}
         </Card>
       </ScrollView>
@@ -1368,7 +1369,12 @@ const styles = {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center'
+    },image:{
+      height:200,
+      width:200,
+      position:'absolute'
     }
+
 };
 
 const mapStateToProps = (state, ownProps) => {
