@@ -42,7 +42,7 @@ class Api::ItinerariesController < ApplicationController
   private
 
   def itinerary_params
-    defaults = { amt: "2", radius: "1000", date: "2018" }
+    defaults = { amt: "2", radius: "5500", date: "2018" }
     params.permit(:lat, :lon, :bars, :restaurants, :nature, :arts, :amt, :radius, :date).reverse_merge(defaults)
   end
 end
