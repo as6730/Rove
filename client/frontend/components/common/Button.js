@@ -3,7 +3,9 @@ import { Text, TouchableOpacity } from "react-native";
 
 const Button = ({ onPress, children }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.buttonStyle}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={styles.buttonStyle}>
       <Text style={styles.textStyle}>{children}</Text>
     </TouchableOpacity>
   );
@@ -18,15 +20,15 @@ const styles = {
     borderColor: '#FE5D26',
     height: 30,
     width: '40%',
-    // marginLeft: 5,
+    marginTop: 250,
     // marginRight: 5,
   },
   textStyle: {
     alignSelf: 'center',
+    paddingTop: 3,
     color: '#FE5D26',
     fontWeight: "600",
     fontSize: 16,
-    position: 'absolute',
   }
 };
 export { Button };

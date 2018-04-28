@@ -129,10 +129,9 @@ class ShowPage extends React.Component {
                 latitude: this.props.place.location.lat,
                 longitude: this.props.place.location.lng
               }}
-              pinColor={'black'}
+              pinColor={'#FF8300'}
               />
             <Button
-              transform={[{translateY: 600}]}
               style={styles.button}
               onPress={()=> this.submit()}
               children={"Add to Calendar"}>
@@ -157,7 +156,7 @@ const styles = StyleSheet.create({
   info: {
     justifyContent: 'space-between',
     padding: 25,
-    height: '26%',
+    height: '30%',
     borderBottomWidth: 1,
     borderTopWidth: 1,
     borderColor: '#FE5D26',
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   mapContainer: {
-    height: '40%',
+    height: '45%',
   },
   map: {
     height: '100%',
