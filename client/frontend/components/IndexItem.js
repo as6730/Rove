@@ -8,6 +8,7 @@ class IndexItem extends React.Component {
   constructor(props){
     super(props);
     this.pickMe = this.pickMe.bind(this);
+    this.checkPhoto = this.checkPhoto.bind(this);
   }
 
   pickMe(place){
@@ -19,9 +20,16 @@ class IndexItem extends React.Component {
     });
   }
 
+  checkPhoto(photo, defaultPicture){
+    if (photo === undefined){
+      console.log("no photo");
+      return defaultPicture;
+    } else {
+      return {uri: photo};
+    }
+  }
+
   render(){
-    console.log(this.props.itinerary[0]);
-    console.log(this.props.itinerary[0].photo_url);
 
     return (
       <Swiper
@@ -33,14 +41,16 @@ class IndexItem extends React.Component {
         <CardSection>
           <IndexButton
           onPress={() => this.pickMe(this.props.itinerary[0])}
-          imgUrl={{uri: this.props.itinerary[0].photo_url}}>
+          imgUrl={this.checkPhoto(this.props.itinerary[0].photo_url,
+            this.props.imgUrl)}>
             {this.props.itinerary[0].name}
           </IndexButton>
         </CardSection>
         <CardSection>
           <IndexButton
             onPress={() => this.pickMe(this.props.itinerary[1])}
-            imgUrl={{uri: this.props.itinerary[1].photo_url}}>
+            imgUrl={this.checkPhoto(this.props.itinerary[1].photo_url,
+              this.props.imgUrl)}>
               {this.props.itinerary[1].name}
           </IndexButton>
         </CardSection>
