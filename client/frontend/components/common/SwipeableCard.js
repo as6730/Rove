@@ -9,13 +9,12 @@ export class SwipeableCard extends React.Component {
     onPanResponderMove: Animated.event([null, {dx: this.translateX}]),
     onPanResponderRelease: (e, {vx, dx}) => {
       const screenWidth = Dimensions.get("window").width;
-      if (Math.abs(vx) >= 0.5 || Math.abs(dx) >= 0.5 * screenWidth) {
-        this.props.onSwipe();
+      if (vx >= 0.003 ) {
+        console.log(vx);
+        this.props.swipeBack();
       } else {
-        Animated.spring(this.translateX, {
-          toValue: 0,
-          bounciness: 10
-        }).start();
+        this.props.onSwipe();
+        console.log(vx);
       }
     }
   });
