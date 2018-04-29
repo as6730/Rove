@@ -64,7 +64,7 @@ class ActivityForm extends React.Component{
   }
 
   navigateBack(){
-    this.props.navigator.push({
+    this.props.navigator.replace({
       name: 'Welcome',
     });
   }

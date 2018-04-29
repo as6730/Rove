@@ -3,17 +3,19 @@ require 'json'
 
 class PlacesUtils
 
+  ENDPOINT = "https://maps.googleapis.com/maps/api/place"
+  
   api_keys = [
-      "AIzaSyB6aCRNMXBNIlT4dUXI_c47Dgd8UeZ3mDQ",
-      "AIzaSyCnFz8z-DNPsSYQ3oaEhwe8ykzmePykpAE",
-      "AIzaSyAYqO0CjsXnVRlSYMx1mzIlbodfKbl-_Og",
-      "AIzaSyCAYxLd1mMSwPMaL-KIw-__oj64IlufcnA",
-      "AIzaSyDZ25jrrjL_b5-sCsc2gRK9zDkUd-R6OAo",
-      "AIzaSyBY_oLHUmf8-C9b7hkRtYC34ThjuNyliDw",
-      "AIzaSyB6aCRNMXBNIlT4dUXI_c47Dgd8UeZ3mDQ",
-      "AIzaSyCEbuWklDLV0973ygPglKadB6sGnY4gFC4",
-      "AIzaSyD8i-bcDlTzDJXaj-mNo1l7CCvts845_w8"
-    ]
+    "AIzaSyB6aCRNMXBNIlT4dUXI_c47Dgd8UeZ3mDQ",
+    "AIzaSyCnFz8z-DNPsSYQ3oaEhwe8ykzmePykpAE",
+    "AIzaSyAYqO0CjsXnVRlSYMx1mzIlbodfKbl-_Og",
+    "AIzaSyCAYxLd1mMSwPMaL-KIw-__oj64IlufcnA",
+    "AIzaSyDZ25jrrjL_b5-sCsc2gRK9zDkUd-R6OAo",
+    "AIzaSyBY_oLHUmf8-C9b7hkRtYC34ThjuNyliDw",
+    "AIzaSyB6aCRNMXBNIlT4dUXI_c47Dgd8UeZ3mDQ",
+    "AIzaSyCEbuWklDLV0973ygPglKadB6sGnY4gFC4",
+    "AIzaSyD8i-bcDlTzDJXaj-mNo1l7CCvts845_w8"
+  ]
   API_KEY = api_keys.sample
 
   def self.get_places(places_count, lat, lon, date, type, place_properties, keyword = "", radius = 1000)
