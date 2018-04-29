@@ -3,7 +3,6 @@ require_relative './../places_api'
 class Api::ItinerariesController < ApplicationController
   def get_itinerary
     params = itinerary_params
-    p "THIS IS THE PARAMS #{params}"
     itinerary = []
 
     # get restaurants

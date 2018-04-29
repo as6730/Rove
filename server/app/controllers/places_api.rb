@@ -97,7 +97,6 @@ class PlacesUtils
 
     date_time = PlacesUtils.set_start_and_end_time(type, date, keyword)
     place["date_time"] = date_time
-    p "THIS IS THE DATE #{date}"
     place["date"] = date
     place
   end

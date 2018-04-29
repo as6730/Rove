@@ -20,7 +20,6 @@ class IndexPage extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.props.itineraryParams);
     this.props.fetchItinerary(this.props.itineraryParams);
   }
 
