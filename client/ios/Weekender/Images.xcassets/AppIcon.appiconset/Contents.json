@@ -3,48 +3,77 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
+<<<<<<< HEAD
       "filename" : "map2.png",
+=======
+      "filename" : "map-7.png",
+>>>>>>> af88f0f21a1f47f8685c1ca9401effbb0fa80c94
       "scale" : "2x"
     },
     {
       "size" : "20x20",
       "idiom" : "iphone",
+<<<<<<< HEAD
       "filename" : "map2-1.png",
+=======
+      "filename" : "map-6.png",
+>>>>>>> af88f0f21a1f47f8685c1ca9401effbb0fa80c94
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
+<<<<<<< HEAD
       "filename" : "map2-2.png",
+=======
+      "filename" : "map-5.png",
+>>>>>>> af88f0f21a1f47f8685c1ca9401effbb0fa80c94
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
+<<<<<<< HEAD
       "filename" : "map2-3.png",
+=======
+      "filename" : "map-4.png",
+>>>>>>> af88f0f21a1f47f8685c1ca9401effbb0fa80c94
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
+<<<<<<< HEAD
       "filename" : "map2-5.png",
+=======
+      "filename" : "map-3.png",
+>>>>>>> af88f0f21a1f47f8685c1ca9401effbb0fa80c94
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
+<<<<<<< HEAD
       "filename" : "map2-4.png",
+=======
+      "filename" : "map-2.png",
+>>>>>>> af88f0f21a1f47f8685c1ca9401effbb0fa80c94
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
+<<<<<<< HEAD
       "filename" : "map2-7.png",
+=======
+      "filename" : "map-1.png",
+>>>>>>> af88f0f21a1f47f8685c1ca9401effbb0fa80c94
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
+<<<<<<< HEAD
       "filename" : "map2-6.png",
       "scale" : "3x"
     },
@@ -142,6 +171,15 @@
     {
       "idiom" : "mac",
       "size" : "256x256",
+=======
+      "filename" : "map.png",
+      "scale" : "3x"
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "map-8.png",
+>>>>>>> af88f0f21a1f47f8685c1ca9401effbb0fa80c94
       "scale" : "1x"
     },
     {

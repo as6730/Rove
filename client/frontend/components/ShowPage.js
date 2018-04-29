@@ -30,10 +30,10 @@ class ShowPage extends React.Component {
   addEventToCalendar() {
     RNCalendarEvents.findCalendars().then(response => {
       let calendarId = response[0].id;
-      RNCalendarEvents.saveEvent(this.props.name, {
+      RNCalendarEvents.saveEvent(this.props.place.name, {
           calendarId: calendarId,
-          startDate: parseDate(this.props.date_time.start),
-          endDate: parseDate(this.props.date_time.end)
+          startDate: this.parseDate(this.props.place.date_time.start),
+          endDate: this.parseDate(this.props.place.date_time.end)
         });
     });
   }
@@ -41,7 +41,19 @@ class ShowPage extends React.Component {
   parseDate(time) {
     // '2018-04-29T19:26:00.000Z'
     // '2018-04-29T20:26:00.000Z'
-    return "${this.props.date}T${time}.000Z";
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let dates = this.props.place.date.split("-");
+
+    let month = months[dates[1].slice(1,2) - 1];
+    let day = dates[2];
+    let year = dates[0];
+
+    // "July 21, 1983 01:15:00"
+
+    let date = new Date(`${month} ${day}, ${year} ${time}`);
+    let utc = date.toISOString();
+
+    return utc;
   }
 
   submit(){
@@ -116,8 +128,9 @@ class ShowPage extends React.Component {
           />
         <View style={styles.info}>
           <Text style={styles.title}>{place.name}</Text>
-          <View style={{width: 70}}>
-            <StarRating
+          {place.rating
+            && <View style={{width: 70}}>
+                  <StarRating
               disabled={false}
               maxStars={5}
               disabled={true}
@@ -125,8 +138,7 @@ class ShowPage extends React.Component {
               style={{width: 70}}
               rating={place.rating}
               fullStarColor={'#FE5D26'}
-            />
-          </View>
+              /></View>}
           {place.formatted_address
             && <Text style={styles.body}>{place.formatted_address}</Text>}
           {place.formatted_phone_number
