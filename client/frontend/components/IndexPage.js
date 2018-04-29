@@ -1336,10 +1336,8 @@ class IndexPage extends React.Component {
       itinerary.forEach( (place, idx) => {
         keys[idx].forEach( key => {
           if (Object.keys(itinerary[idx]).length === 0) { return; }
-          console.log(itinerary[idx][String(key)].time)
           places.push(
             <IndexItem
-              key={key}
               itinerary={itinerary[idx][String(key)]}
               imgUrl={PHOTO_LINKS[idx]}
               index={idx}
@@ -1348,7 +1346,7 @@ class IndexPage extends React.Component {
         });
       });
     };
-    
+
     mapPlaces(this.props.itinerary);
 
     return (
@@ -1376,6 +1374,7 @@ const styles = {
       width:200,
       position:'absolute'
     }
+
 };
 
 const mapStateToProps = (state, ownProps) => {
