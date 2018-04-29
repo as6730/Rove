@@ -50,8 +50,15 @@ class IndexPage extends React.Component {
       itinerary.forEach( (place, idx) => {
         keys[idx].forEach( key => {
           if (Object.keys(itinerary[idx]).length === 0) { return; }
+          // console.log(
+          //   parseInt(itinerary[idx][String(key)][0].date_time.start.slice(0,1))
+          // );
+          // console.log(
+          //   itinerary[idx][String(key)][0].date_time.start.split(':')[0]
+          // );
           places.push(
             <IndexItem
+              key={itinerary[idx][String(key)][0].date_time.start.split(':')[0]}
               itinerary={itinerary[idx][String(key)]}
               imgUrl={PHOTO_LINKS[idx]}
               index={idx}
@@ -62,6 +69,10 @@ class IndexPage extends React.Component {
     };
 
     mapPlaces(this.props.itinerary);
+
+    places.sort(function(act1, act2) {
+  	return act1.key - act2.key;
+    });
 
     return (
       <ScrollView>
