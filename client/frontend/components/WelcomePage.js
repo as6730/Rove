@@ -135,7 +135,6 @@ class WelcomePage extends React.Component {
           <Text style={questionStyle}>When?</Text>
           <Calendar
             style={calenderStyle}
-            minDate={this.state.date}
             onDayPress={(day) => this.setDate(day)}
             hideExtraDays={true}
             markedDates={mark}
