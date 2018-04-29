@@ -14,6 +14,7 @@ import { Marker } from 'react-native-maps';
 import RNCalendarEvents from 'react-native-calendar-events';
 import Permissions from 'react-native-permissions';
 import { Button } from './common';
+import StarRating from 'react-native-star-rating';
 
 // TODO: Import marker for lat and long that are being passed in
 
@@ -132,7 +133,17 @@ class ShowPage extends React.Component {
           />
         <View style={styles.info}>
           <Text style={styles.title}>{place.name}</Text>
-          {place.rating && <Text>Rating: {place.rating}</Text>}
+          <View style={{width: 70}}>
+            <StarRating
+              disabled={false}
+              maxStars={5}
+              disabled={true}
+              starSize={20}
+              style={{width: 70}}
+              rating={place.rating}
+              fullStarColor={'#FE5D26'}
+            />
+          </View>
           {place.formatted_address && <Text>{place.formatted_address}</Text>}
           {place.formatted_phone_number && <Text>{place.formatted_phone_number}</Text>}
           {place.website

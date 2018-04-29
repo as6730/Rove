@@ -8,8 +8,11 @@ const OurSpinner = ({ size,text }) => {
       <Spinner
         visible={true}
         color='#FE5D26'
+        style={{marginBotton:100}}
         textContent={"Building Your Itinerary..."}
-        textStyle={{color: '#FE5D26', fontFamily: 'Helvetica Neue'}}
+        textStyle={{color: '#FE5D26',
+          fontFamily: 'Helvetica Neue',
+          marginBottom:400}}
         overlayColor="#dddddd"/>
     </View>
   );
@@ -19,7 +22,7 @@ const styles = {
   spinnerStyle: {
     flex: 1,
     justifyContent: 'center',
-    marginBottom: '50%',
+    marginBottom: 300,
   },
   textStyle:{
     color: '#FE5D26',

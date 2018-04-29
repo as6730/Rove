@@ -41,6 +41,8 @@ target 'Weekender' do
   pod 'react-native-calendar-events', :path => '../node_modules/react-native-calendar-events'
   pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
 end
 
 post_install do |installer|

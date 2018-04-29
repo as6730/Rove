@@ -26,7 +26,6 @@ class IndexItem extends React.Component {
 
   checkPhoto(photo, defaultPicture){
     if (photo === undefined){
-      console.log(defaultPicture);
       return defaultPicture;
     } else {
       return {uri: photo};
@@ -34,7 +33,6 @@ class IndexItem extends React.Component {
   }
 
   render(){
-    console.log(this.props.imgUrl);
     return (
       <Swiper
         horizontal={true}
