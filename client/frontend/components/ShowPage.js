@@ -41,7 +41,7 @@ class ShowPage extends React.Component {
   parseDate(time) {
     // '2018-04-29T19:26:00.000Z'
     // '2018-04-29T20:26:00.000Z'
-    return "${this.props.date}T${time}.000Z";
+    return `${this.props.date}T${time}.000Z`;
   }
 
   submit(){

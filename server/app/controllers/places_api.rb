@@ -4,7 +4,7 @@ require 'json'
 class PlacesUtils
 
   ENDPOINT = "https://maps.googleapis.com/maps/api/place"
-  API_KEY = "AIzaSyCAYxLd1mMSwPMaL-KIw-__oj64IlufcnA"
+  API_KEY = "AIzaSyBY_oLHUmf8-C9b7hkRtYC34ThjuNyliDw"
   OTHER_KEY = "AIzaSyCnFz8z-DNPsSYQ3oaEhwe8ykzmePykpAE"
   TODD_API_KEY = "AIzaSyAYqO0CjsXnVRlSYMx1mzIlbodfKbl-_Og"
   ROSE_NEW_EMAIL_API_KEY="AIzaSyCAYxLd1mMSwPMaL-KIw-__oj64IlufcnA"
@@ -13,7 +13,7 @@ class PlacesUtils
   ROSE_THIRD_KEY = "AIzaSyB6aCRNMXBNIlT4dUXI_c47Dgd8UeZ3mDQ"
   BRIE_API_KEY = "AIzaSyCEbuWklDLV0973ygPglKadB6sGnY4gFC4"
 
-  def self.get_places(places_count, lat, lon, type, place_properties, keyword = "", radius = 1000, date = "2018")
+  def self.get_places(places_count, lat, lon, date, type, place_properties, keyword = "", radius = 1000)
     if type === "restaurant"
       request = RestClient::Request.execute(
        method: :get,
@@ -36,7 +36,7 @@ class PlacesUtils
     random_ids = PlacesUtils.get_random_keys(places_ids, places_count)
     places = []
     random_ids.each do |id|
-      places << PlacesUtils.get_place_from_id(id, place_properties, type, date, keyword)
+      places << PlacesUtils.get_place_from_id(id, place_properties, date, type, keyword)
     end
 
     places
@@ -67,7 +67,7 @@ class PlacesUtils
     random_ids
   end
 
-  def self.get_place_from_id(place_id, properties, type, date, keyword)
+  def self.get_place_from_id(place_id, properties, date, type, keyword)
     request = RestClient::Request.execute(
        method: :get,
        url: "#{ENDPOINT}/details/json?placeid=#{place_id}&key=#{API_KEY}"
@@ -97,6 +97,7 @@ class PlacesUtils
 
     date_time = PlacesUtils.set_start_and_end_time(type, date, keyword)
     place["date_time"] = date_time
+    p "THIS IS THE DATE #{date}"
     place["date"] = date
     place
   end
