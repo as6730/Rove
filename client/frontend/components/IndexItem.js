@@ -6,7 +6,6 @@ import { Card,
   CardSection,
   IndexButton } from './common';
 
-
 class IndexItem extends React.Component {
   constructor(props){
     super(props);

@@ -97,6 +97,7 @@ class PlacesUtils
 
     date_time = PlacesUtils.set_start_and_end_time(type, date, keyword)
     place["date_time"] = date_time
+    place["date"] = date
     place
   end
 
@@ -111,7 +112,7 @@ class PlacesUtils
     time = {}
 
     if type === "restaurant"
-      if keyword === "breakfast"
+      if keyword === "brunch"
         time["start"] = "08:00:00"
         time["end"] = "09:00:00"
       elsif keyword === "lunch"
@@ -124,7 +125,7 @@ class PlacesUtils
     elsif type === "museum"
       time["start"] = "9:30:00"
       time["end"] = "12:00:00"
-    elsif type === "bars"
+    elsif type === "bar"
       time["start"] = "21:00:00"
       time["end"] = "00:00:00"
     elsif type === "park"
