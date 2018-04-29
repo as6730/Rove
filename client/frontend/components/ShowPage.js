@@ -185,6 +185,9 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: '#FE5D26',
   },
+  body: {
+    fontSize: 18,
+  },
   image: {
     flex: 0.2,
     height: 200,
@@ -195,12 +198,18 @@ const styles = StyleSheet.create({
   },
   map: {
     height: '100%',
-  },arrowStyle:{
-    height: '5%',
-    width: '5%',
-    position:'absolute'
-  },arrowStyleContainer:{
-    alignItems: 'center',
+  },
+  arrowStyle:{
+    height: 20,
+    width: 40,
+    position:'absolute',
+  },
+  website: {
+    color: '#FE5D26',
+    marginBottom: 20,
+  },
+  button: {
+    position: 'absolute',
   }
 });
 
