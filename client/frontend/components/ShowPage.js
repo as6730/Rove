@@ -16,8 +16,6 @@ import Permissions from 'react-native-permissions';
 import { Button } from './common';
 import StarRating from 'react-native-star-rating';
 
-// TODO: Import marker for lat and long that are being passed in
-
 class ShowPage extends React.Component {
   constructor(props){
     super(props);
@@ -25,7 +23,7 @@ class ShowPage extends React.Component {
       cal_auth: '',
       eventAdded: false,
     };
-
+    console.log(props.place.date);
     this.submit = this.submit.bind(this);
   }
 
@@ -34,15 +32,17 @@ class ShowPage extends React.Component {
       let calendarId = response[0].id;
       RNCalendarEvents.saveEvent(this.props.name, {
           calendarId: calendarId,
-          startDate: '2018-04-29T19:26:00.000Z',
-          endDate: '2018-04-29T20:26:00.000Z'
+          startDate: parseDate(this.props.date_time.start),
+          endDate: parseDate(this.props.date_time.end)
         });
     });
   }
 
-  // parseDate() {
-  //
-  // }
+  parseDate(time) {
+    // '2018-04-29T19:26:00.000Z'
+    // '2018-04-29T20:26:00.000Z'
+    return "${this.props.date}T${time}.000Z";
+  }
 
   submit(){
     Permissions.check('event').then(response => {
@@ -100,23 +100,6 @@ class ShowPage extends React.Component {
     })
   }
 
-  // navigate(){
-  //   this.getLocationFromGoogle(this.state.city);
-  //   console.log(this.state.lat);
-  //   console.log(this.state.lng);
-  //
-  //   let locationProps= { lat: this.state.lat,
-  //     lng: this.state.lng,
-  //     date: this.state.date};
-  //     console.log(locationProps);
-  //   this.props.navigator.replace({
-  //   name: 'Activity',
-  //   passProps: {
-  //         place: locationProps
-  //       }
-  //   });
-  // }
-
   render() {
     let place = this.props.place;
     const markers = [{
@@ -171,21 +154,21 @@ class ShowPage extends React.Component {
               longitude: this.props.place.location.lng
             }}
             pinColor={'#FF8300'}/>
-            <View>
-              { this.state.eventAdded ?
-                <TouchableOpacity
-                  style={styles.buttonStyle}>
-                  <Text style={styles.textStyle}>Added to Calendar</Text>
-                </TouchableOpacity>
-                :
-                <Button
-                  style={styles.button}
-                  onPress={()=> this.submit()}
-                  children={"Add to Calendar"}>
-                </Button>
-              }
-            </View>
           </MapView>
+          <View style={styles.calendarButton}>
+            { this.state.eventAdded ?
+              <TouchableOpacity
+                style={styles.buttonStyle}>
+                <Text style={styles.textStyle}>Added to Calendar</Text>
+              </TouchableOpacity>
+              :
+              <Button
+                style={styles.button}
+                onPress={()=> this.submit()}
+                children={"Add to Calendar"}>{'Add to Calender'}
+              </Button>
+            }
+          </View>
         </View>
       </View>
     );
@@ -218,14 +201,11 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     height: '45%',
+    zIndex: -10,
   },
   map: {
+    zIndex: -10,
     height: '100%',
-  },
-  arrowStyle:{
-    height: 20,
-    width: 40,
-    position:'absolute',
   },
   website: {
     color: '#FE5D26',
@@ -233,7 +213,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   button: {
+    zIndex: 10,
     position: 'absolute',
+    width: '40%',
+  },
+  calendarButton: {
+    position: 'absolute',
+    zIndex: 10,
+    width: '100%',
   },
   buttonStyle: {
     alignSelf: 'center',
