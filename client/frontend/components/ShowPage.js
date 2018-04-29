@@ -171,21 +171,21 @@ class ShowPage extends React.Component {
               longitude: this.props.place.location.lng
             }}
             pinColor={'#FF8300'}/>
-            <View>
-              { this.state.eventAdded ?
-                <TouchableOpacity
-                  style={styles.buttonStyle}>
-                  <Text style={styles.textStyle}>Added to Calendar</Text>
-                </TouchableOpacity>
-                :
-                <Button
-                  style={styles.button}
-                  onPress={()=> this.submit()}
-                  children={"Add to Calendar"}>
-                </Button>
-              }
-            </View>
           </MapView>
+          <View style={styles.calendarButton}>
+            { this.state.eventAdded ?
+              <TouchableOpacity
+                style={styles.buttonStyle}>
+                <Text style={styles.textStyle}>Added to Calendar</Text>
+              </TouchableOpacity>
+              :
+              <Button
+                style={styles.button}
+                onPress={()=> this.submit()}
+                children={"Add to Calendar"}>{'Add to Calender'}
+              </Button>
+            }
+          </View>
         </View>
       </View>
     );
@@ -218,14 +218,11 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     height: '45%',
+    zIndex: -10,
   },
   map: {
+    zIndex: -10,
     height: '100%',
-  },
-  arrowStyle:{
-    height: 20,
-    width: 40,
-    position:'absolute',
   },
   website: {
     color: '#FE5D26',
@@ -233,7 +230,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   button: {
+    zIndex: 10,
     position: 'absolute',
+    width: '40%',
+  },
+  calendarButton: {
+    position: 'absolute',
+    zIndex: 10,
+    width: '100%',
   },
   buttonStyle: {
     alignSelf: 'center',
