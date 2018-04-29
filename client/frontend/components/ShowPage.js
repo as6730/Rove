@@ -144,8 +144,10 @@ class ShowPage extends React.Component {
               fullStarColor={'#FE5D26'}
             />
           </View>
-          {place.formatted_address && <Text>{place.formatted_address}</Text>}
-          {place.formatted_phone_number && <Text>{place.formatted_phone_number}</Text>}
+          {place.formatted_address
+            && <Text style={styles.body}>{place.formatted_address}</Text>}
+          {place.formatted_phone_number
+            && <Text style={styles.body} >{place.formatted_phone_number}</Text>}
           {place.website
             && <Text
                 style = {styles.website}
