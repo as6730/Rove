@@ -130,8 +130,9 @@ class ShowPage extends React.Component {
           />
         <View style = {styles.info}>
           <Text style = {styles.title} >{this.props.place.name}</Text>
-          <Text>{this.props.place.formatted_address}</Text>
-          <Text>{this.props.place.formatted_phone_number}</Text>
+          <Text style = {styles.body} >Rating: {this.props.place.rating}</Text>
+          <Text style = {styles.body} >{this.props.place.formatted_address}</Text>
+          <Text style = {styles.body} >{this.props.place.formatted_phone_number}</Text>
           <Text
             style = {styles.website}
             onPress={() => Linking.openURL(this.props.place.website)}>
@@ -185,6 +186,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderTopWidth: 1,
     borderColor: '#FE5D26',
+  },
+  body: {
+    fontSize: 18,
   },
   image: {
     height: '25%',
