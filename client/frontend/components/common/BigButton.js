@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, Image } from "react-native";
+import { Text, TouchableOpacity, Image, View } from "react-native";
 
 //ActivityForm Large Button
 
@@ -19,13 +19,22 @@ const BigButton = ({ onPress, children, isPressed, color, imgUrl}) => {
     <TouchableOpacity onPress={onPress}
       isPressed={isPressed}
       style={currentStyle,
-        { backgroundColor: 'transparent',
+        { backgroundColor: ('transparent'),
           borderColor: '#FE5D26',
           borderBottomWidth: 1,
           width: "100%",
-          height: 160.5,
+          height: 160.8,
           position: 'relative'}}>
-      <Image style={{height: '100%', width: "100%"}} source={imgUrl}/>
+      <Image
+        style={{height: '100%', width: "100%"}}
+        transform={[{translateY: -0.5}]}
+        source={imgUrl}/>
+      <View style={{
+          position: 'absolute',
+          backgroundColor: (isPressed ? 'transparent' : 'rgba(236, 236, 236, 0.75)'),
+          height: '100%',
+          width: "100%"}}
+          transform={[{translateY: -0.5}]}/>
       <Text style={currentText}>{children}</Text>
     </TouchableOpacity>
   );

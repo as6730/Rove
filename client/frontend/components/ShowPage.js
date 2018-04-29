@@ -126,7 +126,7 @@ class ShowPage extends React.Component {
     }];
 
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <Image
           style={styles.image}
           source={place.photo}
@@ -169,7 +169,7 @@ class ShowPage extends React.Component {
               longitude: this.props.place.location.lng
             }}
             pinColor={'#FF8300'}/>
-            <View style={ {flex: 0.1, alignItems: 'center', justifyContent: 'center' }}>
+            <View>
               { this.state.eventAdded ?
                 <TouchableOpacity
                   style={styles.buttonStyle}>
@@ -185,7 +185,7 @@ class ShowPage extends React.Component {
             </View>
           </MapView>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -193,13 +193,14 @@ class ShowPage extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: "100%",
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
+    marginBottom: 10,
   },
   info: {
-    justifyContent: 'space-between',
     padding: 25,
     height: '30%',
     borderBottomWidth: 1,
@@ -207,15 +208,14 @@ const styles = StyleSheet.create({
     borderColor: '#FE5D26',
   },
   body: {
-    fontSize: 18,
+    marginTop: 5,
   },
   image: {
-    flex: 0.2,
-    height: 200,
+    height: '25%',
     width: '100%',
   },
   mapContainer: {
-    height: '50%'
+    height: '45%',
   },
   map: {
     height: '100%',
@@ -228,6 +228,7 @@ const styles = StyleSheet.create({
   website: {
     color: '#FE5D26',
     marginBottom: 20,
+    marginTop: 10,
   },
   button: {
     position: 'absolute',
@@ -240,7 +241,7 @@ const styles = StyleSheet.create({
     borderColor: '#FE5D26',
     height: 30,
     width: '40%',
-    marginTop: 250,
+    marginTop: 260,
   },
   textStyle: {
     alignSelf: 'center',

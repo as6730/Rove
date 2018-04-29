@@ -22,12 +22,12 @@ const styles = {
   spinnerStyle: {
     flex: 1,
     justifyContent: 'center',
-    marginBottom: 300,
+    marginBottom: 500,
   },
   textStyle:{
     color: '#FE5D26',
     fontSize: 20,
-    marginBottom: 100,
+    marginBottom: 500,
   },
 };
 
