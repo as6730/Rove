@@ -12,7 +12,7 @@ const OurSpinner = ({ size,text }) => {
         textContent={"Building Your Itinerary..."}
         textStyle={{color: '#FE5D26',
           fontFamily: 'Helvetica Neue',
-          marginBottom:400}}
+          marginBottom:360}}
         overlayColor="#dddddd"/>
     </View>
   );

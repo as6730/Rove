@@ -75,7 +75,7 @@ class WelcomePage extends React.Component {
       let locationProps= { lat: this.state.lat,
         lng: this.state.lng,
         date: this.state.date};
-      this.props.navigator.replace({
+      this.props.navigator.push({
       name: 'Activity',
       passProps: {
             place: locationProps

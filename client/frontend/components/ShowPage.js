@@ -116,8 +116,9 @@ class ShowPage extends React.Component {
           />
         <View style={styles.info}>
           <Text style={styles.title}>{place.name}</Text>
-          <View style={{width: 70}}>
-            <StarRating
+          {place.rating
+            && <View style={{width: 70}}>
+                  <StarRating
               disabled={false}
               maxStars={5}
               disabled={true}
@@ -125,8 +126,7 @@ class ShowPage extends React.Component {
               style={{width: 70}}
               rating={place.rating}
               fullStarColor={'#FE5D26'}
-            />
-          </View>
+              /></View>}
           {place.formatted_address
             && <Text style={styles.body}>{place.formatted_address}</Text>}
           {place.formatted_phone_number
