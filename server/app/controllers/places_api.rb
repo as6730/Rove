@@ -4,7 +4,8 @@ require 'json'
 class PlacesUtils
 
   ENDPOINT = "https://maps.googleapis.com/maps/api/place"
-  API_KEY = "AIzaSyB6aCRNMXBNIlT4dUXI_c47Dgd8UeZ3mDQ"
+  API_KEY = "AIzaSyCnFz8z-DNPsSYQ3oaEhwe8ykzmePykpAE"
+  ALEXANDRA_API_KEY = "AIzaSyCiowQGzYIH10U5WRDb4aaM8_qLhYdT4Q8"
   SECOND_ROSE_KEY = "AIzaSyDZ25jrrjL_b5-sCsc2gRK9zDkUd-R6OAo"
   ROSE_API_KEY = "AIzaSyBY_oLHUmf8-C9b7hkRtYC34ThjuNyliDw"
   ROSE_THIRD_KEY = "AIzaSyB6aCRNMXBNIlT4dUXI_c47Dgd8UeZ3mDQ"

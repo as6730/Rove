@@ -1338,6 +1338,7 @@ class IndexPage extends React.Component {
           if (Object.keys(itinerary[idx]).length === 0) { return; }
           places.push(
             <IndexItem
+              key={key}
               itinerary={itinerary[idx][String(key)]}
               imgUrl={PHOTO_LINKS[idx]}
               index={idx}
@@ -1374,7 +1375,6 @@ const styles = {
       width:200,
       position:'absolute'
     }
-
 };
 
 const mapStateToProps = (state, ownProps) => {

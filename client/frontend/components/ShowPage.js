@@ -6,7 +6,8 @@ import {
   Image,
   Linking,
   Alert,
-  Button
+  Button,
+  ScrollView,
 } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
@@ -14,7 +15,6 @@ import RNCalendarEvents from 'react-native-calendar-events';
 import Permissions from 'react-native-permissions'
 
 // TODO: Import marker for lat and long that are being passed in
-
 
 class ShowPage extends React.Component {
   constructor(props){
@@ -27,40 +27,20 @@ class ShowPage extends React.Component {
     this.submit = this.submit.bind(this);
   }
 
-//   componentWillMount () {
-//   // Let's get access before doing anything
-//   // const events = RNCalendarEvents;
-//   RNCalendarEvents.authorizationStatus()
-//   .then(status => {
-//     // if the status was previous accepted, set the authorized status to state
-//
-//     this.setState({ cal_auth: status });
-//     if(status === 'undetermined') {
-//       // if we made it this far, we need to ask the user for access
-//       RNCalendarEvents.authorizeEventStore()
-//       .then((out) => {
-//         if(out == 'authorized') {
-//           // set the new status to the auth state
-//           this.setState({ cal_auth: out });
-//         }
-//       });
-//     }
-//   })
-//   .catch(error => console.warn('Auth Error: ', error));
-// }
-
   addEventToCalendar() {
     RNCalendarEvents.findCalendars().then(response => {
-      console.log("calendars:" +  JSON.stringify(response));
       let calendarId = response[0].id;
-      console.log("calendarId: " + calendarId);
-      RNCalendarEvents.saveEvent('Sample Event', {
+      RNCalendarEvents.saveEvent(this.props.name, {
           calendarId: calendarId,
           startDate: '2018-04-29T19:26:00.000Z',
           endDate: '2018-04-29T20:26:00.000Z'
         });
     });
   }
+
+  // parseDate() {
+  //
+  // }
 
   submit(){
     Permissions.check('event').then(response => {
@@ -75,8 +55,22 @@ class ShowPage extends React.Component {
             // Save the event to the calednar
             this.addEventToCalendar();
           } else {
-            alert('Can\'t access calendar');
-            // TODO: add a message to send the user to the settings page to approve the permissions
+            Alert.alert(
+              'Access Calendar',
+              'Can\'t access calendar. Please change settings. Settings > Privacy > Calendar',
+              [
+                {text: 'Go to Settings', onPress: () => {
+                  Linking.canOpenURL('app-settings:').then(supported => {
+                      if (!supported) {
+                        console.log('Can\'t handle settings url');
+                      } else {
+                        return Linking.openURL('app-settings:');
+                      }
+                    }).catch(err => console.error('An error occurred', err));
+                }}
+              ],
+              { cancelable: true }
+            )
           }
         })
       } else if (response === 'authorized') {
@@ -102,14 +96,6 @@ class ShowPage extends React.Component {
         )
       }
     })
-    // RNCalendarEvents.authorizationStatus()
-    // .then(status => {
-    //   // handle status
-    //   console.log(status);
-    // })
-    // .catch(error => {
-    //   console.log(error);
-    // });
   }
 
   // navigate(){
@@ -129,48 +115,56 @@ class ShowPage extends React.Component {
   //   });
   // }
 
-
   render() {
-    const marker = {
-      latitude: 37.773972,
-      longitude: -122.431297,
-    };
+    let place = this.props.place;
+    const markers = [{
+      latitude: place.location.lat,
+      longitude: place.location.lng,
+      title: place.name
+    }];
 
     return (
-      <View style = {styles.container}>
+      <ScrollView style={styles.container}>
         <Image
-          style = {styles.image}
-          source={this.props.place.photo}
+          style={styles.image}
+          source={place.photo}
           />
-        <View style = {styles.info}>
-          <View style = {styles.contactInfo}>
-            <Text style = {styles.title} >Good Food</Text>
-            <Text>2343 Battery St.</Text>
-            <Text>San Francisco, CA 98437</Text>
-            <Text>(555)-555-5555</Text>
-            <Text>Visit Website</Text>
-          </View>
+        <View style={styles.info}>
+          <Text style={styles.title}>{place.name}</Text>
+          {place.rating && <Text>Rating: {place.rating}</Text>}
+          {place.formatted_address && <Text>Address: {place.formatted_address}</Text>}
+          {place.formatted_phone_number && <Text>Phone Number: {place.formatted_phone_number}</Text>}
+          {place.website && <Text>Website: {place.website}</Text>}
         </View>
         <View style = {styles.mapContainer}>
-          <MapView
-            annotations={marker}
-            provider={'google'}
-            style = {styles.map}
-            initialRegion={{
-              latitude: 37.773972,
-              longitude: -122.431297,
-              latitudeDelta: 0.0092,
-              longitudeDelta: 0.0421,
-            }}/>
+        <MapView
+          region={
+            {
+              latitude: place.location.lat,
+              longitude: place.location.lng,
+              latitudeDelta: 0.00092,
+              longitudeDelta: 0.00421,
+            }
+          }
+          style={styles.map}
+          >
+          <Marker
+            coordinate={{
+              latitude: place.location.lat,
+              longitude: place.location.lng}}
+            title={place.name}
+            description={place.formatted_address}
+          />
+          </MapView>
         </View>
-        <View style={ {flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={ {flex: 0.1, alignItems: 'center', justifyContent: 'center' }}>
         { this.state.eventAdded ?
             <Text style={{color: '#FE5D26', fontWeight: "600", fontSize: 16 }}>Added to Calendar</Text>
         :
           <Button onPress={() => this.submit()} title={"Add to Calendar"} color={'#FE5D26'}></Button>
         }
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -178,27 +172,26 @@ class ShowPage extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: "100%",
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
   },
   info: {
-    flex: 1,
+    flex: 0.3,
     justifyContent: 'space-between',
     padding: 25,
-    height: '50%',
     borderBottomWidth: 1,
     borderTopWidth: 1,
     borderColor: '#FE5D26',
   },
   image: {
-    height: '25%',
+    flex: 0.2,
+    height: 200,
     width: '100%',
   },
   mapContainer: {
-    height: '50%',
+    height: '60%'
   },
   map: {
     height: '100%',
