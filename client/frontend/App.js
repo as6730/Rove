@@ -36,9 +36,9 @@ class App extends React.Component{
              initialRoute={{ name: 'Welcome' }}
              renderScene={ this.renderScene }
              configureScene={(route) => {
-               if (route.sceneConfig) {
-                 return route.sceneConfig;
-               }
+               if(route.name === 'Welcome') {
+                return Navigator.SceneConfigs.SwipeFromLeft;
+              }
                return Navigator.SceneConfigs.FloatFromBottom;
                }}
              />

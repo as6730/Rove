@@ -63,6 +63,12 @@ class ActivityForm extends React.Component{
     });
   }
 
+  navigateBack(){
+    this.props.navigator.push({
+      name: 'Welcome',
+    });
+  }
+
   toggleModal(){
     this.setState({ modalVisible: false });
   }
@@ -83,7 +89,7 @@ class ActivityForm extends React.Component{
               </View>
             </TouchableHighlight>
           </Modal>
-        <SwipeableCard onSwipe={() => this.handleSubmit()}>
+        <SwipeableCard onSwipe={() => this.handleSubmit()} swipeBack={() => this.navigateBack()}>
           <Card>
             <CardSection>
               <BigButton
