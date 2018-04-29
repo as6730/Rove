@@ -31,7 +31,7 @@ const BigButton = ({ onPress, children, isPressed, color, imgUrl}) => {
         source={imgUrl}/>
       <View style={{
           position: 'absolute',
-          backgroundColor: (isPressed ? 'transparent' : 'rgba(236, 236, 236, 0.75)'),
+          backgroundColor: (isPressed ? 'transparent' : 'rgba(236, 236, 236, 0.5)'),
           height: '100%',
           width: "100%"}}
           transform={[{translateY: -0.5}]}/>

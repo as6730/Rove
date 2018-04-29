@@ -178,7 +178,8 @@ class ShowPage extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: "100%",
+    height: "95%",
+    marginTop: '5%',
   },
   title: {
     fontSize: 24,
@@ -186,7 +187,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   info: {
-    padding: 25,
+    padding: 15,
     height: '30%',
     borderBottomWidth: 1,
     borderTopWidth: 1,
@@ -200,7 +201,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   mapContainer: {
-    height: '45%',
+    height: '48%',
     zIndex: -10,
   },
   map: {
@@ -230,7 +231,7 @@ const styles = StyleSheet.create({
     borderColor: '#FE5D26',
     height: 30,
     width: '40%',
-    marginTop: 260,
+    marginTop: 240,
   },
   textStyle: {
     alignSelf: 'center',
