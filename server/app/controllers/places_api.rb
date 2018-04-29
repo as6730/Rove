@@ -13,7 +13,7 @@ class PlacesUtils
   ROSE_THIRD_KEY = "AIzaSyB6aCRNMXBNIlT4dUXI_c47Dgd8UeZ3mDQ"
   BRIE_API_KEY = "AIzaSyCEbuWklDLV0973ygPglKadB6sGnY4gFC4"
 
-  def self.get_places(places_count, lat, lon, type, place_properties, keyword = "", date = "2018", radius = 1000)
+  def self.get_places(places_count, lat, lon, type, place_properties, keyword = "", radius = 1000, date = "2018")
     if type === "restaurant"
       request = RestClient::Request.execute(
        method: :get,
