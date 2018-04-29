@@ -3,15 +3,18 @@ require 'json'
 
 class PlacesUtils
 
-  ENDPOINT = "https://maps.googleapis.com/maps/api/place"
-  API_KEY = "AIzaSyBY_oLHUmf8-C9b7hkRtYC34ThjuNyliDw"
-  OTHER_KEY = "AIzaSyCnFz8z-DNPsSYQ3oaEhwe8ykzmePykpAE"
-  TODD_API_KEY = "AIzaSyAYqO0CjsXnVRlSYMx1mzIlbodfKbl-_Og"
-  ROSE_NEW_EMAIL_API_KEY="AIzaSyCAYxLd1mMSwPMaL-KIw-__oj64IlufcnA"
-  SECOND_ROSE_KEY = "AIzaSyDZ25jrrjL_b5-sCsc2gRK9zDkUd-R6OAo"
-  ROSE_API_KEY = "AIzaSyBY_oLHUmf8-C9b7hkRtYC34ThjuNyliDw"
-  ROSE_THIRD_KEY = "AIzaSyB6aCRNMXBNIlT4dUXI_c47Dgd8UeZ3mDQ"
-  BRIE_API_KEY = "AIzaSyCEbuWklDLV0973ygPglKadB6sGnY4gFC4"
+  api_keys = [
+      "AIzaSyB6aCRNMXBNIlT4dUXI_c47Dgd8UeZ3mDQ",
+      "AIzaSyCnFz8z-DNPsSYQ3oaEhwe8ykzmePykpAE",
+      "AIzaSyAYqO0CjsXnVRlSYMx1mzIlbodfKbl-_Og",
+      "AIzaSyCAYxLd1mMSwPMaL-KIw-__oj64IlufcnA",
+      "AIzaSyDZ25jrrjL_b5-sCsc2gRK9zDkUd-R6OAo",
+      "AIzaSyBY_oLHUmf8-C9b7hkRtYC34ThjuNyliDw",
+      "AIzaSyB6aCRNMXBNIlT4dUXI_c47Dgd8UeZ3mDQ",
+      "AIzaSyCEbuWklDLV0973ygPglKadB6sGnY4gFC4",
+      "AIzaSyD8i-bcDlTzDJXaj-mNo1l7CCvts845_w8"
+    ]
+  API_KEY = api_keys.sample
 
   def self.get_places(places_count, lat, lon, date, type, place_properties, keyword = "", radius = 1000)
     if type === "restaurant"
@@ -127,7 +130,7 @@ class PlacesUtils
       time["end"] = "12:00:00"
     elsif type === "bar"
       time["start"] = "21:00:00"
-      time["end"] = "00:00:00"
+      time["end"] = "23:59:00"
     elsif type === "park"
       time["start"] = "14:30:00"
       time["end"] = "16:30:00"
