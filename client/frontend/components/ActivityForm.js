@@ -73,11 +73,12 @@ class ActivityForm extends React.Component{
       <View style={{ flex: 1 }}>
         <Modal backdropColor="#dddddd"
           isVisible={this.state.modalVisible}
+          style={{marginBottom: '35%'}}
           supportedOrientations={['portrait', 'landscape']}
           onBackdropPress={() => this.setState({ modalVisible: false })}>
             <TouchableHighlight onPress={() => this.toggleModal()}>
               <View style={styles.modalBoxStyle}>
-                <Text style={styles.textTitleStyle}>Choose Activities:</Text>
+                <Text style={styles.textTitleStyle}>Choose Activities!</Text>
                 <Text style={styles.textStyle}>Swipe Left or Right to Submit</Text>
               </View>
             </TouchableHighlight>

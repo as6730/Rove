@@ -6,13 +6,14 @@ import {
   Image,
   Linking,
   Alert,
-  Button,
   ScrollView,
+  TouchableOpacity
 } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import RNCalendarEvents from 'react-native-calendar-events';
-import Permissions from 'react-native-permissions'
+import Permissions from 'react-native-permissions';
+import { Button } from './common';
 
 // TODO: Import marker for lat and long that are being passed in
 
@@ -132,37 +133,46 @@ class ShowPage extends React.Component {
         <View style={styles.info}>
           <Text style={styles.title}>{place.name}</Text>
           {place.rating && <Text>Rating: {place.rating}</Text>}
-          {place.formatted_address && <Text>Address: {place.formatted_address}</Text>}
-          {place.formatted_phone_number && <Text>Phone Number: {place.formatted_phone_number}</Text>}
-          {place.website && <Text>Website: {place.website}</Text>}
+          {place.formatted_address && <Text>{place.formatted_address}</Text>}
+          {place.formatted_phone_number && <Text>{place.formatted_phone_number}</Text>}
+          {place.website
+            && <Text
+                style = {styles.website}
+                onPress={() => Linking.openURL(this.props.place.website)}>
+                Website
+                </Text>}
         </View>
         <View style = {styles.mapContainer}>
         <MapView
-          region={
-            {
-              latitude: place.location.lat,
-              longitude: place.location.lng,
-              latitudeDelta: 0.00092,
-              longitudeDelta: 0.00421,
-            }
-          }
-          style={styles.map}
-          >
+          provider={'google'}
+          style = {styles.map}
+          initialRegion={{
+            latitude: this.props.place.location.lat,
+            longitude: this.props.place.location.lng,
+            latitudeDelta: 0.0020,
+            longitudeDelta: 0.0100,
+          }}>
           <Marker
             coordinate={{
-              latitude: place.location.lat,
-              longitude: place.location.lng}}
-            title={place.name}
-            description={place.formatted_address}
-          />
+              latitude: this.props.place.location.lat,
+              longitude: this.props.place.location.lng
+            }}
+            pinColor={'#FF8300'}/>
+            <View style={ {flex: 0.1, alignItems: 'center', justifyContent: 'center' }}>
+              { this.state.eventAdded ?
+                <TouchableOpacity
+                  style={styles.buttonStyle}>
+                  <Text style={styles.textStyle}>Added to Calendar</Text>
+                </TouchableOpacity>
+                :
+                <Button
+                  style={styles.button}
+                  onPress={()=> this.submit()}
+                  children={"Add to Calendar"}>
+                </Button>
+              }
+            </View>
           </MapView>
-        </View>
-        <View style={ {flex: 0.1, alignItems: 'center', justifyContent: 'center' }}>
-        { this.state.eventAdded ?
-            <Text style={{color: '#FE5D26', fontWeight: "600", fontSize: 16 }}>Added to Calendar</Text>
-        :
-          <Button onPress={() => this.submit()} title={"Add to Calendar"} color={'#FE5D26'}></Button>
-        }
         </View>
       </ScrollView>
     );
@@ -178,9 +188,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   info: {
-    flex: 0.3,
     justifyContent: 'space-between',
     padding: 25,
+    height: '30%',
     borderBottomWidth: 1,
     borderTopWidth: 1,
     borderColor: '#FE5D26',
@@ -194,7 +204,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   mapContainer: {
-    height: '60%'
+    height: '50%'
   },
   map: {
     height: '100%',
@@ -210,6 +220,23 @@ const styles = StyleSheet.create({
   },
   button: {
     position: 'absolute',
+  },
+  buttonStyle: {
+    alignSelf: 'center',
+    backgroundColor: "#fff",
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#FE5D26',
+    height: 30,
+    width: '40%',
+    marginTop: 250,
+  },
+  textStyle: {
+    alignSelf: 'center',
+    paddingTop: 3,
+    color: '#FE5D26',
+    fontWeight: "600",
+    fontSize: 16,
   }
 });
 

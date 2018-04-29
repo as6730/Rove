@@ -19,12 +19,13 @@ const styles = {
   spinnerStyle: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
-  },textStyle:{
+    marginBottom: '50%',
+  },
+  textStyle:{
     color: '#FE5D26',
     fontSize: 20,
     marginBottom: 100,
-  }
+  },
 };
 
 export { OurSpinner };
