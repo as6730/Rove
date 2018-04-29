@@ -84,6 +84,8 @@ PODS:
     - React/RCTBlob
   - ReactNativePermissions (1.1.1):
     - React
+  - RNVectorIcons (4.6.0):
+    - React
   - yoga (0.54.4.React)
 
 DEPENDENCIES:
@@ -109,6 +111,7 @@ DEPENDENCIES:
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - ReactNativePermissions (from `../node_modules/react-native-permissions`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
 SPEC REPOS:
@@ -134,6 +137,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-maps"
   ReactNativePermissions:
     :path: "../node_modules/react-native-permissions"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
 
@@ -149,8 +154,9 @@ SPEC CHECKSUMS:
   react-native-google-maps: 2cfe3b01f8422c7dae51d8764139fd70f888cfce
   react-native-maps: 066c2afcc89e18726377bcc685315f989ca22449
   ReactNativePermissions: 9f2d9c45c98800795e6c2ed330e25d11a66a8169
+  RNVectorIcons: c0dbfbf6068fefa240c37b0f71bd03b45dddac44
   yoga: 55da126afc384965b96bff46652464373b330add
 
-PODFILE CHECKSUM: 341502a736d0ee634db8d6603ed82d47a1131301
+PODFILE CHECKSUM: 54eb7725332e1ac4594b1b67839f7b7b229abf4c
 
 COCOAPODS: 1.5.0
