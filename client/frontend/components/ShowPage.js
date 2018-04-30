@@ -123,6 +123,10 @@ class ShowPage extends React.Component {
     return (
       <View style={styles.container}>
         <Image
+          style={styles.arrowImage}
+          source={require('../images/arrow.png')}
+          />
+        <Image
           style={styles.image}
           source={place.photo}
           />
@@ -211,6 +215,7 @@ const styles = StyleSheet.create({
   image: {
     height: '25%',
     width: '100%',
+    zIndex: -10,
   },
   mapContainer: {
     height: '48%',
@@ -251,7 +256,14 @@ const styles = StyleSheet.create({
     color: '#FE5D26',
     fontWeight: "600",
     fontSize: 16,
-  }
+  },arrowImage:{
+    alignSelf: 'center',
+    zIndex: 10,
+    height:40,
+    marginBottom:20,
+    width: '14%',
+    position: 'absolute',
+  },
 });
 
 export default ShowPage;
