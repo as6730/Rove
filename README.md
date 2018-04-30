@@ -48,10 +48,15 @@ One of our many challenges while learning React Native was figuring out how to h
 ```javascript
 export class SwipeableCard extends React.Component {
   translateX = new Animated.Value(0);
+  // panResponders are the way React Native handles prolonged gestures
   _panResponder = PanResponder.create({
     onMoveShouldSetResponderCapture: () => true,
     onMoveShouldSetPanResponderCapture: () => true,
     onPanResponderMove: Animated.event([null, {dx: this.translateX}]),
+    // Here is the logic for whether some one has swiped right or "back".
+    //This is done by measuring the distance of the swipe and the 
+    //velocity of the swipe gesture in the horizontal direction
+    //(by measuring against the screen width).
     onPanResponderRelease: (e, {vx, dx}) => {
       const screenWidth = Dimensions.get("window").width;
       if (vx >= 0.003 && Math.abs(dx) >= 0.5 * screenWidth) {
