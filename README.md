@@ -43,6 +43,28 @@ Show Page
 ### Technology Details
 This mobile app iOS application will be rooted in React Native, which will allow us to build a rich and interactive UI. We will utilize the Google API to pull information and organize their itinerary.
 
+### Challenges and Solutions
+One of our many challenges while learning React Native was figuring out how to handle guesture responses. One of the biggest challenges of which came up in  our form submission. We wanted to create a form that would be able to be submitted upon a swipe. Rose ended up create a reusable component that could be wrapped around any component to give it a different gesture response upon swiping left ot right.
+```javascript
+export class SwipeableCard extends React.Component {
+  translateX = new Animated.Value(0);
+  _panResponder = PanResponder.create({
+    onMoveShouldSetResponderCapture: () => true,
+    onMoveShouldSetPanResponderCapture: () => true,
+    onPanResponderMove: Animated.event([null, {dx: this.translateX}]),
+    onPanResponderRelease: (e, {vx, dx}) => {
+      const screenWidth = Dimensions.get("window").width;
+      if (vx >= 0.003 && Math.abs(dx) >= 0.5 * screenWidth) {
+        this.props.swipeBack();
+      } else if (Math.abs(dx) >= 0.5 * screenWidth) {
+        this.props.onSwipe();
+      }
+    }
+   });
+  }
+  ```
+ 
+
 ### Group Members and Work Breakdown
 Our group consist of four members: Alexandra Savramis, Brie McNally, Rose Koron, and Todd Bergman.
 
