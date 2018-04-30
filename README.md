@@ -54,7 +54,7 @@ export class SwipeableCard extends React.Component {
     onMoveShouldSetPanResponderCapture: () => true,
     onPanResponderMove: Animated.event([null, {dx: this.translateX}]),
     // Here is the logic for whether some one has swiped right or "back".
-    //This is done by measuring the distance of the swipe and the 
+    //This is done by measuring the distance of the swipe and the
     //velocity of the swipe gesture in the horizontal direction
     //(by measuring against the screen width).
     onPanResponderRelease: (e, {vx, dx}) => {
@@ -68,7 +68,7 @@ export class SwipeableCard extends React.Component {
    });
   }
   ```
- 
+
 
 ### Group Members and Work Breakdown
 Our group consist of four members: Alexandra Savramis, Brie McNally, Rose Koron, and Todd Bergman.

@@ -85,7 +85,7 @@ class ActivityForm extends React.Component{
             <TouchableHighlight onPress={() => this.toggleModal()}>
               <View style={styles.modalBoxStyle}>
                 <Text style={styles.textTitleStyle}>Choose Activities!</Text>
-                <Text style={styles.textStyle}>Swipe Left or Right to Submit</Text>
+                <Text style={styles.textStyle}>Swipe Right to Submit</Text>
               </View>
             </TouchableHighlight>
           </Modal>
