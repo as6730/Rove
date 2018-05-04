@@ -50,6 +50,7 @@ class IndexPage extends React.Component {
       itinerary.forEach( (place, idx) => {
         keys[idx].forEach( key => {
           if (Object.keys(itinerary[idx]).length === 0) { return; }
+
           // console.log(
           //   parseInt(itinerary[idx][String(key)][0].date_time.start.slice(0,1))
           // );
