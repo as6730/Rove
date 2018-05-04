@@ -3,55 +3,55 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "map-7.png",
+      "filename" : "map-c_fit,w_40.png",
       "scale" : "2x"
     },
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "map-6.png",
+      "filename" : "map-c_fit,w_60.png",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "map-5.png",
+      "filename" : "map-c_fit,h_58,w_58.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "map-4.png",
+      "filename" : "map-c_fit,h_87,w_87.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "map-3.png",
+      "filename" : "map-c_fit,h_80,w_80.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "map-2.png",
+      "filename" : "map-c_fit,h_120,w_120.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "map-1.png",
+      "filename" : "map-c_fit,h_120,w_120-1.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "map.png",
+      "filename" : "map-c_fit,h_180,w_180.png",
       "scale" : "3x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "map-8.png",
+      "filename" : "map-c_fit,h_1024,w_1024.png",
       "scale" : "1x"
     },
     {
