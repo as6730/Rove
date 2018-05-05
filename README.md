@@ -1,6 +1,6 @@
 # README
 
-[Demo Site](https://briemcnally.github.io/rove/index.html)
+[Demo Site](https://briemcnally.github.io/ROVE_Landing_Page/)
 
 ## Weekender
 
