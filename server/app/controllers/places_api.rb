@@ -14,20 +14,21 @@ class PlacesUtils
     "AIzaSyBY_oLHUmf8-C9b7hkRtYC34ThjuNyliDw",
     "AIzaSyB6aCRNMXBNIlT4dUXI_c47Dgd8UeZ3mDQ",
     "AIzaSyCEbuWklDLV0973ygPglKadB6sGnY4gFC4",
-    "AIzaSyD8i-bcDlTzDJXaj-mNo1l7CCvts845_w8"
+    "AIzaSyD8i-bcDlTzDJXaj-mNo1l7CCvts845_w8",
+    "AIzaSyCiowQGzYIH10U5WRDb4aaM8_qLhYdT4Q8"
   ]
-  API_KEY = api_keys.sample
+  API_KEY = api_keys.last
 
   def self.get_places(places_count, lat, lon, date, type, place_properties, keyword = "", radius = 1000)
     if type === "restaurant"
       request = RestClient::Request.execute(
        method: :get,
-       url: "#{ENDPOINT}/nearbysearch/json?location=#{lat},#{lon}&radius=#{radius}&keyword=#{keyword}&type=#{type}&rankby=prominence&key=#{API_KEY}"
+       url: "#{ENDPOINT}/nearbysearch/json?key=#{API_KEY}&location=#{lat},#{lon}&radius=#{radius}&keyword=#{keyword}&type=#{type}&rankby=prominence"
       )
     else
       request = RestClient::Request.execute(
        method: :get,
-       url: "#{ENDPOINT}/nearbysearch/json?location=#{lat},#{lon}&radius=#{radius}&type=#{type}&rankby=prominence&key=#{API_KEY}"
+       url: "#{ENDPOINT}/nearbysearch/json?key=#{API_KEY}&location=#{lat},#{lon}&radius=#{radius}&type=#{type}&rankby=prominence"
       )
     end
 
@@ -75,7 +76,7 @@ class PlacesUtils
   def self.get_place_from_id(place_id, properties, date, type, keyword)
     request = RestClient::Request.execute(
        method: :get,
-       url: "#{ENDPOINT}/details/json?placeid=#{place_id}&key=#{API_KEY}"
+       url: "#{ENDPOINT}/details/json?key=#{API_KEY}&placeid=#{place_id}"
     )
     result = JSON.parse(request)["result"]
     place = {}
@@ -110,7 +111,7 @@ class PlacesUtils
     photo_reference = result_photos["photo_reference"]
     max_width = result_photos["width"]
     max_height= result_photos["height"]
-    "https://maps.googleapis.com/maps/api/place/photo?maxwidth=#{max_width}&maxheight=#{max_height}&photoreference=#{photo_reference}&key=#{API_KEY}"
+    "https://maps.googleapis.com/maps/api/place/photo?key=#{API_KEY}&maxwidth=#{max_width}&maxheight=#{max_height}&photoreference=#{photo_reference}"
   end
 
   def self.set_start_and_end_time(type, date, keyword)
